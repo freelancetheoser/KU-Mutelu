@@ -29,6 +29,22 @@ Route::get('/home', function() {
     return Inertia::render('Home');
 });
 
+Route::get('/post', function() {
+    return Inertia::render('Post');
+});
+
+Route::get('/3dvista', function() {
+    return Inertia::render('3dvista');
+});
+
+Route::get('/event', function() {
+    return Inertia::render('Event');
+});
+
+Route::get('/about', function() {
+    return Inertia::render('About');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
