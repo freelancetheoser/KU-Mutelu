@@ -25,6 +25,8 @@ Route::get('/', function () {
     ]);
 });
 
+
+// Link Navbar
 Route::get('/home', function() {
     return Inertia::render('Home');
 });
@@ -39,6 +41,23 @@ Route::get('/3dvista', function() {
 
 Route::get('/event', function() {
     return Inertia::render('Event');
+});
+
+Route::get('/about', function() {
+    return Inertia::render('About');
+});
+
+// Link Menubar
+Route::get('/shop', function() {
+    return Inertia::render('About');
+});
+
+Route::get('/3dvista', function() {
+    return Inertia::render('About');
+});
+
+Route::get('/github', function() {
+    return Inertia::render('About');
 });
 
 Route::get('/about', function() {
