@@ -1,5 +1,6 @@
 import { Link, Head } from "@inertiajs/react";
 import NavBar from "@/Components/NavBar";
+import ContactBar from "@/Components/ContactBar";
 import MenuBar from "@/Components/MenuBar";
 
 export default function Home(){
@@ -26,7 +27,11 @@ export default function Home(){
                     {/* <div className="bg-teal-800 opacity-90 rounded-full w-60 h-60"></div> */}
                 </div>
             </article>
-            <MenuBar/>
+            <div className="space-y-12">
+                <MenuBar/>
+                <ContactBar/>
+            </div>
+
         </>
     )
 }  

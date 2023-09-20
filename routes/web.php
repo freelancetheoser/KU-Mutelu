@@ -48,19 +48,19 @@ Route::get('/about', function() {
 });
 
 // Link Menubar
-Route::get('/shop', function() {
+Route::get('/world', function() {
     return Inertia::render('About');
 });
 
-Route::get('/3dvista', function() {
+Route::get('/mail', function() {
+    return Inertia::render('About');
+});
+
+Route::get('/facebook', function() {
     return Inertia::render('About');
 });
 
 Route::get('/github', function() {
-    return Inertia::render('About');
-});
-
-Route::get('/about', function() {
     return Inertia::render('About');
 });
 
