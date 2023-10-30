@@ -1,11 +1,11 @@
 import { Link } from "@inertiajs/react"
 
 export default function NavBar() {
-
+    
     return(
 
-        <nav className="border-gray-200" >
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="border-gray-200 py-2" >
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="https://flowbite.com/" className="flex items-center">
                 <img src="./test/logo.png" className="w-12 mr-3" alt="Logo" />
                 <span className="self-center bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 text-transparent bg-clip-text animate-gradient text-2xl font-semibold whitespace-nowrap">KU-MUTELU</span>
@@ -13,7 +13,7 @@ export default function NavBar() {
             <div className="flex items-center md:order-2">
                 <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <span className="sr-only">Open user menu</span>
-                    <img src="./test/user_profile.jpeg" alt="user_profile" className="w-12 rounded-full p-2"/>
+                    <img src="./test/user_profile.jpeg" alt="user_profile" className="w-10 rounded-full p-2"/>
                 </button>
                 {/* Dropdown menu */}
                 <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
@@ -43,27 +43,27 @@ export default function NavBar() {
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
-                        <Link href="/home" className="block py-2 pl-3 pr-4 font-bold text-teal-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0" aria-current="page">
+                        <Link href="/home" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0" aria-current="page">
                             HOME
                         </Link>
                     </li>
                     <li>
-                        <Link href="/post" className="block py-2 pl-3 pr-4 font-bold text-teal-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="/post" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             POST
                         </Link>
                     </li>
                     <li>
-                        <Link href="3dvista" className="block py-2 pl-3 pr-4 font-bold text-teal-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="3dvista" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             3D VISTA
                         </Link>
                     </li>
                     <li>
-                        <Link href="event" className="block py-2 pl-3 pr-4 font-bold text-teal-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="event" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             EVENT
                         </Link>
                     </li>
                     <li>
-                        <Link href="about" className="block py-2 pl-3 pr-4 font-bold text-teal-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="about" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             ABOUT
                         </Link>
                     </li>

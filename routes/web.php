@@ -64,6 +64,10 @@ Route::get('/github', function() {
     return Inertia::render('About');
 });
 
+Route::get('/shopkmu', function() {
+    return Inertia::render('Shop');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -42,7 +42,7 @@ export default function Authenticated({ user, header, children }) {
                                                     className="ml-2 -mr-0.5 h-4 w-4"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     viewBox="0 0 20 20"
-                                                    fill="currentColor"
+                                                    fillRule="currentColor"
                                                 >
                                                     <path
                                                         fillRule="evenodd"
@@ -69,7 +69,7 @@ export default function Authenticated({ user, header, children }) {
                                 onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                             >
-                                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <svg className="h-6 w-6" stroke="currentColor" fillRule="none" viewBox="0 0 24 24">
                                     <path
                                         className={!showingNavigationDropdown ? 'inline-flex' : 'hidden'}
                                         strokeLinecap="round"
