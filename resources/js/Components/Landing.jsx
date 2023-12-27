@@ -1,30 +1,22 @@
 export default function Landing() {
     return(
         <section>
-            <div className="flex justify-center text-zinc-800 py-12">
-                <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
-                    <div className="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
-                        <h1 className="font-extrabold text-3xl md:text-5xl p-2 bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 text-transparent bg-clip-text animate-gradient tracking-loose">KU-Mutelu</h1>
-                        <h2 className="text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2">Space : The Timeless Infinity
-                        </h2>
-                        <p className="text-sm md:text-base text-zinc-800 mb-4">Explore your favourite events and
-                            register now to showcase your talent and win exciting prizes.</p>
-                        <a href="#"
-                            className="bg-transparent hover:bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 animate-gradient text-teal-500 hover:text-white  rounded shadow py-2 px-4 border border-teal-500 hover:border-transparent">
-                            Donate Now</a>
-                    </div>
-                    <div className="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center">
-                        <div className="h-48 flex flex-wrap content-center">
-                            <div>
-                                <img className="inline-block mt-28 hidden xl:block" src="https://user-images.githubusercontent.com/54521023/116969935-c13d5b00-acd4-11eb-82b1-5ad2ff10fb76.png" alt="" />
-                            </div>
-                            <div>
-                                <img className="inline-block mt-24 md:mt-0 p-8 md:p-0" src="https://user-images.githubusercontent.com/54521023/116969931-bedb0100-acd4-11eb-99a9-ff5e0ee9f31f.png" alt="" />
-                            </div>
-                            <div>
-                                <img className="inline-block mt-28 hidden lg:block" src="https://user-images.githubusercontent.com/54521023/116969939-c1d5f180-acd4-11eb-8ad4-9ab9143bdb50.png" alt="" />
-                            </div>
-                        </div>
+            <div className="overflow-hidden h-96">
+                <img className="object-cover object-center w-full h-full" src="./Carousel/Home/Location-1.jpg" alt="" />
+            </div>
+            <div className="flex justify-center text-zinc-800">
+                <div className="mx-auto flex flex-col items-center my-12">
+                    <div className="flex flex-col w-full justify-center items-start">
+                        <h1 className="mx-auto font-extrabold text-3xl md:text-5xl p-2 bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 text-transparent bg-clip-text animate-gradient tracking-loose">KU-Mutelu</h1>
+                        <p className="px-12 text-sm font-bold md:text-base text-zinc-800 mb-4">แพลตฟอร์มที่ทำให้ท่านสามารถเข้าถึงสถานที่ตามความเชื่อต่างๆได้เพียงแค่การคลิก</p>
+                        <button className="flex justify-center mx-auto space-x-2 bg-transparent hover:bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 animate-gradient text-teal-500 hover:text-white  rounded shadow py-2 px-4 mt-6 border border-teal-500 hover:border-transparent">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
+                                </svg>
+                                <p>
+                                    สำรวจ
+                                </p>
+                        </button>
                     </div>
                 </div>
             </div>

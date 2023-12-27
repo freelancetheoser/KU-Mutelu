@@ -17,19 +17,25 @@ export default function NavBar() {
                 </button>
                 {/* Dropdown menu */}
                 <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
-                    <div className="px-4 py-3">
+                    {/* <div className="px-4 py-3">
                     <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
                     <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-                    </div>
-                    <ul className="py-2" aria-labelledby="user-menu-button">
+                    </div> */}
+                    <ul className="py-2 w-64" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ค้นหา</a>
                     </li>
                     <li>
-                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">แก้บน</a>
                     </li>
                     <li>
-                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">3D Vista</a>
+                    </li>
+                    <li>
+                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">สมัครสมาชิก</a>
+                    </li>
+                    <li>
+                        <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">เข้าสู่ระบบ</a>
                     </li>
                     </ul>
                 </div>
@@ -44,12 +50,12 @@ export default function NavBar() {
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
                         <Link href="/home" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0" aria-current="page">
-                            HOME
+                            ค้นหา
                         </Link>
                     </li>
                     <li>
                         <Link href="/post" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
-                            POST
+                            แก้บน
                         </Link>
                     </li>
                     <li>
@@ -59,12 +65,12 @@ export default function NavBar() {
                     </li>
                     <li>
                         <Link href="event" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
-                            EVENT
+                            สมัครสมาชิก
                         </Link>
                     </li>
                     <li>
                         <Link href="about" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
-                            ABOUT
+                            เข้าสู่ระบบ
                         </Link>
                     </li>
                 </ul>

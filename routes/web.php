@@ -35,8 +35,8 @@ Route::get('/post', function() {
     return Inertia::render('Post');
 });
 
-Route::get('/3dvista', function() {
-    return Inertia::render('3dvista');
+Route::get('/Location', function() {
+    return Inertia::render('Location');
 });
 
 Route::get('/event', function() {
