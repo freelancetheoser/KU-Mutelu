@@ -25,6 +25,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/register', function() {
+    return Inertia::render('Register');
+});
 
 // Link Navbar
 Route::get('/home', function() {
