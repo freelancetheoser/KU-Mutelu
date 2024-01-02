@@ -29,7 +29,7 @@ export default function NavBar() {
                             <Link href="/post" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">แก้บน</Link>
                         </li>
                         <li>
-                            <Link href="/3dvista" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">3D Vista</Link>
+                            <Link href="/Location" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">3D Vista</Link>
                         </li>
                         <li>
                             <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ออกจากระบบ</Link>
@@ -56,7 +56,7 @@ export default function NavBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="3dvista" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="Location" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             3D VISTA
                         </Link>
                     </li>
