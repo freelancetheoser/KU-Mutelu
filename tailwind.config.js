@@ -20,6 +20,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'background-regis': "url('/public/Background/Background.jpg')",
+            },
         },
     },
 
