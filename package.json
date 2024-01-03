@@ -21,7 +21,9 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@babylonjs/core": "^6.34.1",
+        "@babylonjs/core": "^6.36.1",
+        "@babylonjs/loaders": "^6.36.1",
+        "babylonjs": "^6.36.1",
         "babylonjs-hook": "^0.1.1",
         "flowbite": "^1.8.1",
         "react-babylonjs": "^3.1.26",

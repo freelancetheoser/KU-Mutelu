@@ -1,65 +1,37 @@
-import React, { useEffect } from 'react';
-import { Engine, Scene } from 'react-babylonjs';
-import { ArcRotateCamera, HemisphericLight, MeshBuilder, Texture } from '@babylonjs/core';
+import { Link, Head } from "@inertiajs/react";
+import NavBar from "@/Layouts/NavBar";
+import Footer from "@/Layouts/Footer";
+import PanoramaViewer from "@/Layouts/PanoramaViewer";
+import BackButton from "@/Components/BackButton";
+import PrimaryButton from "@/Components/PrimaryButton";
 
-const Viewer360 = () => {
-  useEffect(() => {
-    const canvas = document.getElementById('renderCanvas');
-
-    if (canvas) {
-      const engine = new Engine(canvas, true);
-
-      const createScene = () => {
-        const scene = new Scene(engine);
-
-        const camera = new ArcRotateCamera('camera', 0, Math.PI / 2, 10, BABYLON.Vector3.Zero(), scene);
-        camera.attachControl(canvas, true);
-
-        const light = new HemisphericLight('light', BABYLON.Vector3.Up(), scene);
-        light.intensity = 0.7;
-
-        // สร้าง 360 panorama
-        const panoramaTexture = new Texture('/Users/feelone/University/KU_CS/KU-Mutelu/public/test/pano-1.jpeg', scene);
-        const panoramaSphere = MeshBuilder.CreateSphere('panorama', { diameter: 10 }, scene);
-        panoramaSphere.material = new BABYLON.StandardMaterial('panoramaMaterial', scene);
-        panoramaSphere.material.backFaceCulling = false;
-        panoramaSphere.material.reflectionTexture = panoramaTexture;
-        panoramaSphere.material.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-        panoramaSphere.material.disableLighting = true;
-
-        return scene;
-      };
-
-      const scene = createScene();
-
-      engine.runRenderLoop(() => {
-        if (scene) {
-          scene.render();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        engine.resize();
-      });
-
-      return () => {
-        scene.dispose();
-      };
-    }
-  }, []);
-
-  return (
-    <canvas
-      id="renderCanvas"
-      style={{ width: '100%', height: '100%', touchAction: 'none' }}
-      ref={(canvas) => {
-        if (canvas) {
-          canvas.style.width = '100%';
-          canvas.style.height = '100%';
-        }
-      }}
-    />
-  );
-};
-
-export default Viewer360;
+export default function Viewer(){
+    return (
+        <>
+            <Head title="KU-MUTELU"/>
+            <div className="h-screen">
+                <NavBar/>
+                <hr />
+                <div className="">
+                    <div className="absolute z-50 grid grid-cols-2 w-full">
+                        <div className="w-full m-2">
+                            <BackButton/>
+                        </div>
+                        <div className="flex justify-end w-full mt-2">
+                            <p className="my-auto bg-[#005555] w-3/4 text-white text-center rounded-s-full px-4 py-2 font-bold">สามบูรพาจารย์</p>
+                        </div>
+                    </div>
+                </div>
+                <PanoramaViewer/>
+                <div className='flex justify-center sticky bottom-8'>
+                    <PrimaryButton>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-paper-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.5 9.5 3 7.5v-6A1.5 1.5 0 0 1 4.5 0h7A1.5 1.5 0 0 1 13 1.5v6l-3.5 2L8 8.75zM1.059 3.635 2 3.133v3.753L0 5.713V5.4a2 2 0 0 1 1.059-1.765ZM16 5.713l-2 1.173V3.133l.941.502A2 2 0 0 1 16 5.4zm0 1.16-5.693 3.337L16 13.372v-6.5Zm-8 3.199 7.941 4.412A2 2 0 0 1 14 16H2a2 2 0 0 1-1.941-1.516zm-8 3.3 5.693-3.162L0 6.873v6.5Z"/>
+                        </svg>
+                        <span>เขียนคำอธิฐาน</span>
+                    </PrimaryButton>
+                </div>
+            </div>
+        </>
+    )
+}  

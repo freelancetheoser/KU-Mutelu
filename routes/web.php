@@ -50,6 +50,11 @@ Route::get('/about', function() {
     return Inertia::render('About');
 });
 
+Route::get('/viewer', function() {
+    return Inertia::render('Viewer');
+});
+
+
 // Link Menubar
 Route::get('/world', function() {
     return Inertia::render('About');
