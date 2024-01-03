@@ -15,6 +15,9 @@ export default function Home(){
             <NavBar/>
             <hr />
             <SearchBar/>
+            <div>
+                <span>บางเขน</span>
+            </div>
             <hr />
             <Footer/>
         </>
