@@ -38,9 +38,18 @@ Route::get('/post', function() {
     return Inertia::render('Post');
 });
 
-Route::get('/Location', function() {
-    return Inertia::render('Location');
+Route::get('/posttest', function() {
+    return Inertia::render('Posttest');
 });
+
+
+Route::get('/location', function() {
+    return Inertia::render('Location');
+})->name('location');
+
+Route::get('/prayer', function() {
+    return Inertia::render('Prayer');
+})->name('prayer');
 
 Route::get('/event', function() {
     return Inertia::render('Event');

@@ -8,7 +8,7 @@ const MAX_IMAGE = 59;
 const images = [];
 
 for(let i=0; i <= MAX_IMAGE; i++){
-    images.push("./Location/Samburapaajan-1.png");
+    images.push("./Location360/Samburapaajan-1.png");
 }
 
 const PanoramaViewer = () => {
