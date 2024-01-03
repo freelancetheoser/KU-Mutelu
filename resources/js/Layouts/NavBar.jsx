@@ -56,7 +56,7 @@ export default function NavBar() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/location" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="Location" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             3D VISTA
                         </Link>
                     </li>

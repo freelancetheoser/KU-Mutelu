@@ -38,7 +38,7 @@ Route::get('/post', function() {
     return Inertia::render('Post');
 });
 
-Route::get('/location', function() {
+Route::get('/Location', function() {
     return Inertia::render('Location');
 });
 
