@@ -2,7 +2,7 @@ import { Link, Head } from "@inertiajs/react";
 import NavBar from "@/Layouts/NavBar";
 import UserPost from "@/Components/Card/UserPost";
 
-export default function Home(){
+export default function Post(){
     return (
         <>
             <Head title="KU-MUTELU"/>

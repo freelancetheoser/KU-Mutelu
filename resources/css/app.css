@@ -37,6 +37,11 @@
   }
 }
 
+.papersize {
+  max-width: 32vh;
+  max-height: 82vh;
+}
+
 .background-animate {
   background-size: 400%;
 

@@ -1,6 +1,5 @@
 import { Link, Head } from "@inertiajs/react";
 import NavBar from "@/Layouts/NavBar";
-import Footer from "@/Layouts/Footer";
 import PanoramaViewer from "@/Layouts/PanoramaViewer";
 import BackButton from "@/Components/BackButton";
 import PrimaryButton from "@/Components/PrimaryButton";
