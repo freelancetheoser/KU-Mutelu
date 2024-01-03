@@ -3,13 +3,12 @@ import * as BABYLON from 'babylonjs';
 import { Engine } from '@babylonjs/core';
 import { GUI3DManager, Button3D, TextBlock, Button, Image, Rectangle, AdvancedDynamicTexture } from '@babylonjs/gui';
 import '@babylonjs/loaders';
-import PrimaryButton from '@/Components/PrimaryButton';
 
 const MAX_IMAGE = 59;
 const images = [];
 
 for(let i=0; i <= MAX_IMAGE; i++){
-    images.push("./Zone-A/" + i + ".jpg");
+    images.push("./Location/Samburapaajan-1.png");
 }
 
 const PanoramaViewer = () => {
