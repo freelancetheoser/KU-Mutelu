@@ -12,13 +12,13 @@ export default function Viewer(){
             <div className="h-screen">
                 <NavBar/>
                 <hr />
-                <div className="">
+                <div>
                     <div className="absolute z-50 grid grid-cols-2 w-full">
-                        <div className="w-full m-2">
+                        <div className="w-full m-2 ml-2">
                             <BackButton/>
                         </div>
-                        <div className="flex justify-end w-full mt-2">
-                            <p className="my-auto bg-[#005555] w-3/4 text-white text-center rounded-s-full px-4 py-2 font-bold">สามบูรพาจารย์</p>
+                        <div className="flex justify-end  w-full max-w-24 mt-2">
+                            <p className="my-auto bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold">สามบูรพาจารย์</p>
                         </div>
                     </div>
                 </div>
