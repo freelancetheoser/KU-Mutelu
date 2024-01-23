@@ -5,6 +5,7 @@ import MenuBar from "@/Components/MenuBar";
 import Footer from "@/Layouts/Footer";
 import Landing from "@/Components/Landing";
 import OptionBar from "@/Components/OptionBar";
+import FloatingActionButton from "@/Components/FloatActionButton";
 
 export default function Home(){
     return (
@@ -13,6 +14,7 @@ export default function Home(){
 
             <NavBar/>
             <hr />
+            <FloatingActionButton/>
             <Landing/>
             <OptionBar/>
             <hr />

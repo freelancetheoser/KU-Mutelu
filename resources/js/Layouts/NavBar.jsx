@@ -26,10 +26,10 @@ export default function NavBar() {
                             <Link href="/home" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ค้นหา</Link>
                         </li>
                         <li>
-                            <Link href="/post" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">แก้บน</Link>
+                            <Link href="/post" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">โดเนท</Link>
                         </li>
                         <li>
-                            <Link href="/Location" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">3D Vista</Link>
+                            <Link href="/Location" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">หน้าโปรไฟล์</Link>
                         </li>
                         <li>
                             <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ออกจากระบบ</Link>
@@ -52,7 +52,7 @@ export default function NavBar() {
                     </li>
                     <li>
                         <Link href="/post" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
-                            แก้บน
+                            โดเนท
                         </Link>
                     </li>
                     <li>
