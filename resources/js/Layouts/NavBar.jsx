@@ -32,7 +32,7 @@ export default function NavBar() {
                             <Link href="/Location" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">3D Vista</Link>
                         </li>
                         <li>
-                            <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ออกจากระบบ</Link>
+                            <Link method="post" href={route('logout')} as="button" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ออกจากระบบ</Link>
                         </li>
                     </ul>
                 </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -46,10 +45,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $defaultRole = Role::where('username', 'user')->first(); // 'user' คือชื่อของ role เริ่มต้น
-        $user->roles()->attach($defaultRole);
-
         event(new Registered($user));
+
 
         Auth::login($user);
 

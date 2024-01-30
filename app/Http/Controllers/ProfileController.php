@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -13,6 +14,13 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
+    public function show($id)
+    {
+        $profile = Profile::where('user_id', $id)->firstOrFail();
+        return response()->json($profile);
+    }
+
+
     /**
      * Display the user's profile form.
      */
@@ -58,6 +66,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/home');
     }
 }

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 
 class PostController extends Controller
 {
@@ -13,8 +16,8 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
-        return response()->json(['posts' => $posts], 200);
+        $post = Post::all();
+        return response()->json(['posts' => $post], 200);
     }
 
     public function show($id)
@@ -30,16 +33,30 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $posts = new Post();
 
-        $posts->content = $request->get('content');
+        // if (!auth()->check()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Unauthorized access. You must be logged in.'
+        //     ], Response::HTTP_UNAUTHORIZED);
+        // }
+        $request->validate([
+            'content' => 'required|string',
+            'image' => [
+                File::image()->min(1024)->max(12 * 1024),
+            ]
+        ]);
+    
+        $post = new Post();
+        $post->user_id = Auth::user()->id;
+        $post->content = $request->get('content');
         if($request->hasFile('image')){
-            $fileName = self::generateFileName($request->image);
-            $request->image->move(storage_path('images'),$fileName);
-            $posts->image_path = storage_path('images') . '/' . $fileName;
+            $fileName = self::generateFileName($request->file('image'));
+            $request->file('image')->move(storage_path('images'),$fileName);
+            $post->image_path = storage_path('images') . '/' . $fileName;
         }
 
-        if ($posts->save()) {
+        if ($post->save()) {
             return response()->json([
                 'success' => true,
                 'message' => 'post created successfully',
@@ -53,16 +70,16 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $posts = Post::find($id);
+        $post = Post::find($id);
 
 
-        if (!$posts) {
+        if (!$post) {
             return response()->json(['message' => self::POST_NOT_FOUND], 404);
         }
 
-        unlink($posts->image_path);
+        unlink($post->image_path);
 
-        $posts->delete();
+        $post->delete();
 
 
         return response()->json(['message' => 'Post deleted successfully'], 200);

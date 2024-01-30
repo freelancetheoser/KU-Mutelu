@@ -10,7 +10,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        username: '',
+        login: '',
         password: '',
         remember: false,
     });
@@ -43,21 +43,20 @@ export default function Login({ status, canResetPassword }) {
                         </svg>
                     </div>
                     <div className="w-full">
-                        <InputLabel htmlFor="email"/>
+                        <InputLabel htmlFor="login"/>
 
                         <TextInput
-                            id="email"
-                            type="email"
-                            name="email"
-                            value={data.email}
+                            id="login"
+                            name="login"
+                            value={data.login}
                             placeholder="ชื่อผู้ใช้"
                             className="mt-1 block w-full"
-                            autoComplete="username"
+                            autoComplete="login"
                             isFocused={true}
-                            onChange={(e) => setData('email', e.target.value)}
+                            onChange={(e) => setData('login', e.target.value)}
                         />
 
-                        <InputError message={errors.email} className="mt-2" />
+                        <InputError message={errors.login} className="mt-2" />
                     </div>
                 </div>
 
@@ -115,7 +114,10 @@ export default function Login({ status, canResetPassword }) {
                     </GuestButton>
                 </div>
                 <div className='flex justify-center'>
-                    <Link className='text-white text-xs'>
+                    <Link 
+                        href={route('register')}
+                        className="underline text-sm text-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
                         สมัครสมาชิก
                     </Link>
                 </div>
