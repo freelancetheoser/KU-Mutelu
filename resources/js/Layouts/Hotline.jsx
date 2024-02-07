@@ -4,7 +4,7 @@ import { Link } from '@inertiajs/react';
 
 export default function Hotline({ children }) {
     return (
-        <div className='w-full flex justify-start'>
+        <div className='w-full flex justify-center'>
             <HostPost/>
         </div>
     );

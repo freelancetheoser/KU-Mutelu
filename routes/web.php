@@ -64,6 +64,10 @@ Route::get('/socialfeed', function() {
     return Inertia::render('Socialfeed');
 })->name('socialfeed');
 
+Route::get('/muprofile', function() {
+    return Inertia::render('MuProfile');
+})->name('MuProfile');
+
 Route::get('/donate', function() {
     return Inertia::render('Donate');
 });
