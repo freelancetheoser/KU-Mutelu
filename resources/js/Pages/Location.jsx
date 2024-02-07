@@ -24,7 +24,7 @@ export default function Location(){
     // };
 
     const handleBangkhen = () => {
-        setEmbedUrl("https://www.google.com/maps/d/u/0/embed?mid=1eddbxfVDPCaQNo2YQJdzr3iV08D-1vk&ehbc=2E312F&noprof=1&pb=https://example.com/bangkhen_image.jpg");
+        setEmbedUrl("https://www.google.com/maps/d/u/0/embed?mid=1eddbxfVDPCaQNo2YQJdzr3iV08D-1vk&ehbc=2E312F");
     };
     
     const handleKampansan = () => {

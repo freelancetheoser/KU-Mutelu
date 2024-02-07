@@ -52,18 +52,21 @@ Route::get('/prayer', function() {
     return Inertia::render('Prayer');
 })->name('prayer');
 
-Route::get('/event', function() {
-    return Inertia::render('Event');
-});
+Route::get('/socialfeed', function() {
+    return Inertia::render('Socialfeed');
+})->name('socialfeed');
 
-Route::get('/about', function() {
-    return Inertia::render('About');
+Route::get('/donate', function() {
+    return Inertia::render('Donate');
 });
 
 Route::get('/viewer', function() {
     return Inertia::render('Viewer');
 });
 
+Route::get('/สามบูรพาจารย์', function() {
+    return Inertia::render('Viewer');
+});
 
 // Link Menubar
 Route::get('/world', function() {

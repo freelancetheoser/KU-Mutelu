@@ -7,7 +7,7 @@ export default function NavBar() {
         <nav className="border-gray-200" >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="/home" className="flex items-center">
-                <img src="./test/logo.png" className="w-12 mr-3" alt="Logo" />
+                <img src="./Logo.png" className="w-14 mr-3" alt="Logo" />
                 <span className="self-center bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 text-transparent bg-clip-text animate-gradient text-2xl font-semibold whitespace-nowrap">KU-MUTELU</span>
             </a>
             <div className="flex items-center md:order-2 m-4">
@@ -47,16 +47,16 @@ export default function NavBar() {
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
                         <Link href="/home" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0" aria-current="page">
-                            ค้นหา
+                            หน้าหลัก
                         </Link>
                     </li>
                     <li>
-                        <Link href="/post" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="/donate" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             โดเนท
                         </Link>
                     </li>
                     <li>
-                        <Link href="Location" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
+                        <Link href="/location" className="block py-2 pl-3 pr-4 font-bold zinc-800 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0">
                             3D VISTA
                         </Link>
                     </li>

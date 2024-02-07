@@ -30,7 +30,7 @@ const PanoramaViewer = () => {
                 images[imageIndex],
                 {
                     resolution: 32,
-                    size: 1000
+                    size: 20
                 },
                 scene
             );
