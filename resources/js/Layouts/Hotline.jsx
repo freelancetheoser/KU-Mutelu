@@ -6,12 +6,6 @@ export default function Hotline({ children }) {
     return (
         <div className='w-full flex justify-start'>
             <HostPost/>
-            <HostPost/>
-            <HostPost/>
-            <HostPost/>
-            <HostPost/>
-            <HostPost/>
-            <HostPost/>
         </div>
     );
 }

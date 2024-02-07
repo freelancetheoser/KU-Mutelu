@@ -124,5 +124,14 @@
 .papersize {
   height: 60vh;
 }
+
+.feedpostsize {
+  min-height: 60vh;
+  max-height: 90vh;
+}
+
+.feedpostbackground {
+  background-image: url('./FeedPost/Post-1.jpg');
+}
 /* เพิ่มสไตล์ที่เหมาะสมตามความต้องการของคุณ */
 
