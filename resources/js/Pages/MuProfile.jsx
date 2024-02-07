@@ -48,12 +48,11 @@ export default function MuProfile() {
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        {activePostType === 'frame' && <FramePost/>}
-                        {activePostType === 'text' && <TextPost/>}
-                    </div>
+                <div className='flex justify-center'>
+                    {activePostType === 'frame' && <FramePost/>}
+                    {activePostType === 'text' && <TextPost/>}
                 </div>
+
             </div>
             
         </div>

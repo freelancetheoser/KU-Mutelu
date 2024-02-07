@@ -1,8 +1,8 @@
 export default function TextPost() {
     return(
-        <div className="px-4 mt-4">
-            <div className="flex  space-x-4">
-                <div>
+        <div className="flex justify-center  mx-auto mt-4 w-full">
+            <div className="flex justify-center space-x-4 w-full">
+                <div className="my-auto">
                     <img src="./FeedPost/Post-1.jpg" alt="" className="w-24 h-24 object-cover rounded"/>
                 </div>
                 <div className="my-auto">
@@ -25,9 +25,9 @@ export default function TextPost() {
                         </svg>
                     </div>
                     <div className="flex space-x-2">
-                        <p>58 mulike</p>
-                        <p>|</p>
-                        <p>5 ความคิดเห็น</p>
+                        <p className="text-xs">58 mulike</p>
+                        <p className="text-xs">|</p>
+                        <p className="text-xs">5 ความคิดเห็น</p>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 space-y-4 w-1/6">
