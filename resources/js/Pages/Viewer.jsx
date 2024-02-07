@@ -18,7 +18,7 @@ export default function Viewer(){
                             <BackButton/>
                         </div>
                         <div className="flex justify-end  w-full max-w-24 mt-2">
-                            <p className="my-auto bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold">สามบูรพาจารย์</p>
+                            <p className="my-auto bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold truncate">สามบูรพาจารย์</p>
                         </div>
                     </div>
                 </div>

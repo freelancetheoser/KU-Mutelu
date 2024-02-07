@@ -52,6 +52,14 @@ Route::get('/prayer', function() {
     return Inertia::render('Prayer');
 })->name('prayer');
 
+Route::get('/prepost', function() {
+    return Inertia::render('Prepost');
+})->name('Prepost');
+
+Route::get('/postcomplete', function() {
+    return Inertia::render('Postcomplete');
+})->name('Postcomplete');
+
 Route::get('/socialfeed', function() {
     return Inertia::render('Socialfeed');
 })->name('socialfeed');
@@ -64,7 +72,7 @@ Route::get('/viewer', function() {
     return Inertia::render('Viewer');
 });
 
-Route::get('/สามบูรพาจารย์', function() {
+Route::get('/samphuraphajan', function() {
     return Inertia::render('Viewer');
 });
 

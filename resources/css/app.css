@@ -115,5 +115,14 @@
   font-size: 20px;
 }
 
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(360deg);
+}
+
+.papersize {
+  height: 60vh;
+}
 /* เพิ่มสไตล์ที่เหมาะสมตามความต้องการของคุณ */
 

@@ -4,7 +4,7 @@ export default function NavBar() {
     
     return(
 
-        <nav className="border-gray-200" >
+        <nav className="bg-white border-gray-200" >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="/home" className="flex items-center">
                 <img src="./Logo.png" className="w-14 mr-3" alt="Logo" />
