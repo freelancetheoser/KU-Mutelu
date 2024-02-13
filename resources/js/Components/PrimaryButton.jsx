@@ -11,7 +11,7 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
     
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                <div className="bg-white w-2/4 h-4/6 z-50 p-4 rounded">
+                <div className="bg-white w-2/4 pb-12 z-50 p-4 rounded">
                     <div className="grid grid-cols-2 w-full">
                         <div className="flex justify-end">
                             <span className="text-2xl text-[#005555] font-bold">คำแนะนำ</span>

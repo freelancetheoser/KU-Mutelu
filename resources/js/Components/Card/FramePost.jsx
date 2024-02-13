@@ -18,6 +18,7 @@ export default function FramePost() {
         "เหมียวที่เป็นเสียงแมว",
         "หมดคำจะพูด",
     ];
+    
     return(
         <div className="">
             {backgroundImageUrl.map((src, index) => (
