@@ -7,6 +7,7 @@ import Landing from "@/Components/Landing";
 import OptionBar from "@/Components/OptionBar";
 import SearchBar from "@/Layouts/SearchBar";
 import { useState } from "react";
+import MapBoxComponent from "@/Components/Mapbox";
 
 export default function Location(){
     const [embedurl, setEmbedUrl] = useState("https://www.google.com/maps/d/u/0/embed?mid=1eddbxfVDPCaQNo2YQJdzr3iV08D-1vk&ehbc=2E312F&noprof=1");
@@ -36,28 +37,25 @@ export default function Location(){
     };
     
     return (
-        <>
+        <div className="w-screen h-screen">
             <Head title="KU-MUTELU"/>
-
-            <NavBar/>
-            <hr />
-            <SearchBar/>
-            <div className="mb-2">
-                <ul className="grid grid-cols-3 text-md font-bold">
-                    <li className="flex justify-center"><button onClick={handleBangkhen} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">บางเขน</button></li>
-                    <li className="flex justify-center"><button onClick={handleKampansan} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">กำแพงแสน</button></li>
-                    <li className="flex justify-center"><button onClick={handleSriracha} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">ศรีราชา</button></li>
-                </ul>
-            </div>
-            <div className="h-screen px-4">
-                <iframe className="h-screen w-full" 
-                    src={embedurl}
-                    style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-                    class="w-full h-full">
-                </iframe>
+            <div className="">
+                <NavBar/>
+                <hr />
+                <SearchBar/>
+                <div className="mb-2">
+                    <ul className="grid grid-cols-3 text-md font-bold">
+                        <li className="flex justify-center"><button onClick={handleBangkhen} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">บางเขน</button></li>
+                        <li className="flex justify-center"><button onClick={handleKampansan} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">กำแพงแสน</button></li>
+                        <li className="flex justify-center"><button onClick={handleSriracha} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">ศรีราชา</button></li>
+                    </ul>
+                </div>
+                <div className="w-full">
+                    <MapBoxComponent/>
+                </div>
             </div>
             <hr />
             <Footer/>
-        </>
+        </div>
     )
 }  

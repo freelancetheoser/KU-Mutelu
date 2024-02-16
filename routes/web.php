@@ -118,6 +118,9 @@ Route::post('/posts/create', [PostController::class, 'store'])
 Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 
+Route::get('/temp', function() {
+    return view("test");
+});
 
 Route::middleware('auth:user')->group(function () {
     Route::get('/profiles/{id}', [ProfileController::class, 'show']);
