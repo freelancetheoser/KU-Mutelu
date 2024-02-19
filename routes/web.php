@@ -46,7 +46,7 @@ Route::get('/posttest', function() {
 
 Route::get('/location', function() {
     return Inertia::render('Location');
-})->name('location');
+})->name('/location');
 
 Route::get('/prayer', function() {
     return Inertia::render('Prayer');

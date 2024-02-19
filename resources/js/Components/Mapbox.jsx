@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import mapboxgl, { Marker ,feature ,} from 'mapbox-gl';
-import { Navigate, useNavigate } from 'react-router-dom';
-
 
 const MapBoxComponent = () => {
     const [map, setMap] = useState(null);
