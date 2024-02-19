@@ -76,14 +76,14 @@ const MapBoxComponent = () => {
                 const locationImage = document.createElement('div');
                 
                 // Set properties for locationImage
-                locationImage.className = 'rounded';
+                locationImage.className = 'rounded bounce';
                 locationImage.style.backgroundImage = `url(${marker.properties.imageurl}.webp)`; // Specify the path to your location image
                 locationImage.style.width = `${image_size[0]}px`; // Set size as needed
                 locationImage.style.height = `${image_size[1]}px`;
                 locationImage.style.backgroundSize = '100%';
                 
                 const markerIcon = document.createElement('div');
-                markerIcon.className = 'animate-rotateY mb-20';
+                markerIcon.className = 'mb-20 bounce';
                 markerIcon.style.backgroundImage = `url(./IconsHub/marker-svgrepo-com.svg)`;
                 markerIcon.style.width = `${icon_size[0]}px`;
                 markerIcon.style.height = `${icon_size[1]}px`;
