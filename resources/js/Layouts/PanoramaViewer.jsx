@@ -4,12 +4,34 @@ import { Engine } from '@babylonjs/core';
 import { GUI3DManager, Button3D, TextBlock, Button, Image, Rectangle, AdvancedDynamicTexture } from '@babylonjs/gui';
 import '@babylonjs/loaders';
 
-const MAX_IMAGE = 59;
 const images = [];
 
-for(let i=0; i <= MAX_IMAGE; i++){
-    images.push("./Location360/Samburapaajan-1.png");
-}
+const geojson = {
+    'type': 'LocationCollection',
+    'features': [
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Samphuraphajan',
+                'thainame': 'สามบูรพาจารย์',
+                'imageurl': './images/locations/sambhuraphajan',
+                'panourl': './Location360/Samburapaajan-1.png',
+            },
+            'geometry': {
+                'type': 'Location',
+                'coordinates': [100.5730707, 13.8421697],
+                'url': '/sambhuraphajan'
+            }
+        },
+    ]
+};
+
+geojson.features.forEach(feature => {
+    // Get the imageURL from the feature properties
+    const imageURL = feature.properties.panourl;
+    // Push the imageURL into the images array
+    images.push(imageURL);
+});
 
 const PanoramaViewer = () => {
     const [imageIndex, setImageIndex] = useState(0);

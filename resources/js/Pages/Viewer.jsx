@@ -46,7 +46,7 @@ export default function Viewer(){
                             <BackButton/>
                         </div>
                         <div className="justify-end w-full mt-2 max-w-[300px]">
-                            <p className="my-auto bg-[#005555] text-white text-center rounded-s-full py-2 font-extrabold truncate">{renderNames()}</p>
+                           {renderNames()}
                         </div>
                     </div>
                 </div>
