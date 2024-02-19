@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Change a map's style configuration property</title>
+<title>Add custom icons with Markers</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
@@ -13,147 +13,87 @@ body { margin: 0; padding: 0; }
 </head>
 <body>
 <style>
-    .map-overlay {
-        font:
-            12px/20px 'Helvetica Neue',
-            Arial,
-            Helvetica,
-            sans-serif;
-        position: absolute;
-        width: 200px;
-        top: 0;
-        left: 0;
-        padding: 10px;
-    }
-
-    .map-overlay .map-overlay-inner {
-        background-color: #fff;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .map-overlay-inner fieldset {
-        display: flex;
-        justify-content: space-between;
+    .marker {
+        display: block;
         border: none;
-    }
-
-    .map-overlay-inner label {
-        font-weight: bold;
-        margin-right: 10px;
-    }
-
-    .map-overlay-inner .select-fieldset {
-        display: block;
-    }
-
-    .map-overlay-inner .select-fieldset label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .map-overlay-inner .select-fieldset select {
-        width: 100%;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
     }
 </style>
 
 <div id="map"></div>
 
-<div class="map-overlay top">
-    <div class="map-overlay-inner">
-        <fieldset class="select-fieldset">
-            <label>Select light preset</label>
-            <select id="lightPreset" name="lightPreset">
-                <!-- Each value matches a light preset -->
-                <option value="dawn">Dawn</option>
-                <option value="day" selected="">Day</option>
-                <option value="dusk">Dusk</option>
-                <option value="night">Night</option>
-            </select>
-        </fieldset>
-        <fieldset>
-            <label for="showPlaceLabels">Show place labels</label>
-            <input type="checkbox" id="showPlaceLabels" checked="">
-        </fieldset>
-        <fieldset>
-            <label for="showPointOfInterestLabels">Show POI labels</label>
-            <input type="checkbox" id="showPointOfInterestLabels" checked="">
-        </fieldset>
-        <fieldset>
-            <label for="showRoadLabels">Show road labels</label>
-            <input type="checkbox" id="showRoadLabels" checked="">
-        </fieldset>
-        <fieldset>
-            <label for="showTransitLabels">Show transit labels</label>
-            <input type="checkbox" id="showTransitLabels" checked="">
-        </fieldset>
-    </div>
-</div>
-
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlZWxhbmNldGhlb3NlciIsImEiOiJjbHNuMGJoMzUwMnJrMnFxdzhmbHE3ODltIn0.7Ef9vAIsF3aH_MYvKf0zaw';
+    const geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Foo',
+                    'iconSize': [60, 60]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-66.324462, -16.024695]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Bar',
+                    'iconSize': [50, 50]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-61.21582, -15.971891]
+                }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'message': 'Baz',
+                    'iconSize': [40, 40]
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-63.292236, -18.281518]
+                }
+            }
+        ]
+    };
+
     const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        center: [100.57208, 13.8451], // starting position [lng, lat]
-        zoom: 15.1, // starting zoom
-        pitch: 62, // starting pitch
-        bearing: -20 // starting bearing
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-65.017, -16.457],
+        zoom: 5
     });
 
-    const marker = new mapboxgl.Marker()
-    .setLngLat([100.57208, 13.8451])
-    .addTo(map); // add the marker to the map
+    // Add markers to the map.
+    for (const marker of geojson.features) {
+        // Create a DOM element for each marker.
+        const el = document.createElement('div');
+        const width = marker.properties.iconSize[0];
+        const height = marker.properties.iconSize[1];
+        el.className = 'marker';
+        el.style.backgroundImage = `url(https://placekitten.com/g/${width}/${height}/)`;
+        el.style.width = `${width}px`;
+        el.style.height = `${height}px`;
+        el.style.backgroundSize = '100%';
 
-    map.on('style.load', () => {
-        map.addSource('line', {
-            type: 'geojson',
-            lineMetrics: true,
-            data: {
-                type: 'LineString',
-                coordinates: [
-                    [2.293389857555951, 48.85896319631851],
-                    [2.2890810326441624, 48.86174223718291]
-                ]
-            }
+        el.addEventListener('click', () => {
+            window.alert(marker.properties.message);
         });
 
-        map.addLayer({
-            id: 'line',
-            source: 'line',
-            type: 'line',
-            paint: {
-                'line-width': 12,
-                // The `*-emissive-strength` properties control the intensity of light emitted on the source features.
-                // To enhance the visibility of a line in darker light presets, increase the value of `line-emissive-strength`.
-                'line-emissive-strength': 0.8,
-                'line-gradient': [
-                    'interpolate',
-                    ['linear'],
-                    ['line-progress'],
-                    0,
-                    'red',
-                    1,
-                    'blue'
-                ]
-            }
-        });
-    });
-
-    document
-        .getElementById('lightPreset')
-        .addEventListener('change', function () {
-            map.setConfigProperty('basemap', 'lightPreset', this.value);
-        });
-
-    document
-        .querySelectorAll('.map-overlay-inner input[type="checkbox"]')
-        .forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-                map.setConfigProperty('basemap', this.id, this.checked);
-            });
-        });
+        // Add markers to the map.
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+    }
 </script>
 
 </body>

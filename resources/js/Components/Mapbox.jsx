@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import mapboxgl, { Marker ,feature ,} from 'mapbox-gl';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 const MapBoxComponent = () => {
     const [map, setMap] = useState(null);
     const [marker, setMarker] = useState(null);
 
-    const lat = 13.8421697
-    const lng = 100.5730707
+    const lat = 13.8421697;
+    const lng = 100.5730707;
+
+    const icon_size = [40, 40]; //idex[0]:width and idex[1]:height
+    const image_size = [40, 40]; //idex[0]:width and idex[1]:height
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlZWxhbmNldGhlb3NlciIsImEiOiJjbHNuMGJoMzUwMnJrMnFxdzhmbHE3ODltIn0.7Ef9vAIsF3aH_MYvKf0zaw';
@@ -18,24 +23,85 @@ const MapBoxComponent = () => {
             zoom: 16.5,
             pitch: 60,
             bearing: -10
-        
         });
 
-        // Create a new marker.
-        const samburaphajan = new mapboxgl.Marker()
-            .setLngLat([100.5730707, 13.8421697])
-            .addTo(newMap);
+        const geojson = {
+            'type': 'LocationCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'Name': 'Samphuraphajan',
+                        'imageurl': './images/locations/sambhuraphajan',
+                    },
+                    'geometry': {
+                        'type': 'Location',
+                        'coordinates': [100.5730707, 13.8421697],
+                        'url': '/sambhuraphajan'
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'Name': 'Phrapirun',
+                        'imageurl': './images/locations/phrapirun',
+                    },
+                    'geometry': {
+                    'type': 'Location',
+                    'coordinates': [100.5754932, 13.8409383],
+                    'url': '/phrapirun'
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'Name': 'San Chao Mae Patcharee',
+                        'imageurl': './images/locations/sanchaomaepatcharee',
+                    },
+                    'geometry': {
+                    'type': 'Location',
+                    'coordinates': [100.5663824, 13.8501328],
+                    'url': '/sanchaomaepatcharee'
+                    }
+                },
+            ]
+        };
+        
+        if (newMap != null){
+            for (const marker of geojson.features) {
+                console.log(marker)
+                // Create a DOM element for each marker.
+                const base = document.createElement('div');
+                const locationImage = document.createElement('div');
+                
+                // Set properties for locationImage
+                locationImage.className = 'rounded';
+                locationImage.style.backgroundImage = `url(${marker.properties.imageurl}.webp)`; // Specify the path to your location image
+                locationImage.style.width = `${image_size[0]}px`; // Set size as needed
+                locationImage.style.height = `${image_size[1]}px`;
+                locationImage.style.backgroundSize = '100%';
+                
+                const markerIcon = document.createElement('div');
+                markerIcon.className = 'marker mb-12';
+                markerIcon.style.backgroundImage = `url(./IconsHub/marker-svgrepo-com.svg)`;
+                markerIcon.style.width = `${icon_size[0]}px`;
+                markerIcon.style.height = `${icon_size[1]}px`;
+                markerIcon.style.backgroundSize = '100%';
 
-        // Create a new popup
-        const popup = new mapboxgl.Popup({ offset: 25 })
-        .setHTML('<h3">Sambura Phajan</h3><p>This is a marker with text.</p><img src="./Logo.png" className="w-[10px]" alt="" />');
-
-        // Attach popup to marker
-        samburaphajan.setPopup(popup);
-
-        const phaphirut = new mapboxgl.Marker()
-            .setLngLat([100.5754932, 13.8409383])
-            .addTo(newMap);
+                // Add locationImage and markerIcon to base
+                base.appendChild(locationImage);
+                base.appendChild(markerIcon);
+                    
+                base.addEventListener('click', () => {
+                    window.location.href = marker.geometry.url
+                });
+                    
+                // Add markers to the map.
+                new mapboxgl.Marker(base)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(newMap);
+                }
+            }
         
     
         newMap.on('style.load', () => {
@@ -82,25 +148,10 @@ const MapBoxComponent = () => {
     };
 
     return (
-        <div className='mx-8'>
-            {/* <div className="map-overlay">
-                <div className="map-overlay-inner">
-                    <fieldset className="flex select-fieldset">
-                        <label>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-highlights" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8 5v1H4.5a.5.5 0 0 0-.093.009A7 7 0 0 1 3.1 13zm0-1H2.255a7 7 0 0 1-.581-1H8zm-6.71-2a7 7 0 0 1-.22-1H8v1zM1 8q0-.51.07-1H8v1zm.29-2q.155-.519.384-1H8v1zm.965-2q.377-.54.846-1H8v1zm2.137-2A6.97 6.97 0 0 1 8 1v1z"/>
-                            </svg>
-                        </label>
-                        <select id="lightPreset" className='h-8' name="lightPreset" size={1} onChange={handleLightPresetChange}>
-                            <option value="dawn">Dawn</option>
-                            <option value="day">Day</option>
-                            <option value="dusk">Dusk</option>
-                            <option value="night">Night</option>
-                        </select>
-                    </fieldset>
-                </div>
-            </div> */}
-            <div id="map" className='min-h-[400px] max-h-[1000px] w-full'></div>
+        <div className='flex flex-col h-[75%] mx-8'>
+            <div id="map" className='flex-1 w-full'>
+                {/* ตรงนี้จะเป็นส่วนของการแสดงแผนที่ */}
+            </div>
         </div>
     );
 };

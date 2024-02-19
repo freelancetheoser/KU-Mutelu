@@ -76,7 +76,7 @@ Route::get('/viewer', function() {
     return Inertia::render('Viewer');
 });
 
-Route::get('/samphuraphajan', function() {
+Route::get('/sambhuraphajan', function() {
     return Inertia::render('Viewer');
 });
 
