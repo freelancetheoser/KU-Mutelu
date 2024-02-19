@@ -6,7 +6,7 @@ import { useState , useEffect} from "react";
 import MapBoxComponent from "@/Components/Mapbox";
 import FloatingActionButton from "@/Components/FloatActionButton";
 
-export default function Location(){
+export default function Location({geojson}){
     const [locationData, setLocationData] = useState(null);
 
     const loadLocationData = (fileName) => {
@@ -22,15 +22,15 @@ export default function Location(){
     };
 
     const handleBangkhen = () => {
-        loadLocationData('Bangkhen');
+        post(route('location.index'),'Bangkhen')
     };
 
     const handleKampansan = () => {
-        loadLocationData('Kampansan');
+        post(route('location.index'),'Kampansan')
     };
 
     const handleSriracha = () => {
-        loadLocationData('Sriracha');
+        post(route('location.index'),'Sriracha')
     };
     
     return (
@@ -46,7 +46,7 @@ export default function Location(){
                     <li className="flex justify-center"><button onClick={() => handleSriracha} className="text-gray-400 active:text-[#005555] focus:text-[#005555]">ศรีราชา</button></li>
                 </ul>
             </div>
-            <MapBoxComponent/>
+            <MapBoxComponent geojson={geojson}/>
             <hr />
             <Footer/>
             {/* <FloatingActionButton/> */}

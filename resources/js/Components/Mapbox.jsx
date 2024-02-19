@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import mapboxgl, { Marker ,feature ,} from 'mapbox-gl';
 
-const MapBoxComponent = () => {
+const MapBoxComponent = ({geojson}) => {
     const [map, setMap] = useState(null);
     const [marker, setMarker] = useState(null);
 
-    const lat = 13.8421697;
-    const lng = 100.5730707;
+    const lat = 13.84216970000;
+    const lng = 100.5730707000;
 
     const icon_size = [50, 50]; //idex[0]:width and idex[1]:height
     const image_size = [50, 50]; //idex[0]:width and idex[1]:height
-
     useEffect(() => {
+        console.log(geojson)
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlZWxhbmNldGhlb3NlciIsImEiOiJjbHNuMGJoMzUwMnJrMnFxdzhmbHE3ODltIn0.7Ef9vAIsF3aH_MYvKf0zaw';
 
         const newMap = new mapboxgl.Map({
@@ -23,50 +23,50 @@ const MapBoxComponent = () => {
             bearing: -10
         });
 
-        const geojson = {
-            'type': 'LocationCollection',
-            'features': [
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'Name': 'Samphuraphajan',
-                        'imageurl': './images/locations/sambhuraphajan',
-                    },
-                    'geometry': {
-                        'type': 'Location',
-                        'coordinates': [100.5730707, 13.8421697],
-                        'url': '/sambhuraphajan'
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'Name': 'Phrapirun',
-                        'imageurl': './images/locations/phrapirun',
-                    },
-                    'geometry': {
-                    'type': 'Location',
-                    'coordinates': [100.5754932, 13.8409383],
-                    'url': '/phrapirun'
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'Name': 'San Chao Mae Patcharee',
-                        'imageurl': './images/locations/sanchaomaepatcharee',
-                    },
-                    'geometry': {
-                    'type': 'Location',
-                    'coordinates': [100.5663824, 13.8501328],
-                    'url': '/sanchaomaepatcharee'
-                    }
-                },
-            ]
-        };
-        
+        // const geojson = {
+        //     'type': 'LocationCollection',
+        //     'features': [
+        //         {
+        //             'type': 'Feature',
+        //             'properties': {
+        //                 'Name': 'Samphuraphajan',
+        //                 'imageurl': './images/locations/sambhuraphajan',
+        //             },
+        //             'geometry': {
+        //                 'type': 'Location',
+        //                 'coordinates': [100.5730707, 13.8421697],
+        //                 'url': '/sambhuraphajan'
+        //             }
+        //         },
+        //         {
+        //             'type': 'Feature',
+        //             'properties': {
+        //                 'Name': 'Phrapirun',
+        //                 'imageurl': './images/locations/phrapirun',
+        //             },
+        //             'geometry': {
+        //             'type': 'Location',
+        //             'coordinates': [100.5754932, 13.8409383],
+        //             'url': '/phrapirun'
+        //             }
+        //         },
+        //         {
+        //             'type': 'Feature',
+        //             'properties': {
+        //                 'Name': 'San Chao Mae Patcharee',
+        //                 'imageurl': './images/locations/sanchaomaepatcharee',
+        //             },
+        //             'geometry': {
+        //             'type': 'Location',
+        //             'coordinates': [100.5663824, 13.8501328],
+        //             'url': '/sanchaomaepatcharee'
+        //             }
+        //         },
+        //     ]
+        // };
         if (newMap != null){
-            for (const marker of geojson.features) {
+            console.log(geojson.features);
+            for (const marker of geojson.features){ 
                 console.log(marker)
                 // Create a DOM element for each marker.
                 const base = document.createElement('div');

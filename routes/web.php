@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,10 +44,7 @@ Route::get('/posttest', function() {
     return Inertia::render('Posttest');
 })->middleware(['auth', 'verified'])->name('posttest');
 
-
-Route::get('/location', function() {
-    return Inertia::render('Location');
-})->name('/location');
+Route::match (['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
 
 Route::get('/prayer', function() {
     return Inertia::render('Prayer');
