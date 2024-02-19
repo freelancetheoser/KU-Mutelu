@@ -10,8 +10,8 @@ const MapBoxComponent = () => {
     const lat = 13.8421697;
     const lng = 100.5730707;
 
-    const icon_size = [40, 40]; //idex[0]:width and idex[1]:height
-    const image_size = [40, 40]; //idex[0]:width and idex[1]:height
+    const icon_size = [50, 50]; //idex[0]:width and idex[1]:height
+    const image_size = [50, 50]; //idex[0]:width and idex[1]:height
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlZWxhbmNldGhlb3NlciIsImEiOiJjbHNuMGJoMzUwMnJrMnFxdzhmbHE3ODltIn0.7Ef9vAIsF3aH_MYvKf0zaw';
@@ -72,6 +72,7 @@ const MapBoxComponent = () => {
                 console.log(marker)
                 // Create a DOM element for each marker.
                 const base = document.createElement('div');
+                base.className = 'marker';
                 const locationImage = document.createElement('div');
                 
                 // Set properties for locationImage
@@ -82,7 +83,7 @@ const MapBoxComponent = () => {
                 locationImage.style.backgroundSize = '100%';
                 
                 const markerIcon = document.createElement('div');
-                markerIcon.className = 'marker mb-12';
+                markerIcon.className = 'animate-rotateY mb-20';
                 markerIcon.style.backgroundImage = `url(./IconsHub/marker-svgrepo-com.svg)`;
                 markerIcon.style.width = `${icon_size[0]}px`;
                 markerIcon.style.height = `${icon_size[1]}px`;
