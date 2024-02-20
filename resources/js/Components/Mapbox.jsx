@@ -11,7 +11,6 @@ const MapBoxComponent = ({geojson}) => {
     const icon_size = [50, 50]; //idex[0]:width and idex[1]:height
     const image_size = [50, 50]; //idex[0]:width and idex[1]:height
     useEffect(() => {
-        console.log(geojson)
         mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlZWxhbmNldGhlb3NlciIsImEiOiJjbHNuMGJoMzUwMnJrMnFxdzhmbHE3ODltIn0.7Ef9vAIsF3aH_MYvKf0zaw';
 
         const newMap = new mapboxgl.Map({
@@ -23,51 +22,8 @@ const MapBoxComponent = ({geojson}) => {
             bearing: -10
         });
 
-        // const geojson = {
-        //     'type': 'LocationCollection',
-        //     'features': [
-        //         {
-        //             'type': 'Feature',
-        //             'properties': {
-        //                 'Name': 'Samphuraphajan',
-        //                 'imageurl': './images/locations/sambhuraphajan',
-        //             },
-        //             'geometry': {
-        //                 'type': 'Location',
-        //                 'coordinates': [100.5730707, 13.8421697],
-        //                 'url': '/sambhuraphajan'
-        //             }
-        //         },
-        //         {
-        //             'type': 'Feature',
-        //             'properties': {
-        //                 'Name': 'Phrapirun',
-        //                 'imageurl': './images/locations/phrapirun',
-        //             },
-        //             'geometry': {
-        //             'type': 'Location',
-        //             'coordinates': [100.5754932, 13.8409383],
-        //             'url': '/phrapirun'
-        //             }
-        //         },
-        //         {
-        //             'type': 'Feature',
-        //             'properties': {
-        //                 'Name': 'San Chao Mae Patcharee',
-        //                 'imageurl': './images/locations/sanchaomaepatcharee',
-        //             },
-        //             'geometry': {
-        //             'type': 'Location',
-        //             'coordinates': [100.5663824, 13.8501328],
-        //             'url': '/sanchaomaepatcharee'
-        //             }
-        //         },
-        //     ]
-        // };
         if (newMap != null){
-            console.log(geojson.features);
             for (const marker of geojson.features){ 
-                console.log(marker)
                 // Create a DOM element for each marker.
                 const base = document.createElement('div');
                 base.className = 'marker';
@@ -92,7 +48,7 @@ const MapBoxComponent = ({geojson}) => {
                 base.appendChild(markerIcon);
                     
                 base.addEventListener('click', () => {
-                    window.location.href = marker.geometry.url
+                    window.location.href = marker.properties.Name
                 });
                     
                 // Add markers to the map.
@@ -140,7 +96,7 @@ const MapBoxComponent = ({geojson}) => {
         setMap(newMap);
 
         return () => newMap.remove(); // Cleanup when component unmounts
-    }, []);
+    }, [geojson]);
 
     const handleLightPresetChange = (event) => {
         map.setConfigProperty('basemap', 'lightPreset', event.target.value);

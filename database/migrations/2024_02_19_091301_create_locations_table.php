@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('longtitude', 15, 10);
             $table->string('image_url');
             $table->string('locate');
+            $table->text('detail')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

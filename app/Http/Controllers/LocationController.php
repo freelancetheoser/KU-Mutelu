@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LocationController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         // เรียกข้อมูลจากฐานข้อมูล
-        $locations = Location::all();
-
+        $locate = $request->locate != null ? $request->locate : 'Bangkhen';
+        $locations = Location::where('locate',$locate)->get();
+        
         // สร้าง geojson จากข้อมูลที่ดึงมา
         $features = [];
         foreach ($locations as $location) {
             $feature = [
-                'type' => 'Feature',
+                'locate' => $locate,
                 'properties' => [
                     'Name' => $location->name,
                     'imageurl' => $location->image_url,
@@ -30,9 +32,10 @@ class LocationController extends Controller
         }
 
         $geojson = [
-            'type' => 'LocationCollection',
+            'locate' => $locate,
             'features' => $features
         ];
+
         return Inertia::render('Location', [
             'geojson' => $geojson
         ]);

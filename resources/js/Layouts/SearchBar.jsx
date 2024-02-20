@@ -12,7 +12,7 @@ export default function SearchBar(){
                             id="location"
                             type="text"
                             placeholder="ค้นหา: สถานที่"
-                            className="h-8 w-full rounded border border-teal-500 font-bold placeholder-teal-500"
+                            className="h-8 w-full rounded border border-teal-500 font-bold placeholder-teal-500 ring ring-transparent"
                         />
                     </div> 
                     <div>

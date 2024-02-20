@@ -44,7 +44,7 @@ Route::get('/posttest', function() {
     return Inertia::render('Posttest');
 })->middleware(['auth', 'verified'])->name('posttest');
 
-Route::match (['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
+Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
 
 Route::get('/prayer', function() {
     return Inertia::render('Prayer');
