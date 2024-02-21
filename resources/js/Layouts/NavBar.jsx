@@ -1,19 +1,19 @@
 import { Link } from "@inertiajs/react"
 
 export default function NavBar() {
-    
+
     return(
 
         <nav className="bg-white border-gray-200" >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
             <a href="/home" className="flex items-center">
-                <img src="./Logo.png" className="w-14 mr-3" alt="Logo" />
+                <img src="/Logo.png" className="w-14 mr-3" alt="Logo" />
                 <span className="self-center bg-gradient-to-r from-teal-800 via-teal-500 to-green-400 text-transparent bg-clip-text animate-gradient text-2xl font-semibold whitespace-nowrap">KU-MUTELU</span>
             </a>
             <div className="flex items-center md:order-2 m-4">
                 <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                     <span className="sr-only">Open user menu</span>
-                    <img src="./test/user_profile.jpeg" alt="user_profile" className="w-10 rounded-full p-2"/>
+                    <img src="/test/user_profile.jpeg" alt="user_profile" className="w-10 rounded-full p-2"/>
                 </button>
                 {/* Dropdown menu */}
                 <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow border-solid border-1 border-gray-200" id="user-dropdown">

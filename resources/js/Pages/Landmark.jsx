@@ -32,7 +32,7 @@ export default function Viewer({landmark}){
                         </div>
                     </div>
                 </div>
-                <PanoramaViewer/>
+                <PanoramaViewer landmark={landmark}/>
                 <div className='flex justify-center bottom-8'>
                     <PrimaryButton>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-envelope-paper-fill" viewBox="0 0 16 16">

@@ -63,7 +63,7 @@ const FloatingActionButton = () => {
       >
 
         {menusvg.map((item, index) => (
-          <Link
+          <div
             key={index}
             className="flex items-center mb-4 space-x-2 py-1 transition-all duration-500 ease-in-out delay-100"
             style={{
@@ -72,7 +72,7 @@ const FloatingActionButton = () => {
             }}
           >
             <span className="text-gray-700">{item}</span>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
