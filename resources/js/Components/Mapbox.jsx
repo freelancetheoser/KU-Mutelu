@@ -5,9 +5,9 @@ import { router } from '@inertiajs/react';
 const MapBoxComponent = ({geojson}) => {
     const [map, setMap] = useState(null);
     const [marker, setMarker] = useState(null);
-
-    const lat = 13.84216970000;
-    const lng = 100.5730707000;
+    
+    const lat = (geojson.location.latitude);
+    const lng = (geojson.location.longtitude);
 
     const icon_size = [50, 50]; //idex[0]:width and idex[1]:height
     const image_size = [50, 50]; //idex[0]:width and idex[1]:height

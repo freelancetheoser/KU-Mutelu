@@ -10,13 +10,19 @@ use Illuminate\Support\Facades\Log;
 class LocationController extends Controller
 {
     public function index(Request $request) {
-        $location = $request->location != null ? $request->location : 'Bangkhen';
-        $landmarks = Location::where('name',$location)->first()->landmarks;
-
+        $location = $request->location != null
+                    ? Location::where('name',$request->location)->first()
+                    : Location::where('name','Bangkhen')->first();
+        $landmarks = $location->landmarks;
         $features = [];
         foreach ($landmarks as $landmark) {
             $feature = [
-                'location' => $location,
+                'location' => [
+                    'name' => $location,
+                    'coordinates' => [$location->latitude,$location->longtitude],
+                    'latitude' => $location->latitude,
+                    'longtitude' => $location->longtitude,
+                ],
                 'properties' => [
                     'name' => $landmark->name,
                     'imageurl' => $landmark->image_url,
