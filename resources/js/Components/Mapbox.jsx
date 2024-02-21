@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import mapboxgl, { Marker ,feature ,} from 'mapbox-gl';
+import { router } from '@inertiajs/react';
 
 const MapBoxComponent = ({geojson}) => {
     const [map, setMap] = useState(null);
@@ -23,19 +24,20 @@ const MapBoxComponent = ({geojson}) => {
         });
 
         if (newMap != null){
-            for (const marker of geojson.features){ 
+            for (const marker of geojson.features){
+                console.log(geojson.features);
                 // Create a DOM element for each marker.
                 const base = document.createElement('div');
                 base.className = 'marker';
-                const locationImage = document.createElement('div');
-                
-                // Set properties for locationImage
-                locationImage.className = 'rounded bounce';
-                locationImage.style.backgroundImage = `url(${marker.properties.imageurl}.webp)`; // Specify the path to your location image
-                locationImage.style.width = `${image_size[0]}px`; // Set size as needed
-                locationImage.style.height = `${image_size[1]}px`;
-                locationImage.style.backgroundSize = '100%';
-                
+                const landmarkImage = document.createElement('div');
+
+                // Set properties for landmarkImage
+                landmarkImage.className = 'rounded bounce';
+                landmarkImage.style.backgroundImage = `url(${marker.properties.imageurl}.webp)`; // Specify the path to your location image
+                landmarkImage.style.width = `${image_size[0]}px`; // Set size as needed
+                landmarkImage.style.height = `${image_size[1]}px`;
+                landmarkImage.style.backgroundSize = '100%';
+
                 const markerIcon = document.createElement('div');
                 markerIcon.className = 'mb-20 bounce';
                 markerIcon.style.backgroundImage = `url(./IconsHub/marker-svgrepo-com.svg)`;
@@ -43,22 +45,23 @@ const MapBoxComponent = ({geojson}) => {
                 markerIcon.style.height = `${icon_size[1]}px`;
                 markerIcon.style.backgroundSize = '100%';
 
-                // Add locationImage and markerIcon to base
-                base.appendChild(locationImage);
+                // Add landmarkImage and markerIcon to base
+                base.appendChild(landmarkImage);
                 base.appendChild(markerIcon);
-                    
+
                 base.addEventListener('click', () => {
-                    window.location.href = marker.properties.Name
+                    // window.location.href = marker.properties.Name
+                    router.get(route('landmark.show', {"name":marker.properties.name}))
                 });
-                    
+
                 // Add markers to the map.
                 new mapboxgl.Marker(base)
                 .setLngLat(marker.geometry.coordinates)
                 .addTo(newMap);
                 }
             }
-        
-    
+
+
         newMap.on('style.load', () => {
             newMap.addSource('line', {
                 type: 'geojson',
@@ -89,7 +92,7 @@ const MapBoxComponent = ({geojson}) => {
                         'blue'
                     ]
                 }
-                
+
             });
         });
 

@@ -10,7 +10,7 @@ const FloatingActionButton = () => {
 
   const menusvg =[
     <Link href='/home'>
-        <svg key="svg1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-house-door-fill px-auto py-auto" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-house-door-fill px-auto py-auto" viewBox="0 0 16 16">
             <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/>
         </svg>
     </Link>,
@@ -22,12 +22,12 @@ const FloatingActionButton = () => {
         </svg>
     </Link>,
     <Link href='/search'>
-        <svg key="svg3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-search px-auto py-auto" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-search px-auto py-auto" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
         </svg>
     </Link>,
     <Link href='/location'>
-        <svg key="svg4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-globe-americas px-auto py-auto" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-globe-americas px-auto py-auto" viewBox="0 0 16 16">
             <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
         </svg>
     </Link>,
@@ -37,7 +37,7 @@ const FloatingActionButton = () => {
         </svg>
     </Link>,
     <Link href='/profile'>
-        <svg key="svg5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circle px-auto py-auto" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-person-circle px-auto py-auto" viewBox="0 0 16 16">
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
             <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
         </svg>
@@ -61,18 +61,16 @@ const FloatingActionButton = () => {
         } bg-white rounded-lg shadow-lg mb-4 mr-1 py-2 px-4 absolute bottom-16 right-0 z-10 transition-all duration-500 ease-in-out`}
         style={{ transform: menuOpen ? 'translateX(0)' : 'translateX(100%)' }}
       >
-        
+
         {menusvg.map((item, index) => (
           <Link
-            key={item}
-            to={`/menu/${item}`}
+            key={index}
             className="flex items-center mb-4 space-x-2 py-1 transition-all duration-500 ease-in-out delay-100"
             style={{
               transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
               opacity: menuOpen ? 1 : 0,
             }}
           >
-            
             <span className="text-gray-700">{item}</span>
           </Link>
         ))}

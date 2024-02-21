@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\LocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,20 @@ Route::get('/posttest', function() {
     return Inertia::render('Posttest');
 })->middleware(['auth', 'verified'])->name('posttest');
 
+// Location and Landmark
 Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
+Route::get('/landmark/{name}', [LandmarkController::class, 'show'])->name('landmark.show');
+
+Route::get('/viewer', function() {
+    return Inertia::render('Viewer');
+});
+
+Route::get('/sambhuraphajan', function() {
+    return Inertia::render('Landmark');
+});
+
+
+
 
 Route::get('/prayer', function() {
     return Inertia::render('Prayer');
@@ -68,14 +82,6 @@ Route::get('/muprofile', function() {
 
 Route::get('/donate', function() {
     return Inertia::render('Donate');
-});
-
-Route::get('/viewer', function() {
-    return Inertia::render('Viewer');
-});
-
-Route::get('/sambhuraphajan', function() {
-    return Inertia::render('Viewer');
 });
 
 // Link Menubar

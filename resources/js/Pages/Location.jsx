@@ -5,12 +5,9 @@ import SearchBar from "@/Layouts/SearchBar";
 import { useState , useEffect} from "react";
 import MapBoxComponent from "@/Components/Mapbox";
 import FloatingActionButton from "@/Components/FloatActionButton";
-import axios from 'axios';
-import { data } from "autoprefixer";
 
 export default function Location({geojson}){
     const {data, setData, post} = useForm({ locate: 'Bangkhen' });
-
     const handleLocationChange = (e) => {
         e.preventDefault();
         post(route('location.index'), data);
@@ -25,13 +22,13 @@ export default function Location({geojson}){
             <form onSubmit={handleLocationChange} className="mb-2">
                 <ul className="grid grid-cols-3 text-md font-bold">
                     <li className="flex justify-center">
-                        <button type="submit" className="text-gray-400 active:text-[#005555] focus:text-[#005555]" onClick={() => setData('locate', 'Bangkhen')}>บางเขน</button>
+                        <button type="submit" onClick={() => setData('location', 'Bangkhen')} className="text-gray-400 active:text-[#005555] focus:text-[#005555]" >บางเขน</button>
                     </li>
                     <li className="flex justify-center">
-                        <button type="submit" className="text-gray-400 active:text-[#005555] focus:text-[#005555]" onClick={() => setData('locate', 'Kampansan')}>กำแพงแสน</button>
+                        <button type="submit" onClick={() => setData('location', 'Kampansan')} className="text-gray-400 active:text-[#005555] focus:text-[#005555]" >กำแพงแสน</button>
                     </li>
                     <li className="flex justify-center">
-                        <button type="submit" className="text-gray-400 active:text-[#005555] focus:text-[#005555]" onClick={() => setData('locate', 'Sriracha')}>ศรีราชา</button>
+                        <button type="submit" onClick={() => setData('location', 'Sriracha')} className="text-gray-400 active:text-[#005555] focus:text-[#005555]" >ศรีราชา</button>
                     </li>
                 </ul>
             </form>
@@ -41,4 +38,4 @@ export default function Location({geojson}){
             {/* <FloatingActionButton/> */}
         </div>
     )
-}  
+}

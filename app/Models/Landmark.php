@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Landmark extends Model
 {
     use HasFactory;
 
-    public function landmarks(){
-        return $this->hasMany(Landmark::class);
+    public function location(){
+        return $this->belongsTo(Location::class);
     }
-
 }

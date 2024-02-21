@@ -5,33 +5,15 @@ import BackButton from "@/Components/BackButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 import FloatingActionButton from "@/Components/FloatActionButton";
 
-export default function Viewer(){
-
-    const geojson = {
-        'type': 'LocationCollection',
-        'features': [
-            {
-                'type': 'Feature',
-                'properties': {
-                    'name': 'Samphuraphajan',
-                    'thainame': 'สามบูรพาจารย์',
-                    'imageurl': './images/locations/sambhuraphajan',
-                },
-                'geometry': {
-                    'type': 'Location',
-                    'coordinates': [100.5730707, 13.8421697],
-                    'url': '/sambhuraphajan'
-                }
-            },
-        ]
-    };
+export default function Viewer({landmark}){
 
     const renderNames = () => {
-        return geojson.features.map((feature, index) => (
-            <p key={index} className="my-auto bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold truncate">
-                {feature.properties.thainame}
+        return (
+            <p className="my-auto bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold truncate">
+                {landmark.feature.properties.thainame}
             </p>
-        ));
+            )
+        ;
     };
 
     return (
@@ -63,4 +45,4 @@ export default function Viewer(){
             </div>
         </>
     )
-}  
+}

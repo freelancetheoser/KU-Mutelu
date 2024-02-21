@@ -17,10 +17,6 @@ return new class extends Migration
             $table->string('thai_name');
             $table->decimal('latitude', 15, 10);
             $table->decimal('longtitude', 15, 10);
-            $table->string('image_url');
-            $table->string('locate');
-            $table->text('detail')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('locates');
     }
 };
