@@ -1,7 +1,12 @@
 export default function BackButton({ className = '', disabled, children, ...props }) {
+    const goBack = () => {
+        window.history.back();
+    };
+
     return (
         <button
             {...props}
+            onClick={goBack}
             className={
                 `flex justify-center space-x-2 text-white bg-white hover:bg-gradient-to-br focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-md text-center hover:bg-[#005555] ${
                     disabled && 'opacity-25'
