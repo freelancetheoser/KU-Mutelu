@@ -8,9 +8,11 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 
 export default function Location({geojson}){
     const {data, setData, post} = useForm({ locate: 'Bangkhen' });
+    const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
     const handleLocationChange = (e) => {
         e.preventDefault();
         post(route('location.index'), data);
+
     };
 
     return (
@@ -32,10 +34,11 @@ export default function Location({geojson}){
                     </li>
                 </ul>
             </form>
-            <MapBoxComponent geojson={geojson}/>
+
+            {!isSearchSubmitted && <MapBoxComponent geojson={geojson} />}
             <hr />
             <Footer/>
-            {/* <FloatingActionButton/> */}
+            <FloatingActionButton/>
         </div>
     )
 }

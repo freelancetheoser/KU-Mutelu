@@ -5,7 +5,7 @@ import { router } from '@inertiajs/react';
 const MapBoxComponent = ({geojson}) => {
     const [map, setMap] = useState(null);
     const [marker, setMarker] = useState(null);
-    
+
     const lat = (geojson.location.latitude);
     const lng = (geojson.location.longtitude);
 
@@ -16,7 +16,6 @@ const MapBoxComponent = ({geojson}) => {
 
         const newMap = new mapboxgl.Map({
             container: 'map',
-            // center: [100.57208, 13.8451],
             center: [lng, lat],
             zoom: 16.5,
             pitch: 60,

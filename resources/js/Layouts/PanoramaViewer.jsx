@@ -55,9 +55,7 @@ const PanoramaViewer = ({landmark}) => {
     }, [panorama]);
 
     return (
-        <div className='relative w-full h-screen'>
-            <canvas id="renderCanvas" className='w-full h-full'/>
-        </div>
+        <canvas id="renderCanvas" className='w-full h-full'/>
     );
 };
 
