@@ -11,49 +11,24 @@ import NavBar from '@/Layouts/NavBar';
 import axios from 'axios';
 
 export default function Post() {
-    // const [selectedFile, setSelectedFile] = useState(null);
     const [preview, setPreview] = useState(null);
     const { data, setData, post, processing, errors, reset } = useForm({
       content: '',
       image: '',
     });
 
-    // useEffect(() => {
-    //     return () => {
-    //         reset('password');
-    //     };
-    // }, []);0
 
     const handleFileChange = (e) => {
       const files = e.target.files;
       if (files.length > 0) {
           setData('image', e.target.files[0])
-        //   const reader = new FileReader();
-        //   reader.onloadend = () => {
-        //       setPreview(reader.result);
-        //   };
-        //   reader.readAsDataURL(files);
       }
     };
 
     const handleSubmit = (e) => {
       e.preventDefault();
-        // // สร้าง FormData
-        // const formData = new FormData(e.currentTarget);
-
-        // เพิ่มค่า 'content' และ 'image' ลงใน formData
-        // formData.append('content', data.content);
-        // if (selectedFile) {
-        //     formData.append('image', selectedFile);
-        // }
 
         post(route('post.store'));
-        // .then(response => {
-        //     console.log('Response:', response.data);
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);      
-        // });
 
         console.log('Submitting content and file:');
     };
@@ -93,7 +68,7 @@ export default function Post() {
                         <input id="file" name="file" type="file" onChange={handleFileChange} accept="image/*" />
                         {preview && <img src={preview} alt="Preview" style={{ height: '100px' }} />}
                     </div>
-                    
+
 
                     <div className='flex justify-center'>
                         <GuestButton className="text-[#005555] ml-4 bg-[#A1E3D8] space-x-2 " disabled={processing}>
