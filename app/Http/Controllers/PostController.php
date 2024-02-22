@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -94,5 +95,17 @@ class PostController extends Controller
             }
         }
         return $fileName;
+    }
+
+    private static function resizeImage($image)
+    {   
+        // กำหนดขนาดที่ต้องการลดรูป
+        $width = 300;
+        $height = 200;
+        
+        // ใช้ Intervention Image ในการปรับขนาดรูป
+        // $resizedImage = Image::make($image)->resize($width, $height)->encode('wepb');
+        
+        // return $resizedImage;
     }
 }

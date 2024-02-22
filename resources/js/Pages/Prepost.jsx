@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 import BackButton from "@/Components/BackButton";
-import BackAndClose from "@/Components/BackandClose";
+// import BackAndClose from "@/Components/BackandClose";
 import NavBar from "@/Layouts/NavBar";
 import PaperShow from "@/Components/PaperShow";
 import PostContent from "@/Components/PostContent";

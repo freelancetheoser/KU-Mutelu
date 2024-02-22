@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Location;
+use App\Models\Landmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -43,5 +44,20 @@ class LocationController extends Controller
         return Inertia::render('Location', [
             'geojson' => $geojson
         ]);
+    }
+
+    public function search(Request $request){
+        $validated = $request->validate([
+            'locationName'=>['required', 'min:1']
+        ]);
+
+        $locationName = $request->locationName;
+
+        $location = Landmark::where('name', 'like', '%'.$locationName.'%')
+                        ->orWhere('thai_name', 'like', '%'.$locationName.'%')
+                        ->get();
+
+    
+        return response()->json($location);
     }
 }
