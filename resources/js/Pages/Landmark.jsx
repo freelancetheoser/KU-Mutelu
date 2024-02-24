@@ -4,7 +4,7 @@ import PanoramaViewer from "@/Layouts/PanoramaViewer";
 import BackButton from "@/Components/BackButton";
 import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";
-import WishForm from "@/Layouts/Wish";
+import WishForm from "@/Layouts/WishForm";
 
 export default function Viewer({landmark}){
 
