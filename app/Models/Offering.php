@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wish extends Model
+class Offering extends Model
 {
     use HasFactory;
 
-    public function offerings(){
-        return $this->belongsToMany(Offering::class);
+    public function wishes(){
+        return $this->belongsToMany(Wish::class);
     }
 }

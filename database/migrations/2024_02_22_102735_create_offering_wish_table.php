@@ -1,8 +1,7 @@
 <?php
 
-use App\Models\Landmark;
 use App\Models\Offering;
-use App\Models\User;
+use App\Models\Wish;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,13 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wishes', function (Blueprint $table) {
+        Schema::create('offering_wish', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(User::class);
-            $table->foreignIdfor(Landmark::class);
-            $table->text('content');
-            $table->string('status');
-            $table->integer('offering_quantity');
+            $table->foreignIdFor(Wish::class);
+            $table->foreignIdFor(Offering::class);
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wishes');
+        Schema::dropIfExists('offering_wish');
     }
 };

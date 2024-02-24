@@ -1,6 +1,4 @@
-import { Link } from "@inertiajs/react";
 import React, { useState } from 'react';
-import NavBar from "@/Layouts/NavBar";
 
 export default function PrimaryButton({ className = '', disabled, children, ...props }) {
     return (

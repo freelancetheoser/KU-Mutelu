@@ -20,5 +20,7 @@ class UserSeeder extends Seeder
             'password' => 'adminpassword',
             'role' => 'ADMIN'
         ]);
+
+        User::factory(10)->create();
     }
 }

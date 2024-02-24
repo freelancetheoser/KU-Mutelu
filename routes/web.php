@@ -74,7 +74,7 @@ Route::get('/postcomplete', function() {
 })->name('Postcomplete');
 
 Route::get('/socialfeed', function() {
-    return Inertia::render('Socialfeed');
+    return Inertia::render('SocialFeed');
 })->name('socialfeed');
 
 Route::get('/muprofile', function() {

@@ -5,9 +5,9 @@ import BackButton from "@/Components/BackButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 import FloatingActionButton from "@/Components/FloatActionButton";
 import Wish from "@/Layouts/Wish";
-import Modal from "@/Components/Modal";
 import LandmarkInfo from "@/Components/Info";
 import WishForm from "@/Layouts/Wish";
+import CreateWishComponent from "@/Layouts/Wish";
 
 export default function Viewer({landmark}){
 
