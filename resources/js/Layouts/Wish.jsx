@@ -20,16 +20,9 @@ export default function WishForm({landmark}) {
         }
     };
 
-    // const handleSentData = () => {
-    //     router.get
-    // }
-
     const handleSubmit = (e) => {
-    e.preventDefault();
-
-        post(route('post.store'));
-
-        console.log('Submitting content and file:');
+        e.preventDefault();
+        router.get(route('wish.index'))
     };
 
     return (
