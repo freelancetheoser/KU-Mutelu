@@ -23,7 +23,8 @@ class WishFactory extends Factory
             'landmark_id' => Landmark::inRandomOrder()->first()->id,
             'content' => fake()->realText(),
             'status' => "Waiting",
-            'offering_quantity' => 0
+            'offering_quantity' => 0,
+            'template' => 'Paper'
         ];
     }
 }

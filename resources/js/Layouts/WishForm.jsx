@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { router, useForm } from '@inertiajs/react';
+import { Link, router, useForm } from '@inertiajs/react';
 import { Textarea } from 'flowbite-react';
 
 export default function WishForm({landmark}) {
@@ -61,7 +61,7 @@ export default function WishForm({landmark}) {
                         required rows={6}
                     />
                     </fieldset>
-                    <div className="mt-[25px] flex justify-center">
+                    <div className="mt-[25px] flex justify-center space-x-4">
                         <Dialog.Close asChild>
                             <PrimaryButton onClick={handleSubmit}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -70,6 +70,12 @@ export default function WishForm({landmark}) {
                                 <span>เขียน</span>
                             </PrimaryButton>
                         </Dialog.Close>
+                        <Link href='/customization' as='button' className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
+                                <path fillRule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+                            </svg>
+                            <span>ปรับแต่ง</span>
+                        </Link>
                     </div>
                     <Dialog.Close asChild>
                     <button

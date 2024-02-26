@@ -37,6 +37,10 @@ Route::get('/home', function() {
     return Inertia::render('Home');
 });
 
+Route::get('/customization', function() {
+    return Inertia::render('Customization');
+});
+
 Route::get('/post', function() {
     return Inertia::render('Post');
 });

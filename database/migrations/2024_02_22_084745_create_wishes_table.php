@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('status');
             $table->integer('offering_quantity');
+            $table->string('template');
             $table->timestamps();
         });
     }
