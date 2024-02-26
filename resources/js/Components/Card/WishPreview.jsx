@@ -1,10 +1,11 @@
 import React from 'react';
-import Paper from './Paper';
+import Stardard from './Paper';
+import PaperShow from '../PaperShow';
 
 export default function WishPreview ({ backgroundColor, textColor, styleClass }) {
   return (
     <div className={` ${styleClass} ${backgroundColor} ${textColor}`}>
-        <Paper/>
+        <Stardard/>
     </div>
   );
 };
