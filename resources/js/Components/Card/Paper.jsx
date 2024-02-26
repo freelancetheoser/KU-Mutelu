@@ -7,7 +7,7 @@ export default function Paper() {
                 </svg>
             </div>
             <div>
-                <img src="/public/images/77941da3f8020af3bcce900a66c82625.jpg" alt="" clip-path="polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)"/>
+                <img src="./images/77941da3f8020af3bcce900a66c82625.jpg" alt="" clipPath="50% 0%, 100% 50%, 50% 100%, 0% 50%"/>
             </div>
         </div>
     )
