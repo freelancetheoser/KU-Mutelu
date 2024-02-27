@@ -5,7 +5,7 @@ import { Head } from '@inertiajs/react';
 import NavBar from '@/Layouts/NavBar';
 import FloatingActionButton from '@/Components/FloatActionButton';
 import Template from '@/Layouts/Template';
-import RadioGroupDemo from '@/Components/CardFormatSelectorPanel';
+import RadioGroupTemplate from '@/Components/CardFormatSelectorPanel';
 import PrimaryButton from '@/Components/PrimaryButton';
 
 export default function Customization() {
@@ -52,7 +52,7 @@ export default function Customization() {
                         styleClass={styleClass}
                         />
                 </div>
-                <RadioGroupDemo/>
+                <RadioGroupTemplate/>
                 <div className='flex justify-center mt-4'>
                     <PrimaryButton className='flex justify-center items-center bg-[#005555]'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
@@ -62,40 +62,6 @@ export default function Customization() {
                     </PrimaryButton>
                 </div>
             </div>
-            {/* <div className="p-5">
-                <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full'>
-                    <div className='flex justify-center'>
-                        <WishPreview
-                        backgroundColor={backgroundColor}
-                        textColor={textColor}
-                        styleClass={styleClass}
-                        />
-                    </div>
-                    <div className="">
-                        <h1 className="text-xl font-bold">Customize your Card</h1>
-                        <Template/>
-                        <div className="flex space-x-3 mt-3">
-                            <select onChange={(e) => setBackgroundColor(e.target.value)} className="p-2 border rounded">
-                            <option value="bg-gradient-to-r from-[#005555] to-[#069A8E]">เขียว</option>
-                            <option value="bg-blue-500">Blue Background</option>
-                            <option value="bg-green-500">Green Background</option>
-                            </select>
-
-                            <select onChange={(e) => setTextColor(e.target.value)} className="p-2 border rounded">
-                            <option value="text-black">Black Text</option>
-                            <option value="text-white">White Text</option>
-                            <option value="text-yellow-400">Yellow Text</option>
-                            </select>
-
-                            <select onChange={(e) => setStyleClass(e.target.value)} className="p-2 border rounded">
-                            <option value="rounded-lg">Rounded</option>
-                            <option value="rounded-none">Square</option>
-                            <option value="shadow-lg">Shadow</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             <FloatingActionButton/>
         </>
     );
