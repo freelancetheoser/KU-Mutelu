@@ -57,7 +57,7 @@ function StepCustomization({ customization, setCustomization }) {
         <div className='px-8'>
             <div className='grid grid-cols-2'>
                 <div>
-                    <h3 className='text-lg font-bold text-[#005555]'>STEP 0{currentStep} Template: {customization.template}</h3>
+                    <h3 className='text-lg font-bold text-[#005555]'>STEP 0{currentStep}</h3>
                     <h1 className='text-2xl uppercase font-thin text-gray-400'>{steps.find(step => step.id === currentStep)?.name}</h1>
                     <nav className='text-gray-400 font-semibold'>
                         <ul className='flex space-x-4 mt-4'>
@@ -68,18 +68,17 @@ function StepCustomization({ customization, setCustomization }) {
                                     </svg>
                                 </span>
                             </li>
-                            <li className='flex justify-center items-center w-6 h-6 text-sm bg-gray-400 text-white rounded-full'>
-                                <button onClick={() => goToStep(1)}>01</button>
-                            </li>
-                            <li className='flex justify-center items-center w-6 h-6 text-sm bg-gray-400 text-white rounded-full'>
-                                <button onClick={() => goToStep(2)}>02</button>
-                            </li>
-                            <li className='flex justify-center items-center w-6 h-6 text-sm bg-gray-400 text-white rounded-full'>
-                                <button onClick={() => goToStep(3)}>03</button>
-                            </li>
-                            <li className='flex justify-center items-center w-6 h-6 text-sm bg-gray-400 text-white rounded-full'>
-                                <button onClick={() => goToStep(4)}>04</button>
-                            </li>
+                            {steps.map((step) => (
+                                <li key={step.id} className={`flex justify-center items-center w-6 h-6 text-sm ${currentStep > step.id ? 'bg-[#005555]' : 'bg-gray-400'} text-white rounded-full`}>
+                                    <button onClick={() => goToStep(step.id)}>
+                                        {currentStep > step.id ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
+                                            </svg>
+                                        ) : step.id.toString().padStart(2, '0')}
+                                    </button>
+                                </li>
+                            ))}
                             <li className='flex justify-center items-center w-6 h-6 text-sm  text-white rounded-full'>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-right-fill text-gray-400" viewBox="0 0 16 16">
