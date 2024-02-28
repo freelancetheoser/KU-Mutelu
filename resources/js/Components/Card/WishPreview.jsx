@@ -3,25 +3,26 @@ import Stardard from './Paper';
 import Locked from './Locked';
 import Gorikuya from './Gorikuya';
 
-export default function WishPreview ({template, background, text, decorate}) {
-    let content;
+export default function WishPreview ({template, background, text, decorate, content}) {
+    console.log(text);
+    let contentTemplate;
     switch (template) {
         case 'Standard':
-            content = <Stardard background={background}/>;
+            contentTemplate = <Stardard background={background} text={text} content={content}/>;
             break;
         case 'Locked':
-            content = <Locked background={background}/>;
+            contentTemplate = <Locked background={background}/>;
             break;
         case 'Gorikuya':
-            content = <Gorikuya background={background}/>;
+            contentTemplate = <Gorikuya background={background}/>;
             break;
         default:
-            content = <Stardard background={background}/>;
+            contentTemplate = <Stardard background={background}/>;
     }
 
     return (
         <div>
-            {content}
+            {contentTemplate}
         </div>
     );
 };

@@ -12,6 +12,7 @@ export default function Customization() {
         background: '-',
         text: '-',
         decorate: '-',
+        content:'ขอให้ผ่าน'
     });
 
     return (
