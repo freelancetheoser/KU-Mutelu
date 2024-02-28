@@ -22,6 +22,7 @@ export default function CardCustom(props) {
                     backgroundColor={backgroundColor}
                     textColor={textColor}
                     styleClass={styleClass}
+                    template={template}
                     />
             </div>
             <RadioGroupTemplate onUpdateTemplate={updateTemplate}/>

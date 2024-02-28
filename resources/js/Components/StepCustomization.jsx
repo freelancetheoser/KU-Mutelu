@@ -3,18 +3,26 @@ import CardCustom from '../Layouts/CardCustom';
 import BackgroundCustom from '../Layouts/BackgroundCustom';
 import TextCustom from '../Layouts/TextCustom';
 import DecorateCustom from '../Layouts/DecorateCustom';
+import ProceedAlertModal from './Modal/ProceedAlertModal';
 
 function StepCustomization({ customization, setCustomization }) {
     const [currentStep, setCurrentStep] = useState(1);
-
-    // const [customization, setCustomization] = useState({
-    //     template: '',
-    //     hex: '',
-    //     color: '',
-    //     decorate: '',
-    // });
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const goToStep = (step) => {
+
+        if (currentStep === 1 && customization.template === '-') {
+            setIsModalOpen(true);
+            return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
+        }
+        if (currentStep === 2 && customization.hex === '-') {
+            setIsModalOpen(true);
+            return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
+        }
+        if (currentStep === 3 && customization.color === '-') {
+            setIsModalOpen(true);
+            return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
+        }
         setCurrentStep(step);
     };
 
@@ -94,6 +102,7 @@ function StepCustomization({ customization, setCustomization }) {
             <div>
                 {renderStep()}
             </div>
+            <ProceedAlertModal isOpen={isModalOpen} onDismiss={() => setIsModalOpen(false)}/>
         </div>
     );
 }

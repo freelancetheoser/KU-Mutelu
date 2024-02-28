@@ -1,24 +1,24 @@
 import React from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
-export default function RadioGroupBackground({ onUpdateH1 }) {
+export default function RadioGroupBackground({ onUpdateHex }) {
     const [selectedValue, setSelectedValue] = React.useState('default');
 
     const handleValueChange = (value) => {
         setSelectedValue(value);
-        // ตรวจสอบค่าที่เลือกและเรียกใช้ onUpdateH1 ด้วยข้อความที่ต้องการ
+        // ตรวจสอบค่าที่เลือกและเรียกใช้ onUpdateHex ด้วยข้อความที่ต้องการ
         switch (value) {
             case 'standard':
-                onUpdateH1('Standard'); // อัพเดตข้อความหรือค่าที่ต้องการ
+                onUpdateHex('Standard'); // อัพเดตข้อความหรือค่าที่ต้องการ
                 break;
             case 'locked':
-                onUpdateH1('Locked');
+                onUpdateHex('Locked');
                 break;
             case 'gorikuya':
-                onUpdateH1('Gorikuya');
+                onUpdateHex('Gorikuya');
                 break;
             default:
-                onUpdateH1('Default Text');
+                onUpdateHex('Default Text');
         }
     };
 
