@@ -1,8 +1,14 @@
 export default function Stardard(props) {
-    console.log('See' ,props);
+    const isCustom = props.background === 'custom';
+
+    const divStyle = isCustom ?
+    { backgroundImage: `url(${props.background})`, aspectRatio: '1 / 1', backgroundSize: 'cover', backgroundPosition: 'center' } :
+    { backgroundImage: props.background, aspectRatio: '1 / 1' };
+
     return(
         <div className="h-80 w-24 bg-gradient-to-r from-[#005555] to-[#069A8E]"
-        style={{ backgroundImage: props.background, aspectRatio: '1 / 1' }} // ใช้ props ที่นี่
+        // style={{ backgroundImage: props.background, aspectRatio: '1 / 1' }} // ใช้ props ที่นี่
+        style={divStyle}
         >
             <div className="flex justify-center w-full p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" className="bi bi-circle-fill" viewBox="0 0 16 16">
