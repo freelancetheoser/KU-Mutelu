@@ -15,11 +15,11 @@ function StepCustomization({ customization, setCustomization }) {
             setIsModalOpen(true);
             return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
         }
-        if (currentStep === 2 && customization.hex === '-') {
+        if (currentStep === 2 && customization.background === '-') {
             setIsModalOpen(true);
             return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
         }
-        if (currentStep === 3 && customization.color === '-') {
+        if (currentStep === 3 && customization.text === '-') {
             setIsModalOpen(true);
             return; // หยุดการทำงานของฟังก์ชันถ้าไม่ได้เลือก template
         }
@@ -41,7 +41,7 @@ function StepCustomization({ customization, setCustomization }) {
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <CardCustom onNext={() => goToStep(2)} onCustomizationChange={handleCustomizationChange} />;
+        return <CardCustom onNext={() => goToStep(2)} customization={customization} onCustomizationChange={handleCustomizationChange} />;
       case 2:
         return <BackgroundCustom onNext={() => goToStep(3)} customization={customization} onCustomizationChange={handleCustomizationChange} />;
       case 3:
@@ -93,8 +93,8 @@ function StepCustomization({ customization, setCustomization }) {
                 <div className='flex justify-end w-full'>
                     <div>
                         <h1> Template: {customization.template}</h1>
-                        <h1> Background: {customization.hex}</h1>
-                        <h1> Text: {customization.color}</h1>
+                        <h1> Background: {customization.background}</h1>
+                        <h1> Text: {customization.text}</h1>
                         <h1> Decorate: {customization.decorate}</h1>
                     </div>
                 </div>

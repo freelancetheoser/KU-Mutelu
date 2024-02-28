@@ -1,6 +1,8 @@
-export default function Gorikuya() {
+export default function Gorikuya(gradient) {
     return(
-        <div className="w-64 h-48 clip-polygon bg-gradient-to-r from-[#005555] to-[#069A8E]">
+        <div className="w-64 h-48 clip-polygon bg-gradient-to-r from-[#005555] to-[#069A8E]"
+        style={{ backgroundImage: gradient.background, aspectRatio: '1 / 1' }} // ใช้ gradient ที่นี่
+        >
             <div className="flex justify-center w-full p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" className="bi bi-circle-fill" viewBox="0 0 16 16">
                     <circle cx="8" cy="8" r="8"/>

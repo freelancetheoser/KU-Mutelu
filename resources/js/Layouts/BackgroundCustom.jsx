@@ -6,24 +6,20 @@ export default function BackgroundCustom(props) {
     const [backgroundColor, setBackgroundColor] = useState('bg-white');
     const [textColor, setTextColor] = useState('text-black');
     const [styleClass, setStyleClass] = useState('rounded-lg');
-    const [Hex, setHex] = useState('Standard Card');
+    const [background, setBackground] = useState('Standard Card');
 
-    const updateHex = (hex) => {
-        setHex(hex);
-        props.onCustomizationChange({ hex: hex });
+    const updateBackground = (background) => {
+        setBackground(background);
+        props.onCustomizationChange({ background: background });
     };
 
     return(
         <div className='mt-4'>
-            <h1 className='text-lg text-center font-bold text-[#005555]'>{Hex}<span className='font-light'></span></h1>
+            <h1 className='text-lg text-center font-bold text-[#005555]'>{props.customization.template}<span className='font-light'></span></h1>
             <div className='flex justify-center h-96 items-center px-4'>
-                <WishPreview
-                    backgroundColor={backgroundColor}
-                    textColor={textColor}
-                    styleClass={styleClass}
-                    />
+                <WishPreview template={props.customization.template} background={background}/>
             </div>
-            <RadioGroupBackground onUpdateHex={updateHex}/>
+            <RadioGroupBackground onUpdateBackground={updateBackground}/>
         </div>
     )
 }

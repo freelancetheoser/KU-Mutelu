@@ -18,7 +18,7 @@ export default function RadioGroupTemplate({ onUpdateTemplate }) {
                 onUpdateTemplate('Gorikuya');
                 break;
             default:
-                onUpdateTemplate('Default Text');
+                onUpdateTemplate('Standard');
         }
     };
 

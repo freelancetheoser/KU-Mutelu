@@ -9,8 +9,8 @@ import StepCustomization from '@/Components/StepCustomization';
 export default function Customization() {
     const [customization, setCustomization] = useState({
         template: '-',
-        hex: '-',
-        color: '-',
+        background: '-',
+        text: '-',
         decorate: '-',
     });
 

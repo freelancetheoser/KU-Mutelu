@@ -19,9 +19,6 @@ export default function CardCustom(props) {
             <h1 className='text-lg text-center font-bold text-[#005555]'>{template}<span className='font-light'></span></h1>
             <div className='flex justify-center h-96 items-center px-4'>
                 <WishPreview
-                    backgroundColor={backgroundColor}
-                    textColor={textColor}
-                    styleClass={styleClass}
                     template={template}
                     />
             </div>
