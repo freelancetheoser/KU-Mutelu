@@ -38,7 +38,7 @@ export default function BackgroundColorSelector({ onUpdateBackground }) {
     return (
         <form>
             <RadioGroup.Root
-                className="flex flex-wrap justify-center gap-4 p-4"
+                className="flex flex-wrap justify-center gap-4"
                 defaultValue="red"
                 aria-label="Select background color"
                 value={selectedValue}

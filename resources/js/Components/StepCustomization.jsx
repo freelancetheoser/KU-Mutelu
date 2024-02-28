@@ -30,6 +30,21 @@ function StepCustomization({ customization, setCustomization }) {
         setCustomization({ ...customization, ...newValues });
     };
 
+    const preventStep = () => {
+        if (currentStep > 1) {
+            setCurrentStep(currentStep - 1);
+        }
+    };
+
+    const nextStep = () => {
+        if (currentStep < steps.length) {
+            setCurrentStep(currentStep + 1);
+        } else {
+            // หากอยู่ที่ขั้นตอนสุดท้ายและต้องการทำอะไรเมื่อการปรับแต่งเสร็จสิ้น (ตัวเลือก)
+            console.log("Customization complete!");
+        }
+    };
+
     const steps = [
         { id: 1, name: 'Card Style', component: CardCustom },
         { id: 2, name: 'Background', component: BackgroundCustom },
@@ -62,11 +77,11 @@ function StepCustomization({ customization, setCustomization }) {
                     <nav className='text-gray-400 font-semibold'>
                         <ul className='flex space-x-4 mt-4'>
                             <li className='flex justify-center items-center w-6 h-6 text-sm  text-white rounded-full'>
-                                <span>
+                                <button onClick={() => preventStep()}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-left-fill  text-gray-400" viewBox="0 0 16 16">
                                         <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
                                     </svg>
-                                </span>
+                                </button>
                             </li>
                             {steps.map((step) => (
                                 <li key={step.id} className={`flex justify-center items-center w-6 h-6 text-sm ${currentStep > step.id ? 'bg-[#005555]' : 'bg-gray-400'} text-white rounded-full`}>
@@ -80,11 +95,11 @@ function StepCustomization({ customization, setCustomization }) {
                                 </li>
                             ))}
                             <li className='flex justify-center items-center w-6 h-6 text-sm  text-white rounded-full'>
-                                <span>
+                                <button onClick={() => nextStep()}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-right-fill text-gray-400" viewBox="0 0 16 16">
                                         <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                                     </svg>
-                                </span>
+                                </button>
                             </li>
                         </ul>
                     </nav>
