@@ -48,16 +48,40 @@ class LocationController extends Controller
 
     public function search(Request $request){
         $validated = $request->validate([
-            'locationName'=>['required', 'min:1']
+            'keyword'=>['required', 'min:1']
         ]);
 
-        $locationName = $request->locationName;
+        $keyword = $request->keyword;
 
-        $location = Landmark::where('name', 'like', '%'.$locationName.'%')
-                        ->orWhere('thai_name', 'like', '%'.$locationName.'%')
+        $landmarks = Landmark::where('name', 'like', '%'.$keyword.'%')
+                        ->orWhere('thai_name', 'like', '%'.$keyword.'%')
                         ->get();
 
-    
-        return response()->json($location);
+        $features = [];
+        foreach ($landmarks as $landmark) {
+            $feature = [
+                'location' => [
+                    'name' => $landmark->location->name,
+                ],
+                'properties' => [
+                    'name' => $landmark->name,
+                    'thai_name' => $landmark->thai_name,
+                    'imageurl' => $landmark->image_url,
+                ],
+                'geometry' => [
+                    'type' => 'Landmark',
+                    'url' => $landmark->location
+                ]
+            ];
+            $features[] = $feature;
+        }
+
+        $searchjson = [
+            'features' => $features
+        ];
+
+        return Inertia::render('Location', [
+            'searchjson' => $searchjson
+        ]);
     }
 }

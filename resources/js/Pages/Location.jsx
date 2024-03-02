@@ -5,14 +5,16 @@ import SearchBar from "@/Layouts/SearchBar";
 import { useState , useEffect} from "react";
 import MapBoxComponent from "@/Components/Mapbox";
 import FloatingActionButton from "@/Components/FloatActionButton";
+import SearchResult from "@/Components/SearchResult";
 
-export default function Location({geojson}){
+export default function Location({geojson, searchjson}){
     const {data, setData, post} = useForm({ locate: 'Bangkhen' });
-    const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
+
+    console.log(searchjson);
+
     const handleLocationChange = (e) => {
         e.preventDefault();
         post(route('location.index'), data);
-
     };
 
     return (
@@ -20,7 +22,7 @@ export default function Location({geojson}){
             <Head title="KU-MUTELU"/>
             <NavBar/>
             <hr />
-            <SearchBar />
+            <SearchBar/>
             <form onSubmit={handleLocationChange} className="mb-2">
                 <ul className="grid grid-cols-3 text-md font-bold">
                     <li className="flex justify-center">
@@ -35,7 +37,10 @@ export default function Location({geojson}){
                 </ul>
             </form>
 
-            {!isSearchSubmitted && <MapBoxComponent geojson={geojson} />}
+
+            {!searchjson && <MapBoxComponent geojson={geojson} />}
+            {/* {!geojson && <Se searchjson={searchjson} />} */}
+            <SearchResult searchjson={searchjson} />
             <hr />
             <Footer/>
             <FloatingActionButton/>
