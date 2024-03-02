@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandmarkController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
