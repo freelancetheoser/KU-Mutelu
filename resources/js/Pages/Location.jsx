@@ -10,8 +10,6 @@ import SearchResult from "@/Components/SearchResult";
 export default function Location({geojson, searchjson}){
     const {data, setData, post} = useForm({ locate: 'Bangkhen' });
 
-    console.log(searchjson);
-
     const handleLocationChange = (e) => {
         e.preventDefault();
         post(route('location.index'), data);
@@ -37,10 +35,9 @@ export default function Location({geojson, searchjson}){
                 </ul>
             </form>
 
-
+            {!geojson && <SearchResult searchjson={searchjson} />}
             {!searchjson && <MapBoxComponent geojson={geojson} />}
-            {/* {!geojson && <Se searchjson={searchjson} />} */}
-            <SearchResult searchjson={searchjson} />
+
             <hr />
             <Footer/>
             <FloatingActionButton/>
