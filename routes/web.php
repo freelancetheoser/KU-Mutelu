@@ -34,8 +34,17 @@ Route::get('/register', function() {
 });
 
 // Link Navbar
-Route::get('/home', function() {
-    return Inertia::render('Home');
+// Route::get('/home', function() {
+//     return Inertia::render('Home');
+// });
+
+Route::get('/home', function () {
+    return Inertia::render('Home', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
 Route::get('/customization', function() {
@@ -50,6 +59,10 @@ Route::get('/posttest', function() {
     return Inertia::render('Posttest');
 })->middleware(['auth', 'verified'])->name('posttest');
 
+Route::get('/muprofile', function() {
+    return Inertia::render('MuProfile');
+})->middleware(['auth', 'verified'])->name('MuProfile');
+
 // Location and Landmark
 Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
 Route::post('/location', [LocationController::class, 'search'])->name('location.search');
@@ -62,8 +75,6 @@ Route::get('/viewer', function() {
 Route::get('/sambhuraphajan', function() {
     return Inertia::render('Landmark');
 });
-
-
 
 
 Route::get('/prayer', function() {
@@ -82,9 +93,6 @@ Route::get('/socialfeed', function() {
     return Inertia::render('SocialFeed');
 })->name('socialfeed');
 
-Route::get('/muprofile', function() {
-    return Inertia::render('MuProfile');
-})->name('MuProfile');
 
 Route::get('/donate', function() {
     return Inertia::render('Donate');

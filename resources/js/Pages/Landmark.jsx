@@ -6,7 +6,7 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";
 import WishForm from "@/Layouts/WishForm";
 
-export default function Viewer({landmark}){
+export default function Viewer({landmark, auth}){
 
     const renderNames = () => {
         return (
@@ -20,12 +20,12 @@ export default function Viewer({landmark}){
     return (
         <>
             <Head title="KU-MUTELU"/>
-            <div className="flex flex-col w-full h-screen">
+            <div className="flex flex-col w-full h-screen lg:mt-16 xl:mt-16">
                 <div className="flex-grow">
                     <PanoramaViewer landmark={landmark}/>
                 </div>
                 <div className="absolute z-10 w-full">
-                    <NavBar/>
+                    <NavBar auth={auth}/>
                     <div className="absolute my-auto z-50 pt-2 flex space-x-4 w-full">
                         <div className="justify-start my-auto w-full  ml-2">
                             <BackButton/>

@@ -21,6 +21,14 @@ class UserSeeder extends Seeder
             'role' => 'ADMIN'
         ]);
 
+        User::factory(1)->create([
+            'username' => 'user',
+            'email' => 'user@example.com',
+            'zodiac' => '',
+            'password' => 'password',
+            'role' => 'USER'
+        ]);
+
         User::factory(10)->create();
     }
 }

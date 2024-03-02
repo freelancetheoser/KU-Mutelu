@@ -7,7 +7,7 @@ import MapBoxComponent from "@/Components/Mapbox";
 import FloatingActionButton from "@/Components/FloatActionButton";
 import SearchResult from "@/Components/SearchResult";
 
-export default function Location({geojson, searchjson}){
+export default function Location({geojson, searchjson, auth}){
     const {data, setData, post} = useForm({ locate: 'Bangkhen' });
 
     const handleLocationChange = (e) => {
@@ -16,9 +16,9 @@ export default function Location({geojson, searchjson}){
     };
 
     return (
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen lg:mt-16 xl:mt-16">
             <Head title="KU-MUTELU"/>
-            <NavBar/>
+            <NavBar auth={auth}/>
             <hr />
             <SearchBar/>
             <form onSubmit={handleLocationChange} className="mb-2">

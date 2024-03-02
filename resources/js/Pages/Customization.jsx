@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import StepCustomization from '@/Components/StepCustomization';
 import { useEffect } from 'react';
 
-export default function Customization() {
+export default function Customization({auth}) {
     const [customization, setCustomization] = useState({
         template: 'Standard',
         background: '-',
@@ -32,7 +32,7 @@ export default function Customization() {
     return (
         <>
             <Head title="KU-MUTELU"/>
-            <NavBar/>
+            <NavBar auth={auth}/>
             <StepCustomization customization={customization} setCustomization={setCustomization}/>
             <div className='w-full flex justify-center'>
 

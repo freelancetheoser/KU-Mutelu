@@ -4,12 +4,12 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 import DonateContent from "@/Content/DonateContent";
 import Footer from "@/Layouts/Footer";
 
-export default function Donate(){
+export default function Donate({auth}){
     return (
         <>
             <Head title="KU-MUTELU"/>
             <div>
-                <NavBar/>
+                <NavBar auth={auth}/>
                 <DonateContent/>
                 <FloatingActionButton/>
                 <Footer/>

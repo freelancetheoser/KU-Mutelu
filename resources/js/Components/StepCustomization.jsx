@@ -69,7 +69,7 @@ function StepCustomization({ customization, setCustomization }) {
   };
 
     return (
-        <div className='px-8'>
+        <div className='px-8 lg:mt-16 xl:mt-16'>
             <div className='grid grid-cols-2'>
                 <div>
                     <h3 className='text-lg font-bold text-[#005555]'>STEP 0{currentStep}</h3>

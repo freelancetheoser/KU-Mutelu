@@ -1,24 +1,21 @@
 import { Link, Head } from "@inertiajs/react";
 import NavBar from "@/Layouts/NavBar";
-import ContactBar from "@/Components/ContactBar";
-import MenuBar from "@/Components/MenuBar";
 import Footer from "@/Layouts/Footer";
 import Landing from "@/Components/Landing";
 import OptionBar from "@/Components/OptionBar";
 import FloatingActionButton from "@/Components/FloatActionButton";
 
-export default function Home(){
+export default function Home({ auth }){
+    console.log(auth);
     return (
         <>
             <Head title="KU-MUTELU"/>
-
-            <NavBar/>
-            <hr />
-            <FloatingActionButton/>
+            <NavBar auth={auth}/>
             <Landing/>
             <OptionBar/>
             <hr />
             <Footer/>
+            <FloatingActionButton/>
         </>
     )
-}  
+}
