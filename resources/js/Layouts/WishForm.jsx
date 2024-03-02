@@ -11,53 +11,23 @@ export default function WishForm({landmark}) {
 
     const { data, setData} = useForm({
         content: '',
-        image: null,
+        image: '',
       });
 
-      const handleFileChange = (e) => {
+    const handleFileChange = (e) => {
         const files = e.target.files;
         if (files.length > 0) {
-            setData('image', files[0]);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreview(reader.result);
-            };
-            reader.readAsDataURL(files[0]);
+            setData('image', e.target.files[0])
         }
     };
 
-<<<<<<< Updated upstream
     const handleSentData = () => {
         console.log('Submitted Data:', data);
     }
 
     const handleSubmit = () => {
-=======
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
->>>>>>> Stashed changes
         router.get(route('wish.index'))
     };
-    const handleCustom = (e) => {
-        e.preventDefault();
-
-        // ตรวจสอบว่ามีรูปภาพหรือไม่
-        if (!data.image) {
-            alert('Please select an image.');
-            return;
-        }
-
-        // บันทึกข้อมูลลงใน Local Storage
-        localStorage.setItem('wishData', JSON.stringify({
-            content: data.content,
-            image: preview, // รูปภาพในรูปแบบ Base64
-        }));
-
-        // เปลี่ยนไปยังหน้า /customization
-        window.location.href = '/customization';
-    };
-
 
     return (
         <Dialog.Root>
@@ -80,8 +50,8 @@ export default function WishForm({landmark}) {
                     <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
                         คำมั่นสัญญาของคุณ {landmark.feature.properties.thainame}
                     </Dialog.Description>
-                    <fieldset className="mb-[15px] flex items-center gap-5">
-                        <input id="file" name="file" type="file"  onChange={handleFileChange} accept="image/*"/>
+                    <fieldset className="mb-[15px] items-center gap-5">
+                        <input id="file" name="file" type="file" display='none' onChange={handleFileChange} accept="image/*"/>
                         {preview && <img src={preview} alt="Preview" style={{ height: '100px' }} />}
                     </fieldset>
                     <fieldset className="mb-[15px]  items-center gap-5">
@@ -106,22 +76,12 @@ export default function WishForm({landmark}) {
                                 <span>เขียน</span>
                             </PrimaryButton>
                         </Dialog.Close>
-<<<<<<< Updated upstream
                         <Link href='/customization' as='button' onClick={handleSentData} className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
-=======
-                        {/* <Link href='/customization' as='button' className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
->>>>>>> Stashed changes
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
                             </svg>
                             <span>ปรับแต่ง</span>
-                        </Link> */}
-                        <button onClick={handleCustom} className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
-                                <path fillRule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
-                            </svg>
-                            <span>ปรับแต่ง</span>
-                        </button>
+                        </Link>
                     </div>
                     <Dialog.Close asChild>
                     <button
