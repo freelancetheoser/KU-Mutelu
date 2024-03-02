@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
 use Intervention\Image\Facades\Image;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -17,8 +18,28 @@ class PostController extends Controller
 
     public function index()
     {
-        $post = Post::all();
-        return response()->json(['posts' => $post], 200);
+        $posts = Post::all();
+        $features = [];
+        foreach ($posts as $post) {
+            $feature = [
+                'user' => [
+                    'user_id' => $post->user_id,
+                    // 'imageProfile' => $post->user->image_profile,
+                ],
+                'properties' => [
+                    'content' => $post->content,
+                    'imagePost' => $post->image_post,
+                ],
+            ];
+            $features[] = $feature;
+        }
+
+        $feedjson = [
+            'features' => $features
+        ];
+        return Inertia::render('SocialFeed', [
+            'feedjson' => $feedjson
+        ]);
     }
 
     public function show($id)
@@ -48,19 +69,9 @@ class PostController extends Controller
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
             $request->file('image')->move(storage_path('images'),$fileName);
-            $post->image_path = storage_path('images') . '/' . $fileName;
+            $post->image_post = storage_path('images') . '/' . $fileName;
         }
-
-        if ($post->save()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'post created successfully',
-            ], Response::HTTP_CREATED);
-        }
-        return response()->json([
-            'success' => false,
-            'message' => 'post created failed'
-        ], Response::HTTP_BAD_REQUEST);
+        $post->save();
     }
 
     public function destroy($id)

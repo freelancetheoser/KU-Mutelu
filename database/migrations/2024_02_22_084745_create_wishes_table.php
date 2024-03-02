@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignIdfor(User::class);
             $table->foreignIdfor(Landmark::class);
             $table->text('content');
-            $table->string('image')->nullable();
+            $table->string('image_wish')->nullable();
             $table->string('status')->default('waiting');
             $table->integer('offering_quantity')->default(0);
             $table->string('template');
