@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Wish extends Model
 {
     use HasFactory;
-
+    
     public function offerings(){
         return $this->belongsToMany(Offering::class);
     }

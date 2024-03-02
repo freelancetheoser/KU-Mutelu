@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WishController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\LocationController;
@@ -126,6 +127,9 @@ Route::post('/posts/create', [PostController::class, 'store'])
 ->name("post.store");
 Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
+
+Route::post('/wish/create', [WishController::class, 'store'])
+->name("wish.store");
 
 Route::get('/temp', function() {
     return view("test");

@@ -35,12 +35,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        // if (!auth()->check()) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Unauthorized access. You must be logged in.'
-        //     ], Response::HTTP_UNAUTHORIZED);
-        // }
         $request->validate([
             'content' => 'required|string',
             'image' => [

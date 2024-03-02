@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Post::class);
-            $table->text('comment');
+            $table->text('content');
             $table->timestamps();
         });
     }

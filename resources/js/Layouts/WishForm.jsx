@@ -4,11 +4,12 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { Link, router, useForm } from '@inertiajs/react';
 import { Textarea } from 'flowbite-react';
+import Paper from '@/Components/Card/Paper';
 
 export default function WishForm({landmark}) {
     const [preview, setPreview] = useState(null);
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData} = useForm({
         content: '',
         image: '',
       });
@@ -20,8 +21,11 @@ export default function WishForm({landmark}) {
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSentData = () => {
+        console.log('Submitted Data:', data);
+    }
+
+    const handleSubmit = () => {
         router.get(route('wish.index'))
     };
 
@@ -57,8 +61,10 @@ export default function WishForm({landmark}) {
                     <Textarea
                         className="mt-2 shadow-gray-300 focus:shadow-teal-600 inline-flex w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                         id="wish"
+                        value={data.content}
                         placeholder='เขียนคำอธิษฐาน หรือ คำมั่นสัญญาของคุณ'
                         required rows={6}
+                        onChange={(e) => setData('content', e.target.value)}
                     />
                     </fieldset>
                     <div className="mt-[25px] flex justify-center space-x-4">
@@ -70,7 +76,7 @@ export default function WishForm({landmark}) {
                                 <span>เขียน</span>
                             </PrimaryButton>
                         </Dialog.Close>
-                        <Link href='/customization' as='button' className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
+                        <Link href='/customization' as='button' onClick={handleSentData} className='flex  justify-center items-center space-x-2 bg-gray-300 px-4 p-2 rounded-full'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
                             </svg>
