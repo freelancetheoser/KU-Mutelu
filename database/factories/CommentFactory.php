@@ -18,10 +18,12 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
+        $content = substr($this->faker->text, 0, 30);
+
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'post_id' => Post::inRandomOrder()->first()->id,
-            'content' => fake()->realText(),
+            'content' => $content,
         ];
     }
 }

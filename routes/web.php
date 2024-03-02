@@ -63,6 +63,9 @@ Route::get('/sambhuraphajan', function() {
     return Inertia::render('Landmark');
 });
 
+// SocialFeed
+Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->name('socialfeed.index');
+
 
 
 
@@ -78,9 +81,9 @@ Route::get('/postcomplete', function() {
     return Inertia::render('Postcomplete');
 })->name('Postcomplete');
 
-Route::get('/socialfeed', function() {
-    return Inertia::render('SocialFeed');
-})->name('socialfeed');
+// Route::get('/socialfeed', function() {
+//     return Inertia::render('SocialFeed');
+// })->name('socialfeed');
 
 Route::get('/muprofile', function() {
     return Inertia::render('MuProfile');
@@ -123,13 +126,14 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{id}', [PostController::class, 'show']);
-Route::post('/posts/create', [PostController::class, 'store'])
-->name("post.store");
+Route::post('/posts/create', [PostController::class, 'store'])->name("post.store");
 Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 
-Route::post('/wish/create', [WishController::class, 'store'])
-->name("wish.store");
+Route::post('/comments', [CommentController::class, 'create'])->name('comments.create');
+Route::get('/posts/{postId}/comments', [CommentController::class, 'index']);
+
+Route::post('/wish/create', [WishController::class, 'store'])->name("wish.store");
 
 Route::get('/temp', function() {
     return view("test");
