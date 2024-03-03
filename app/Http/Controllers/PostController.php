@@ -72,14 +72,15 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'content' => 'required|string',
             'image' => [
-                File::image()->min(1024)->max(12 * 1024),
+                'nullable',
+                File::image()->max(1024 * 1024),
             ]
         ]);
-    
+        
         $post = new Post();
         $post->user_id = Auth::user()->id;
         $post->content = $request->get('content');
@@ -109,7 +110,7 @@ class PostController extends Controller
     }
 
     private static function generateFileName($image){
-        $fileNames = Post::get()->pluck('image_path');
+        $fileNames = Post::get()->pluck('image_post');
         while (true) {
             $fileName = hash('md5', time()) . '.' . $image->getClientOriginalExtension();
             if (!$fileNames->has($fileName)){

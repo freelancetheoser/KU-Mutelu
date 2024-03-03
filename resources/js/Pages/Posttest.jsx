@@ -10,7 +10,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import NavBar from '@/Layouts/NavBar';
 import axios from 'axios';
 
-export default function Post() {
+export default function Post({ auth }) {
     const [preview, setPreview] = useState(null);
     const { data, setData, post, processing, errors, reset } = useForm({
       content: '',
@@ -30,15 +30,15 @@ export default function Post() {
 
         post(route('post.store'));
 
-        console.log('Submitting content and file:');
+        console.log('Submitting content and file:' ,data);
     };
     return (
             <div>
                 <Head title="Post test" />
-                <NavBar/>
+                <NavBar auth={auth}/>
                 <form onSubmit={handleSubmit} className="space-y-6">
 
-                    <div className='flex space-x-4'>
+                    <div className='flex mt-40 space-x-4'>
                         <div className='my-auto'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#FFFFFF" className="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -46,7 +46,7 @@ export default function Post() {
                             </svg>
                         </div>
                         <div className="w-full">
-                            <InputLabel htmlFor="email"/>
+                            <InputLabel />
 
                             <TextInput
                                 id="content"

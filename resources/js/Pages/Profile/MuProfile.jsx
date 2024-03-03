@@ -54,7 +54,7 @@ export default function MuProfile({ auth }) {
                         </div>
                     </div>
                     <div className='flex justify-center'>
-                        {activePostType === 'frame' && <FramePost/>}
+                        {/* {activePostType === 'frame' && <FramePost feedjson={feedjson}/>} */}
                         {activePostType === 'text' && <TextPost/>}
                     </div>
 
