@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\WishController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandmarkController;
@@ -79,6 +80,10 @@ Route::get('/sambhuraphajan', function() {
 
 // SocialFeed
 Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->name('socialfeed.index');
+
+// Like
+Route::post('/like', [LikeController::class, 'likePost'])->name('like.likePost');
+Route::delete('/unlike', [LikeController::class, 'unlikePost'])->name('unlike.unlikePost');
 
 
 Route::get('/prayer', function() {

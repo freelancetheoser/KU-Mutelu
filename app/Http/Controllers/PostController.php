@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
 use Intervention\Image\Facades\Image;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -37,6 +38,7 @@ class PostController extends Controller
         $feedjson = [
             'features' => $features
         ];
+        Log::info($post);
         return Inertia::render('SocialFeed', [
             'feedjson' => $feedjson
         ]);
@@ -44,13 +46,28 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::find($id);
-
-        if (!$post) {
-            return response()->json(['message' => self::POST_NOT_FOUND], 404);
+        $posts = Post::find($id);
+        $features = [];
+        foreach ($posts as $post) {
+            $feature = [
+                'user' => [
+                    'user_id' => $post->user_id,
+                    // 'imageProfile' => $post->user->image_profile,
+                ],
+                'properties' => [
+                    'content' => $post->content,
+                    'imagePost' => $post->image_post,
+                ],
+            ];
+            $features[] = $feature;
         }
 
-        return response()->json(['post' => $post], 200);
+        $postjson = [
+            'features' => $features
+        ];
+        return Inertia::render('SocialFeed', [
+            'postjson' => $postjson
+        ]);
     }
 
     public function store(Request $request)

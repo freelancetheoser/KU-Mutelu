@@ -5,7 +5,7 @@ import FramePost from "@/Components/Card/FramePost";
 import FloatingActionButton from "@/Components/FloatActionButton";
 
 export default function Social({auth , feedjson}){
-    console.log(feedjson);
+    console.log(feedjson)
     return (
         <>
             <Head title="KU-MUTELU"/>
@@ -13,7 +13,7 @@ export default function Social({auth , feedjson}){
                 <NavBar auth={auth}/>
                 <Hotline/>
                 <div className="flex flex-1 justify-center px-4 w-full ">
-                    <FramePost/>
+                    <FramePost feedjson={feedjson}/>
                 </div>
                 <FloatingActionButton/>
             </div>
