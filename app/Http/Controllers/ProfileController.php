@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -20,6 +22,27 @@ class ProfileController extends Controller
         return response()->json($profile);
     }
 
+    public function showprofile(Request $request): Response
+    {
+        // $user = User::where('username', $username)->firstOrFail();
+
+        // // จัดเตรียมข้อมูล profile ที่จะส่งไปยัง view
+        // $profileDetail = [
+        //     'properties' => [
+        //         'username' => $user->username,
+        //         'zodiac' => $user->zodiac,
+        //     ],
+        //     'result' => [
+        //         'imageProfile' => $user->image_profile,
+        //     ]
+        // ];
+
+        // ส่งข้อมูลไปยัง view ผ่าน Inertia
+        return Inertia::render('Profile/MuProfile', [
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
+        ]);
+    }
 
     /**
      * Display the user's profile form.

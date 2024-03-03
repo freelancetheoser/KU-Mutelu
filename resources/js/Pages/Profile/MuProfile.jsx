@@ -6,7 +6,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
 export default function MuProfile({ auth }) {
-    console.log(auth)
 
     const username = '';
     const userbio = "ติดต่อซื้อกำไรได้นะคับ";
@@ -18,7 +17,7 @@ export default function MuProfile({ auth }) {
             user={auth.user}
             >
             <div>
-                {/* <NavBar/> */}
+                {/* <NavBar auth={auth}/> */}
                 <div>
                     <div className="flex justify-center mb-4">
                         <div className="space-y-4">
