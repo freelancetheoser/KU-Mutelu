@@ -46,17 +46,7 @@ class WishController extends Controller
             $request->file('image')->move(storage_path('imagesWish'),$fileName);
             $wish->image_wish = storage_path('imagesWish') . '/' . $fileName;
         }
-
-        if ($wish->save()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'wish created successfully',
-            ], Response::HTTP_CREATED);
-        }
-        return response()->json([
-            'success' => false,
-            'message' => 'wish created failed'
-        ], Response::HTTP_BAD_REQUEST);
+       $wish->save();
     }
 
     /**

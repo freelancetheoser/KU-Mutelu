@@ -46,6 +46,20 @@ class LocationController extends Controller
         ]);
     }
 
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|string',
+            'thai_name' => 'required|string',
+        ]);
+        
+        $location = new Location();
+        $location->name = $request->name;
+        $location->thai_name = $request->thai_name;
+        $location->latitude = $request->latitude;
+        $location->longtitude = $request->longtitude;
+        $location->save();
+    }
+
     public function search(Request $request){
         $validated = $request->validate([
             'keyword'=>['required', 'min:1']
