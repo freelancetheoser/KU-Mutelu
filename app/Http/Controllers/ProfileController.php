@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Post;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -37,10 +38,13 @@ class ProfileController extends Controller
         //     ]
         // ];
 
+        $user = $request->user();
+
         // ส่งข้อมูลไปยัง view ผ่าน Inertia
         return Inertia::render('Profile/MuProfile', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+            // 'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            // 'status' => session('status'),
+            'user' => $user
         ]);
     }
 

@@ -29,6 +29,16 @@ class UserSeeder extends Seeder
             'role' => 'USER'
         ]);
 
+        User::factory(1)->create([
+            'username' => 'Miami',
+            'email' => 'mi@example.com',
+            'image_profile' => './UserProfile/User-7.jpeg',
+            'zodiac' => 'Aquarius',
+            'bio' => 'มามูไปด้วยกันฮะะะะทุกคน',
+            'password' => 'password',
+            'role' => 'USER'
+        ]);
+
         User::factory(10)->create();
     }
 }

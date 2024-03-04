@@ -3,12 +3,14 @@ import NavBar from "@/Layouts/NavBar";
 import FramePost from "@/Components/Card/FramePost";
 import TextPost from "@/Components/Card/TextPost";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 
 export default function MuProfile({ auth }) {
+    const { user } = auth;
 
-    const username = '';
-    const userbio = "ติดต่อซื้อกำไรได้นะคับ";
+    const image_profile = user.image_profile;
+    const username = user.username;
+    const userbio = user.bio;
     const [activePostType, setActivePostType] = useState('frame'); // 'frame' หรือ 'text'
 
 
@@ -23,7 +25,7 @@ export default function MuProfile({ auth }) {
                         <div className="space-y-4">
                             <div className="w-full">
                                 <div className="p-2 rounded-full border-4 border-teal-500">
-                                    <img src="./UserProfile/User-1.jpeg" alt="" className="w-32 h-32 rounded-full"/>
+                                    <img src={image_profile} alt="" className="w-32 h-32 rounded-full"/>
                                 </div>
                             </div>
                             <div>
