@@ -1,60 +1,47 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import PostDetail from '../PostDetail';
 
 export default function FramePost({ feedjson }) {
-    const backgroundImageUrl = [
-        "./FeedPost/Post-1.jpg",
-        "./UserProfile/User-2.jpeg",
-        "./UserProfile/User-3.jpeg",
-        "./UserProfile/User-4.jpeg",
-        "./UserProfile/User-5.jpeg",
-        "./UserProfile/User-6.jpeg",
-        "./UserProfile/User-7.jpeg",
-    ];
-
-    const features = feedjson.features;
-    // const postTitle = (feedjson.features.properties);
-
     const [liked, setLiked] = useState(false);
+    const features = feedjson.features;
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('');
 
     const handleLike = (e) => {
         e.preventDefault();
-  
+
           post(route('like.likePost'));
-        // axios.post('/like', { post_id: postId })
-        //     .then(response => {
-        //         setLiked(true);
-        //     })
-        //     .catch(error => {
-        //         console.error('Error liking post:', error);
-        //     });
     };
 
     const handleUnlike = (e) => {
         e.preventDefault();
-  
+
           delete(route('unlike.unlikePost'));
-        // axios.post('/unlike', { post_id: postId })
-        //     .then(response => {
-        //         setLiked(false);
-        //     })
-        //     .catch(error => {
-        //         console.error('Error unliking post:', error);
-        //     });
     };
-    
+    const showModal = (content) => {
+        setIsModalOpen(true);
+        setModalContent(content);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalContent('');
+    };
+
     return(
-        <div className="">
-            {backgroundImageUrl.map((src, index) => (
-            <div key={index} className="feedpostsize bg-cover bg-center rounded-lg p-4 shadow-inner my-4"
-            style={{ backgroundImage: `url(${src})` }}>
-                <div className="feedpostsize border-solid border-4 border-white rounded-lg flex flex-col justify-between"> {/* ใช้ flex flex-col justify-between ที่นี่ */}
+        <div className='w-full grid grid-cols-1 place-items-center'>
+            {features.map((feature, index) => (
+            <div onClick={showModal} className="feedpost bg-cover bg-center active:opacity-0 rounded-lg p-4 shadow-inner my-4"
+                key={index}
+                style={{ backgroundImage: `url(${feature.properties.imagePost})` }}>
+                <div id={feature.user.user_id} className="feedpostsize border-solid border-4 border-white rounded-lg flex flex-col justify-between"> {/* ใช้ flex flex-col justify-between ที่นี่ */}
                     <div className="flex justify-center">
                         <div className="px-4 py-2 bg-white rounded-b-full">
                             <h1 className="text-black text-center text-lg font-bold px-4">XXXI</h1>
                         </div>
                     </div>
                     <div className="bg-white flex justify-between">
+
                         <div className="bg-white w-2/4">
                             {liked ? (
                                 <button onClick={handleUnlike}>
@@ -72,11 +59,9 @@ export default function FramePost({ feedjson }) {
                                 </button>
                             )}
                         </div>
-                        {features.map((features, index) => (
-                                <div key={index} className="flex w-full justify-center items-center">
-                                     <p>{features.properties.content}</p>
-                                </div> 
-                            ))}
+                        <div className="flex w-full justify-center items-center">
+                            <p>{feature.properties.content}</p>
+                        </div>
                         <div className="w-2/4 py-auto flex justify-end">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-three-dots m-4" viewBox="0 0 16 16">
                                 <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
@@ -84,6 +69,7 @@ export default function FramePost({ feedjson }) {
                         </div>
                     </div>
                 </div>
+
             </div>
             ))}
         </div>

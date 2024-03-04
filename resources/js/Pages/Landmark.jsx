@@ -20,7 +20,7 @@ export default function Viewer({landmark, auth}){
     return (
         <>
             <Head title="KU-MUTELU"/>
-            <div className="flex flex-col w-full h-screen lg:mt-16 xl:mt-16">
+            <div className="flex flex-col w-full h-screen">
                 <div className="flex-grow">
                     <PanoramaViewer landmark={landmark}/>
                 </div>

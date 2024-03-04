@@ -13,7 +13,7 @@ export default function Customization({auth}) {
         background: '-',
         text: '-',
         decorate: '-',
-        content:'ขอให้ผ่าน',
+        content:'' || null,
         image:'' || null
     });
 

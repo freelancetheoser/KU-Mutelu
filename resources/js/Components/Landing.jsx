@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 export default function Landing() {
     return(
         <section>
-            <div className="overflow-hidden h-96 lg:mt-16 xl:mt-16">
+            <div className="overflow-hidden h-96">
                 <img className="object-cover object-center w-full h-full" src="./Carousel/Home/Location-1.jpg" alt="" />
             </div>
             <div className="flex justify-center text-zinc-800">

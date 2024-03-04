@@ -22,6 +22,7 @@ export default function WishForm({landmark}) {
     };
 
     const handleSentData = () => {
+
         console.log('Submitted Data:', data);
     }
 

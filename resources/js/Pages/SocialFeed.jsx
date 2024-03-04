@@ -9,14 +9,10 @@ export default function Social({auth , feedjson}){
     return (
         <>
             <Head title="KU-MUTELU"/>
-            <div className="lg:mt-16 xl:mt-16">
-                <NavBar auth={auth}/>
-                <Hotline/>
-                <div className="flex flex-1 justify-center px-4 w-full ">
-                    <FramePost feedjson={feedjson}/>
-                </div>
-                <FloatingActionButton/>
-            </div>
+            <NavBar auth={auth}/>
+            <Hotline/>
+            <FramePost feedjson={feedjson}/>
+            <FloatingActionButton/>
         </>
     )
 }

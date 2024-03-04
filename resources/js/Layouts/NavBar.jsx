@@ -11,27 +11,9 @@ export default function NavBar({auth}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return(
-        <nav className="flex justify-between w-full h-16 text-right sm:fixed sm:top-0 sm:right-0 bg-white absolute z-50">
+        <nav className="flex justify-between px-4 sm:px-6 lg:px-8 w-full h-16 text-right  bg-white ">
             <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-            <div className="flex items-center  mx-auto ">
-                <ul className="flex font-medium p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
-                    <li>
-                        <Link href="/home" className="block py-2 pl-3 pr-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:rounded-sm md:p-0" aria-current="page">
-                            หน้าหลัก
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/donate" className="block py-2 pl-3 pr-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:rounded-sm md:p-0">
-                            โดเนท
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/location" className="block py-2 pl-3 pr-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:rounded-sm md:p-0">
-                            3D VISTA
-                        </Link>
-                    </li>
-                </ul>
-            </div>
+
             <div className='flex items-center mx-4'>
                 {auth.user ? (
                     <Link

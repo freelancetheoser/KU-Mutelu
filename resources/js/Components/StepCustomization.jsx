@@ -110,6 +110,7 @@ function StepCustomization({ customization, setCustomization }) {
                         <h1> Background: {customization.background}</h1>
                         <h1> Text: {customization.text}</h1>
                         <h1> Decorate: {customization.decorate}</h1>
+                        <h1> Content: {customization.content}</h1>
                     </div>
                 </div>
             </div>
