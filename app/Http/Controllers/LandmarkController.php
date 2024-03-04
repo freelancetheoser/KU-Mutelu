@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Landmark;
+use App\Models\Wish;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
 use function Laravel\Prompts\error;
@@ -22,6 +26,7 @@ class LandmarkController extends Controller
         $feature = [
             'location' => $landmark->location,
             'properties' => [
+                'landmark_id' => $landmark->id,
                 'name' => $landmark->name,
                 'thainame' => $landmark->thai_name,
                 'detail' => $landmark->detail,

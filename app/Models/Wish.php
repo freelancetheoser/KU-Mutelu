@@ -12,4 +12,8 @@ class Wish extends Model
     public function offerings(){
         return $this->belongsToMany(Offering::class);
     }
+
+    public function landmark(){
+        return $this->belongsTo(Landmark::class);
+    }
 }

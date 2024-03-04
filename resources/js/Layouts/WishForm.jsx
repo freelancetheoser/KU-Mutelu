@@ -9,7 +9,8 @@ import Paper from '@/Components/Card/Paper';
 export default function WishForm({landmark}) {
     const [preview, setPreview] = useState(null);
 
-    const { data, setData} = useForm({
+    const { data, post, setData} = useForm({
+        landmark_id: landmark.feature.properties.landmark_id,
         content: '',
         image: '',
       });
@@ -26,8 +27,10 @@ export default function WishForm({landmark}) {
         console.log('Submitted Data:', data);
     }
 
-    const handleSubmit = () => {
-        router.get(route('wish.index'))
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        post(route('landmark.store'), data);
     };
 
     return (
@@ -61,7 +64,9 @@ export default function WishForm({landmark}) {
                     </label>
                     <Textarea
                         className="mt-2 shadow-gray-300 focus:shadow-teal-600 inline-flex w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                        id="wish"
+                        id="content"
+                        type="text"
+                        name="content"
                         value={data.content}
                         placeholder='เขียนคำอธิษฐาน หรือ คำมั่นสัญญาของคุณ'
                         required rows={6}

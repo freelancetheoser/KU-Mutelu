@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Landmark;
+use App\Models\Location;
 use App\Models\Wish;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class WishController extends Controller
 {
@@ -27,12 +32,14 @@ class WishController extends Controller
         $request->validate([
             'content' => 'required|string',
             'image' => [
-                File::image()->min(1024)->max(12 * 1024),
+                'nullable',
+                File::image()->max(1024 * 1024),
             ]
         ]);
     
         $wish = new Wish();
         $wish->user_id = Auth::user()->id;
+        $wish->landmark_id = $request->landmark_id;
         $wish->content = $request->get('content');
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
@@ -103,7 +110,7 @@ class WishController extends Controller
     }
 
     private static function generateFileName($image){
-        $fileNames = Wish::get()->pluck('image');
+        $fileNames = Wish::get()->pluck('image_wish');
         while (true) {
             $fileName = hash('md5', time()) . '.' . $image->getClientOriginalExtension();
             if (!$fileNames->has($fileName)){

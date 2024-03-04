@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('image_wish')->nullable();
             $table->string('status')->default('waiting');
             $table->integer('offering_quantity')->default(0);
-            $table->string('template');
+            $table->string('template')->nullable();
             $table->timestamps();
         });
     }

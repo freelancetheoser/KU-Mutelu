@@ -69,6 +69,8 @@ Route::get('/muprofile', function() {
 Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
 Route::post('/location', [LocationController::class, 'search'])->name('location.search');
 Route::get('/landmark/{name}', [LandmarkController::class, 'show'])->name('landmark.show');
+Route::post('/landmark', [WishController::class, 'store'])->name("landmark.store");
+
 
 Route::get('/viewer', function() {
     return Inertia::render('Viewer');
@@ -148,7 +150,8 @@ Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 Route::post('/comments', [CommentController::class, 'create'])->name('comments.create');
 Route::get('/posts/{postId}/comments', [CommentController::class, 'index']);
 
-Route::post('/wish/create', [WishController::class, 'store'])->name("wish.store");
+// Wish
+
 
 Route::get('/temp', function() {
     return view("test");

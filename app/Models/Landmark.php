@@ -12,4 +12,8 @@ class Landmark extends Model
     public function location(){
         return $this->belongsTo(Location::class);
     }
+
+    public function wishes(){
+        return $this->hasMany(Wish::class);
+    }
 }
