@@ -1,15 +1,65 @@
 import React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { Cross2Icon } from '@radix-ui/react-icons';
 
-function PostDetail({ content, onClose }) {
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white h-32 p-4 rounded-lg shadow-lg">
-                {/* <p>{content}</p> */}
-                {/* <img src={content} alt="" className='h-4 w-4'/> */}
-                <button onClick={onClose} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition">Close</button>
-            </div>
-        </div>
-    );
+export default function PostDetail ({image, content, user}) {
+    return(
+        <Dialog.Root>
+            <Dialog.Trigger asChild>
+            <button className="m-4 inline-flex h-[35px] items-center justify-center rounded-[4px] font-medium leading-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-chat-dots" viewBox="0 0 16 16">
+                    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>
+                </svg>
+            </button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+            <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0" />
+            <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+                <Dialog.Title className="text-mauve12 m-0 text-[17px] font-medium">
+                {user}
+                </Dialog.Title>
+                <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
+                <img src={image} alt="" />
+                {content}
+                </Dialog.Description>
+                <fieldset className="mb-[15px] flex items-center gap-5">
+                <label className="text-violet11 w-[90px] text-right text-[15px]" htmlFor="name">
+                    Name
+                </label>
+                <input
+                    className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                    id="name"
+                    defaultValue="Pedro Duarte"
+                />
+                </fieldset>
+                <fieldset className="mb-[15px] flex items-center gap-5">
+                <label className="text-violet11 w-[90px] text-right text-[15px]" htmlFor="username">
+                    Username
+                </label>
+                <input
+                    className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                    id="username"
+                    defaultValue="@peduarte"
+                />
+                </fieldset>
+                <div className="mt-[25px] flex justify-end">
+                <Dialog.Close asChild>
+                    <button className="bg-green4 text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
+                    Save changes
+                    </button>
+                </Dialog.Close>
+                </div>
+                <Dialog.Close asChild>
+                <button
+                    className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+                    aria-label="Close"
+                >
+                    <Cross2Icon />
+                </button>
+                </Dialog.Close>
+            </Dialog.Content>
+            </Dialog.Portal>
+        </Dialog.Root>
+    )
 }
-
-export default PostDetail;

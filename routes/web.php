@@ -67,7 +67,7 @@ Route::get('/muprofile', function() {
 
 // Location and Landmark
 Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])->name('location.index');
-Route::post('/location', [LocationController::class, 'search'])->name('location.search');
+// Route::post('/location/search', [LocationController::class, 'search'])->name('location.search');
 Route::get('/landmark/{name}', [LandmarkController::class, 'show'])->name('landmark.show');
 Route::post('/landmark', [WishController::class, 'store'])->name("landmark.store");
 

@@ -16,7 +16,7 @@ export default function Hotline({ Top10 }) {
 
     return (
         <div className='w-full flex justify-center'>
-            <div className="flex flex-nowrap overflow-auto mt-16">
+            <div className="flex flex-nowrap overflow-auto">
                 {userProfile.map((src, index) => (
                     <Link key={index} href="#" className="w-16 h-16 m-2 flex-shrink-0  overflow-hidden rounded-full border-2 border-teal-500">
                         <img src={src} alt={`User profile ${index + 1}`} className="w-full h-full object-cover" />

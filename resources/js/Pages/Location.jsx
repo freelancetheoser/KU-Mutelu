@@ -8,7 +8,11 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 import SearchResult from "@/Components/SearchResult";
 
 export default function Location({geojson, searchjson, auth}){
-    const {data, setData, post} = useForm({ locate: 'Bangkhen' });
+    const {data, setData, post} = useForm({
+        location: 'Bangkhen'
+    });
+
+    console.log("searchjson: ", searchjson);
 
     const handleLocationChange = (e) => {
         e.preventDefault();
@@ -16,7 +20,7 @@ export default function Location({geojson, searchjson, auth}){
     };
 
     return (
-        <div className="w-screen h-screen lg:mt-16 xl:mt-16">
+        <div className="w-screen h-screen">
             <Head title="KU-MUTELU"/>
             <NavBar auth={auth}/>
             <hr />
@@ -37,6 +41,7 @@ export default function Location({geojson, searchjson, auth}){
 
             {!geojson && <SearchResult searchjson={searchjson} />}
             {!searchjson && <MapBoxComponent geojson={geojson} />}
+            {/* <MapBoxComponent  geojson={geojson}/> */}
 
             <hr />
             <Footer/>

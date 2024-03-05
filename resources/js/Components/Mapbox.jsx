@@ -6,6 +6,8 @@ const MapBoxComponent = ({geojson}) => {
     const [map, setMap] = useState(null);
     const [marker, setMarker] = useState(null);
 
+    console.log(geojson);
+
     const lat = (geojson.location.latitude);
     const lng = (geojson.location.longtitude);
 

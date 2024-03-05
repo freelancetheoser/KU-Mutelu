@@ -8,9 +8,21 @@ use App\Models\Landmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use function Laravel\Prompts\search;
+
 class LocationController extends Controller
 {
     public function index(Request $request) {
+        Log::info($request);
+        if ($request->search) {
+            $search = $this->createSearchJson($request->search);
+            Log::info($search);
+            return Inertia::render('Location', [
+                'searchjson' => $search
+            ]);
+        }
+
+
         $location = $request->location != null
                     ? Location::where('name',$request->location)->first()
                     : Location::where('name','Bangkhen')->first();
@@ -46,12 +58,14 @@ class LocationController extends Controller
         ]);
     }
 
+
+
     public function store(Request $request){
         $request->validate([
             'name' => 'required|string',
             'thai_name' => 'required|string',
         ]);
-        
+
         $location = new Location();
         $location->name = $request->name;
         $location->thai_name = $request->thai_name;
@@ -60,15 +74,9 @@ class LocationController extends Controller
         $location->save();
     }
 
-    public function search(Request $request){
-        $validated = $request->validate([
-            'keyword'=>['required', 'min:1']
-        ]);
-
-        $keyword = $request->keyword;
-
-        $landmarks = Landmark::where('name', 'like', '%'.$keyword.'%')
-                        ->orWhere('thai_name', 'like', '%'.$keyword.'%')
+    private function createSearchJson($search){
+        $landmarks = Landmark::where('name', 'like', '%'.$search.'%')
+                        ->orWhere('thai_name', 'like', '%'.$search.'%')
                         ->get();
 
         $features = [];
@@ -94,8 +102,6 @@ class LocationController extends Controller
             'features' => $features
         ];
 
-        return Inertia::render('Location', [
-            'searchjson' => $searchjson
-        ]);
+        return $searchjson;
     }
 }
