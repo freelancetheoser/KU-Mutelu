@@ -34,7 +34,8 @@ export default function SearchResult({ searchjson }) {
                     ))}
                 </div>
             ) : (
-                <p className="hidden">No results found.</p>
+                // เพิ่มเงื่อนไขแสดงข้อความ เมื่อไม่มีข้อมูล
+                <p className="text-gray-500 text-center py-4">ไม่พบสถานที่</p>
             )}
         </div>
     );

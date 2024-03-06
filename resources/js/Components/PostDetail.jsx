@@ -25,14 +25,14 @@ export default function PostDetail ({image, content, user}) {
                 </Dialog.Description>
                 <fieldset className="mb-[15px] flex items-center gap-5">
                 <input
-                    className="text-violet11 shadow-teal-500 focus:shadow-teal-500 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                    className="placeholder-teal-500  text-violet11 shadow-teal-500 focus:shadow-teal-500 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                     id="name"
                     placeholder='เขียนเพื่อแสดงความคิดเห็น'
                 />
                 </fieldset>
-                <div className="mt-[25px] flex justify-end">
+                <div className="mt-[25px] flex justify-center">
                 <Dialog.Close asChild>
-                    <button className="bg-green4 text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
+                    <button className="bg-gradient-to-r from-[#005555] to-[#069A8E] text-white inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
                     แสดงความคิดเห็น
                     </button>
                 </Dialog.Close>
