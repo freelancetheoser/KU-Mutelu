@@ -15,6 +15,10 @@ export default function DecorateCustom(props) {
             <h1 className='text-lg text-center font-bold text-[#005555]'>{props.customization.template}<span className='font-light'></span></h1>
             <div className='flex justify-center h-96 items-center px-4'>
                 <WishPreview
+                    template={props.customization.template}
+                    background={props.customization.background}
+                    text={props.customization.text}
+                    content={props.customization.content}
                     decorate={props.customization.decorate}
                     />
             </div>

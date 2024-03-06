@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import * as BABYLON from 'babylonjs';
-import { Engine } from '@babylonjs/core';
+import { Engine , SceneLoader } from '@babylonjs/core';
 import { GUI3DManager, Button3D, TextBlock, Button, Image, Rectangle, AdvancedDynamicTexture } from '@babylonjs/gui';
 import '@babylonjs/loaders';
 
@@ -24,11 +24,35 @@ const PanoramaViewer = ({landmark}) => {
                 "sphere",
                 panorama,
                 {
-                    resolution: 32,
-                    size: 20
+                    resolution: 100,
+                    size: 1000
                 },
                 scene
             );
+
+            var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.7; // คุณสามารถปรับค่านี้เพื่อเพิ่มหรือลดความสว่าง
+
+            SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
+                var bamboo = newMeshes[0];
+
+                bamboo.position = new BABYLON.Vector3(1, -10, -15); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bamboo.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
+            });
+
+            SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
+                var bambooL = newMeshes[0];
+
+                bambooL.position = new BABYLON.Vector3(-5, -10, -20); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bambooL.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
+            });
+
+            SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
+                var bambooR = newMeshes[0];
+
+                bambooR.position = new BABYLON.Vector3(5, -10, -18); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bambooR.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
+            });
 
             return scene;
         };
