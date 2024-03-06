@@ -18,7 +18,12 @@ export default function WishForm({landmark}) {
     const handleFileChange = (e) => {
         const files = e.target.files;
         if (files.length > 0) {
-            setData('image', e.target.files[0])
+            setData('image', files[1]);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result);
+            };
+            reader.readAsDataURL(files[0]);
         }
     };
 
@@ -31,6 +36,25 @@ export default function WishForm({landmark}) {
         e.preventDefault();
 
         post(route('landmark.store'), data);
+    };
+
+    const handleCustom = (e) => {
+        e.preventDefault();
+
+        // ตรวจสอบว่ามีรูปภาพหรือไม่
+        if (!data.image) {
+            alert('Please select an image.');
+            return;
+        }
+
+        // บันทึกข้อมูลลงใน Local Storage
+        localStorage.setItem('wishData', JSON.stringify({
+            content: data.content,
+            image: preview, // รูปภาพในรูปแบบ Base64
+        }));
+
+        // เปลี่ยนไปยังหน้า /customization
+        window.location.href = '/customization';
     };
 
     return (

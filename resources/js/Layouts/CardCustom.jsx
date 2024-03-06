@@ -10,6 +10,7 @@ export default function CardCustom(props) {
         props.onCustomizationChange({ template: template });
     };
 
+    console.log(props);
 
     return(
         <div className='mt-4'>
@@ -17,8 +18,10 @@ export default function CardCustom(props) {
             <div className='flex justify-center h-96 items-center px-4'>
                 <WishPreview
                     template={props.customization.template}
+                    content={props.customization.content}
                     />
             </div>
+            {/* <img src={props.customization.image} alt="" /> */}
             <RadioGroupTemplate onUpdateTemplate={updateTemplate}/>
         </div>
     )

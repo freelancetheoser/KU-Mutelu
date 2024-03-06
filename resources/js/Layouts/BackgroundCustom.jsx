@@ -16,6 +16,7 @@ export default function BackgroundCustom(props) {
             <div className='flex justify-center h-96 items-center px-4'>
                 <WishPreview
                 template={props.customization.template}
+                content={props.customization.content}
                 background={background}/>
             </div>
             <RadioGroupBackground onUpdateBackground={updateBackground}/>

@@ -4,6 +4,7 @@ import { Engine , SceneLoader } from '@babylonjs/core';
 import { GUI3DManager, Button3D, TextBlock, Button, Image, Rectangle, AdvancedDynamicTexture } from '@babylonjs/gui';
 import '@babylonjs/loaders';
 
+
 const PanoramaViewer = ({landmark}) => {
 
     const panorama =  (landmark.feature.result.panoramaUrl) + '.webp'
@@ -29,6 +30,7 @@ const PanoramaViewer = ({landmark}) => {
                 },
                 scene
             );
+            
 
             var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 0), scene);
             light.intensity = 0.7; // คุณสามารถปรับค่านี้เพื่อเพิ่มหรือลดความสว่าง

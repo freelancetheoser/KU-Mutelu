@@ -104,7 +104,7 @@ function StepCustomization({ customization, setCustomization }) {
                         </ul>
                     </nav>
                 </div>
-                <div className='flex justify-end w-full'>
+                {/* <div className='flex justify-end w-full'>
                     <div>
                         <h1> Template: {customization.template}</h1>
                         <h1> Background: {customization.background}</h1>
@@ -112,7 +112,7 @@ function StepCustomization({ customization, setCustomization }) {
                         <h1> Decorate: {customization.decorate}</h1>
                         <h1> Content: {customization.content}</h1>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div>
                 {renderStep()}
