@@ -78,7 +78,7 @@ export default function WishForm({landmark}) {
                     <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
                         คำมั่นสัญญาของคุณ {landmark.feature.properties.thainame}
                     </Dialog.Description>
-                    <fieldset className="mb-[15px] items-center gap-5">
+                    <fieldset className="mb-[15px] items-center gap-5 flex">
                         <input id="file" name="file" type="file" display='none' onChange={handleFileChange} accept="image/*"/>
                         {preview && <img src={preview} alt="Preview" style={{ height: '100px' }} />}
                     </fieldset>
