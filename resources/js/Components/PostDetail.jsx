@@ -1,8 +1,22 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
+import { useForm } from '@inertiajs/react';
 
-export default function PostDetail ({image, content, user}) {
+export default function PostDetail ({image, content, user, postId}) {
+    const { data, post, setData} = useForm({
+        post_id: postId,
+        content: '',
+      });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        post(route('socialfeed.store'), data);
+
+        console.log('Submitting content :', data);
+    };
+
     return(
         <Dialog.Root>
             <Dialog.Trigger asChild>
@@ -26,13 +40,17 @@ export default function PostDetail ({image, content, user}) {
                 <fieldset className="mb-[15px] flex items-center gap-5">
                 <input
                     className="placeholder-teal-500  text-violet11 shadow-teal-500 focus:shadow-teal-500 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                    id="name"
+                    id="content"
+                    type="text"
+                    name="content"
+                    value={data.content}
                     placeholder='เขียนเพื่อแสดงความคิดเห็น'
+                    onChange={(e) => setData('content', e.target.value)}
                 />
                 </fieldset>
                 <div className="mt-[25px] flex justify-center">
                 <Dialog.Close asChild>
-                    <button className="bg-gradient-to-r from-[#005555] to-[#069A8E] text-white inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
+                    <button onClick={handleSubmit} className="bg-gradient-to-r from-[#005555] to-[#069A8E] text-white inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
                     แสดงความคิดเห็น
                     </button>
                 </Dialog.Close>

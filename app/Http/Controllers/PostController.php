@@ -28,8 +28,9 @@ class PostController extends Controller
                     // 'imageProfile' => $post->user->image_profile,
                 ],
                 'properties' => [
+                    'post_id'=> $post->id,
                     'content' => $post->content,
-                    'imagePost' => $post->image_post,
+                    'imagePost' => asset($post->image_post),
                 ],
             ];
             $features[] = $feature;
@@ -74,6 +75,7 @@ class PostController extends Controller
     {
         
         $request->validate([
+            'title' => 'required|string',
             'content' => 'required|string',
             'image' => [
                 'nullable',
@@ -83,11 +85,12 @@ class PostController extends Controller
         
         $post = new Post();
         $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
         $post->content = $request->get('content');
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
-            $request->file('image')->move(storage_path('images'),$fileName);
-            $post->image_post = storage_path('images') . '/' . $fileName;
+            $request->file('image')->move('storage/app/public/imagesPost',$fileName);
+            $post->image_post = 'storage/app/public/imagesPost' . '/' . $fileName;
         }
         $post->save();
     }

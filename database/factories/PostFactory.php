@@ -18,9 +18,11 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $content = substr($this->faker->text, 0, 30);
+        $title = substr($this->faker->text, 0, 10);
 
         return [
             'user_id' => User::inRandomOrder()->first()->id,
+            'title' => $title,
             'content' => $content,
             'image_post' => $this->faker->imageUrl(),
         ];

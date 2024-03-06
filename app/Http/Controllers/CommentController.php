@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CommentController extends Controller
 {
@@ -12,21 +15,18 @@ class CommentController extends Controller
         return response()->json(['comments' => $comments], 200);
     }
 
-    public function store() {
+    public function store(Request $request) {
+        Log::info($request);
         $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'post_id' => 'required|exists:posts,id',
+            'post_id' => 'required',
             'content' => 'required|string',
         ]);
 
         // Create a new comment instance
         $comment = new Comment();
-        $comment->user_id = $request->user_id;
+        $comment->user_id = Auth::user()->id;
         $comment->post_id = $request->post_id;
         $comment->content = $request->content;
         $comment->save();
-
-        // Return a response
-        return response()->json(['comment' => $comment], 201);
     }
 }

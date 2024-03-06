@@ -147,7 +147,7 @@ Route::post('/posts/create', [PostController::class, 'store'])->name("post.store
 Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 
-Route::post('/comments', [CommentController::class, 'create'])->name('comments.create');
+Route::post('/socialfeed/comments', [CommentController::class, 'store'])->name('socialfeed.store');
 Route::get('/posts/{postId}/comments', [CommentController::class, 'index']);
 
 // Wish

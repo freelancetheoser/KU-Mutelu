@@ -56,7 +56,7 @@ export default function FramePost({ feedjson }) {
                             <p>{feature.properties.content}</p>
                         </div>
                         <div className="w-2/4 py-auto flex justify-center">
-                            <PostDetail image={feature.properties.imagePost} content={feature.properties.content} user={feature.user.user_id}/>
+                            <PostDetail image={feature.properties.imagePost} content={feature.properties.content} user={feature.user.user_id} postId={feature.properties.post_id}/>
                         </div>
                     </div>
                 </div>

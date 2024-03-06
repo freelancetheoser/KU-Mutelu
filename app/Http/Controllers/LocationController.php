@@ -64,6 +64,8 @@ class LocationController extends Controller
         $request->validate([
             'name' => 'required|string',
             'thai_name' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
         $location = new Location();
@@ -76,7 +78,44 @@ class LocationController extends Controller
 
     private function createSearchJson($search){
         $landmarks = Landmark::where('name', 'like', '%'.$search.'%')
-                        ->orWhere('thai_name', 'like', '%'.$search.'%')
+                        ->orWhere('thai_name', 'like', '%'.$search.'%');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        // Validate incoming request
+        $request->validate([
+            'name' => 'required|string',
+            'thai_name' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        // Find the location by ID
+        $location = Location::find($id);
+        $location->name = $request->name;
+        $location->thai_name = $request->thai_name;
+        $location->latitude = $request->latitude;
+        $location->longtitude = $request->longtitude;
+        $location->save();
+    }
+
+    public function delete($id)
+    {
+        // Find the location by ID and delete
+        $location = Location::find($id);
+        $location->delete();
+    }
+
+    public function search(Request $request){
+        $validated = $request->validate([
+            'keyword'=>['required', 'min:1']
+        ]);
+
+        $keyword = $request->keyword;
+
+        $landmarks = Landmark::where('name', 'like', '%'.$keyword.'%')
+                        ->orWhere('thai_name', 'like', '%'.$keyword.'%')
                         ->get();
 
         $features = [];

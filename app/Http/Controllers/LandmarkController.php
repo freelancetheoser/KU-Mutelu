@@ -46,4 +46,59 @@ class LandmarkController extends Controller
             'landmark' => $landmark
         ]);
     }
+
+    public function store(Request $request){
+        $request->validate([
+            'location_id' => 'required|exists:locations,id',
+            'name' => 'required|string',
+            'thai_name' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'image' => 'required|image',
+            'panorama' => 'required|image',
+            'detail' => 'nullable|string',
+            'description' => 'nullable|string',
+        ]);
+        
+        $landmark = new Landmark();
+        $landmark->location_id = $request->location_id;
+        $landmark->name = $request->name;
+        $landmark->thai_name = $request->thai_name;
+        $landmark->latitude = $request->latitude;
+        $landmark->longtitude = $request->longtitude;
+        if($request->hasFile('image')){
+            $fileName = self::generateImageFileName($request->file('image'));
+            $request->file('image')->move(storage_path('imagesLandmark'),$fileName);
+            $landmark->image_url = storage_path('imagesLandmark') . '/' . $fileName;
+        }
+        if($request->hasFile('panorama')){
+            $fileName = self::generatePanoramaFileName($request->file('panorama'));
+            $request->file('panorama')->move(storage_path('imagesPanorama'),$fileName);
+            $landmark->panorama_url = storage_path('imagesPanorama') . '/' . $fileName;
+        }
+        $landmark->detail = $request->detail;
+        $landmark->description = $request->description;
+        $landmark->save();
+    }
+
+    private static function generateImageFileName($image){
+        $imageFileNames = Landmark::get()->pluck('image_url');
+        while (true) {
+            $imageFileName = hash('md5', time()) . '.' . $image->getClientOriginalExtension();
+            if (!$imageFileNames->has($imageFileName)){
+                break;
+            }
+        }
+        return $imageFileName;
+    }
+    private static function generatePanoramaFileName($panorama){
+        $panoramaFileNames = Landmark::get()->pluck('panorama_url');
+        while (true) {
+            $panoramaFileName = hash('md5', time()) . '.' . $panorama->getClientOriginalExtension();
+            if (!$panoramaFileNames->has($panoramaFileName)){
+                break;
+            }
+        }
+        return $panoramaFileName;
+    }
 }
