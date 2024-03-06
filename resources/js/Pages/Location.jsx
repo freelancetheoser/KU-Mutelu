@@ -41,7 +41,6 @@ export default function Location({geojson, searchjson, auth}){
 
             {!geojson && <SearchResult searchjson={searchjson} />}
             {!searchjson && <MapBoxComponent geojson={geojson} />}
-            {/* <MapBoxComponent  geojson={geojson}/> */}
 
             <hr />
             <Footer/>

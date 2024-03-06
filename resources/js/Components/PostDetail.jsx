@@ -20,33 +20,20 @@ export default function PostDetail ({image, content, user}) {
                 {user}
                 </Dialog.Title>
                 <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
-                <img src={image} alt="" />
+                <img src={image} alt="" className='rounded'/><br />
                 {content}
                 </Dialog.Description>
                 <fieldset className="mb-[15px] flex items-center gap-5">
-                <label className="text-violet11 w-[90px] text-right text-[15px]" htmlFor="name">
-                    Name
-                </label>
                 <input
-                    className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                    className="text-violet11 shadow-teal-500 focus:shadow-teal-500 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                     id="name"
-                    defaultValue="Pedro Duarte"
-                />
-                </fieldset>
-                <fieldset className="mb-[15px] flex items-center gap-5">
-                <label className="text-violet11 w-[90px] text-right text-[15px]" htmlFor="username">
-                    Username
-                </label>
-                <input
-                    className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                    id="username"
-                    defaultValue="@peduarte"
+                    placeholder='เขียนเพื่อแสดงความคิดเห็น'
                 />
                 </fieldset>
                 <div className="mt-[25px] flex justify-end">
                 <Dialog.Close asChild>
                     <button className="bg-green4 text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
-                    Save changes
+                    แสดงความคิดเห็น
                     </button>
                 </Dialog.Close>
                 </div>
