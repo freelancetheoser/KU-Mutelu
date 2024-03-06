@@ -17,6 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/storage/images/*
-/storage/imagesWish/*
 /storage/app/public/imagesPost/*
+/storage/app/public/imagesWish/*

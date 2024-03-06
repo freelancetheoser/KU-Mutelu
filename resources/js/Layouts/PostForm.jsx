@@ -15,21 +15,15 @@ export default function PostForm({auth}) {
         image: '',
       });
 
-    // const handleFileChange = (e) => {
-    //     const files = e.target.files;
-    //     if (files.length > 0) {
-    //         setData('image', files[1]);
-    //         const reader = new FileReader();
-    //         reader.onloadend = () => {
-    //             setPreview(reader.result);
-    //         };
-    //         reader.readAsDataURL(files[0]);
-    //     }
-    // };
+      
     const handleFileChange = (e) => {
       const files = e.target.files;
       if (files.length > 0) {
-          setData('image', e.target.files[0])
+        const selectedFile = e.target.files[0];
+        setData('image', selectedFile);
+
+        const imageUrl = URL.createObjectURL(selectedFile);
+        setPreview(imageUrl);
       }
     };
 

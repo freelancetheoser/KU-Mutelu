@@ -43,8 +43,8 @@ class WishController extends Controller
         $wish->content = $request->get('content');
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
-            $request->file('image')->move(storage_path('imagesWish'),$fileName);
-            $wish->image_wish = storage_path('imagesWish') . '/' . $fileName;
+            $request->file('image')->move('storage/imagesWish',$fileName);
+            $wish->image_wish = 'storage/imagesWish' . '/' . $fileName;
         }
        $wish->save();
     }
