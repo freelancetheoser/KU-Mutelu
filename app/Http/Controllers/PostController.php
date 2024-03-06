@@ -89,8 +89,8 @@ class PostController extends Controller
         $post->content = $request->get('content');
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
-            $request->file('image')->move('storage/app/public/imagesPost',$fileName);
-            $post->image_post = 'storage/app/public/imagesPost' . '/' . $fileName;
+            $request->file('image')->move('storage/imagesPost',$fileName);
+            $post->image_post = 'storage/imagesPost' . '/' . $fileName;
         }
         $post->save();
     }
