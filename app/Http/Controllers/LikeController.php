@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Like;
+use Illuminate\Support\Facades\Log;
 
 class LikeController extends Controller
 {
     public function likePost(Request $request)
     {
+        Log::info($request);
         $like = new Like();
         $like->user_id = Auth::user()->id;
         $like->post_id = $request->post_id;

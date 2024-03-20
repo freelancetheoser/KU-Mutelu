@@ -46,7 +46,9 @@ class WishController extends Controller
             $request->file('image')->move('storage/imagesWish',$fileName);
             $wish->image_wish = 'storage/imagesWish' . '/' . $fileName;
         }
-       $wish->save();
+        if($wish->save()){
+         return redirect('/home');
+        }
     }
 
     /**

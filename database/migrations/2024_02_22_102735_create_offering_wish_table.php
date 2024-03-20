@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Wish::class);
             $table->foreignIdFor(Offering::class);
+            $table->string('name');
+            $table->integer('offering_quantity')->default(0);
             $table->timestamps();
         });
     }

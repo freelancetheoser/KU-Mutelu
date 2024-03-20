@@ -82,6 +82,7 @@ Route::get('/sambhuraphajan', function() {
 
 // SocialFeed
 Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->name('socialfeed.index');
+Route::post('/socialfeed/posts', [PostController::class, 'store'])->name("post.store");
 
 // Like
 Route::post('/like', [LikeController::class, 'likePost'])->name('like.likePost');
@@ -143,7 +144,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{id}', [PostController::class, 'show']);
-Route::post('/posts/create', [PostController::class, 'store'])->name("post.store");
+// Route::post('/posts/create', [PostController::class, 'store'])->name("post.store");
 Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 
