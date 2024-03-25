@@ -6,13 +6,36 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Inertia\Inertia;
 
 class CommentController extends Controller
 {
+
     public function index($postId)
     {
         $comments = Comment::where('post_id', $postId)->get();
-        return response()->json(['comments' => $comments], 200);
+        $features = [];
+        foreach ($comments as $comment) {
+            $feature = [
+                'user' => [
+                    'user_id' => $comment->user_id,
+                    // 'imageProfile' => $post->user->image_profile,
+                ],
+                'properties' => [
+                    'comment_id'=> $comment->id,
+                    'content' => $comment->content,
+                ],
+            ];
+            $features[] = $feature;
+        }
+
+        $commentjson = [
+            'features' => $features
+        ];
+        Log::info($comment);
+        return Inertia::render('SocialFeed', [
+            'commentjson' => $commentjson
+        ]);
     }
 
     public function store(Request $request) {
