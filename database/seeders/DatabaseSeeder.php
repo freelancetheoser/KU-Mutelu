@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(OfferingSeeder::class);
         $this->call(PostSeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(BambooSeeder::class);
         // $this->call(LikeSeeder::class);
 
-        
+
 
         // \App\Models\User::factory(10)->create();
 
