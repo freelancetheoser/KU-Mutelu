@@ -24,9 +24,9 @@ export default function Viewer({landmark, auth}){
                 <div className="flex-grow">
                     <PanoramaViewer landmark={landmark}/>
                 </div>
-                <div className="absolute z-10 w-full">
+                <div className="absolute z-20 w-full">
                     <NavBar auth={auth}/>
-                    <div className="absolute my-auto z-50 pt-2 flex space-x-4 w-full">
+                    <div className="absolute my-auto z-10 pt-2 flex space-x-4 w-full">
                         <div className="justify-start my-auto w-full  ml-2">
                             <BackButton/>
                         </div>

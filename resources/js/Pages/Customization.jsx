@@ -42,6 +42,7 @@ export default function Customization({auth}) {
                     <span>ต่อไป</span>
                 </PrimaryButton>
             </div> */}
+             <img src={customization.image} alt="" />
             <FloatingActionButton/>
         </>
     );

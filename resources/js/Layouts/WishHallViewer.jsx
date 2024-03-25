@@ -5,9 +5,9 @@ import { GUI3DManager, Button3D, TextBlock, Button, Image, Rectangle, AdvancedDy
 import '@babylonjs/loaders';
 
 
-const PanoramaViewer = ({landmark}) => {
+const WishHallViewer = () => {
 
-    const panorama =  (landmark.feature.result.panoramaUrl) + '.webp'
+    const panorama =  '/images/landmark/panoramas/wishhall.webp'
 
     useEffect(() => {
         const canvas = document.getElementById('renderCanvas');
@@ -38,21 +38,21 @@ const PanoramaViewer = ({landmark}) => {
             SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
                 var bamboo = newMeshes[0];
 
-                bamboo.position = new BABYLON.Vector3(30, -20, -15); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bamboo.position = new BABYLON.Vector3(1, -5, 15); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
                 bamboo.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
             });
 
             SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
                 var bambooL = newMeshes[0];
 
-                bambooL.position = new BABYLON.Vector3(30, -20, -20); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bambooL.position = new BABYLON.Vector3(-5, -5, 20); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
                 bambooL.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
             });
 
             SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, function (newMeshes) {
                 var bambooR = newMeshes[0];
 
-                bambooR.position = new BABYLON.Vector3(30, -20, -18); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
+                bambooR.position = new BABYLON.Vector3(5, -5, 18); // ตั้งค่าตำแหน่งของโมเดลตามที่คุณต้องการ
                 bambooR.scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
             });
 
@@ -85,4 +85,4 @@ const PanoramaViewer = ({landmark}) => {
     );
 };
 
-export default PanoramaViewer;
+export default WishHallViewer;

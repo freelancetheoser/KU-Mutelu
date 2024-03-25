@@ -53,6 +53,11 @@ Route::get('/customization', function() {
     return Inertia::render('Customization');
 });
 
+Route::get('/statistic', function() {
+    return Inertia::render('Statistic');
+});
+
+
 Route::get('/post', function() {
     return Inertia::render('Post');
 });
@@ -81,8 +86,8 @@ Route::get('/sambhuraphajan', function() {
 });
 
 // SocialFeed
-Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->name('socialfeed.index');
 Route::post('/socialfeed/posts', [PostController::class, 'store'])->name("post.store");
+Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('socialfeed.index');
 
 // Like
 Route::post('/like', [LikeController::class, 'likePost'])->name('like.likePost');

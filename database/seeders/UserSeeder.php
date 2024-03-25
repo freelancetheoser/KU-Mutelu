@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@example.com',
             'zodiac' => '',
+            'image_profile' => 'UserProfile/Default.png',
             'password' => 'adminpassword',
             'role' => 'ADMIN'
         ]);
@@ -25,6 +26,7 @@ class UserSeeder extends Seeder
             'username' => 'user',
             'email' => 'user@example.com',
             'zodiac' => '',
+            'image_profile' => 'UserProfile/Default.png',
             'password' => 'password',
             'role' => 'USER'
         ]);

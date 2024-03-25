@@ -34,10 +34,16 @@ export default function WishForm({landmark}) {
 
             const imageUrl = URL.createObjectURL(selectedFile);
             setPreview(imageUrl);
+            // localStorage.getItem('wishData')
+            // บันทึกข้อมูลลงใน Local Storag
         }
     };
 
     const handleSentData = () => {
+        localStorage.setItem('wishData', JSON.stringify({
+            content: data.content,
+            image: preview, // รูปภาพในรูปแบบ Base64
+        }));
 
         console.log('Submitted Data:', data);
     }
