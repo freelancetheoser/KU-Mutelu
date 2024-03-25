@@ -15,13 +15,14 @@ use function Laravel\Prompts\error;
 
 class LandmarkController extends Controller
 {
-    public function show($name) {
+    public function show($name)
+    {
         Log::info($name);
         if ($name == null) {
             return;
         }
 
-        $landmark = Landmark::where('name',$name)->first();
+        $landmark = Landmark::where('name', $name)->first();
 
         $feature = [
             'location' => $landmark->location,
@@ -31,6 +32,7 @@ class LandmarkController extends Controller
                 'thainame' => $landmark->thai_name,
                 'detail' => $landmark->detail,
                 'description' => $landmark->description,
+                'bamboos' => $landmark->bamboos,
             ],
             'result' => [
                 'imageUrl' => $landmark->image_url,
@@ -41,13 +43,14 @@ class LandmarkController extends Controller
         $landmark = [
             'feature' => $feature
         ];
-        
+
         return Inertia::render('Landmark', [
             'landmark' => $landmark
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'location_id' => 'required|exists:locations,id',
             'name' => 'required|string',
@@ -59,21 +62,21 @@ class LandmarkController extends Controller
             'detail' => 'nullable|string',
             'description' => 'nullable|string',
         ]);
-        
+
         $landmark = new Landmark();
         $landmark->location_id = $request->location_id;
         $landmark->name = $request->name;
         $landmark->thai_name = $request->thai_name;
         $landmark->latitude = $request->latitude;
         $landmark->longtitude = $request->longtitude;
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $fileName = self::generateImageFileName($request->file('image'));
-            $request->file('image')->move(storage_path('imagesLandmark'),$fileName);
+            $request->file('image')->move(storage_path('imagesLandmark'), $fileName);
             $landmark->image_url = storage_path('imagesLandmark') . '/' . $fileName;
         }
-        if($request->hasFile('panorama')){
+        if ($request->hasFile('panorama')) {
             $fileName = self::generatePanoramaFileName($request->file('panorama'));
-            $request->file('panorama')->move(storage_path('imagesPanorama'),$fileName);
+            $request->file('panorama')->move(storage_path('imagesPanorama'), $fileName);
             $landmark->panorama_url = storage_path('imagesPanorama') . '/' . $fileName;
         }
         $landmark->detail = $request->detail;
@@ -81,21 +84,24 @@ class LandmarkController extends Controller
         $landmark->save();
     }
 
-    private static function generateImageFileName($image){
+    private static function generateImageFileName($image)
+    {
         $imageFileNames = Landmark::get()->pluck('image_url');
         while (true) {
             $imageFileName = hash('md5', time()) . '.' . $image->getClientOriginalExtension();
-            if (!$imageFileNames->has($imageFileName)){
+            if (!$imageFileNames->has($imageFileName)) {
                 break;
             }
         }
         return $imageFileName;
     }
-    private static function generatePanoramaFileName($panorama){
+
+    private static function generatePanoramaFileName($panorama)
+    {
         $panoramaFileNames = Landmark::get()->pluck('panorama_url');
         while (true) {
             $panoramaFileName = hash('md5', time()) . '.' . $panorama->getClientOriginalExtension();
-            if (!$panoramaFileNames->has($panoramaFileName)){
+            if (!$panoramaFileNames->has($panoramaFileName)) {
                 break;
             }
         }
