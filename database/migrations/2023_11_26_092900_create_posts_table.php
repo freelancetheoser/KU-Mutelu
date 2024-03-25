@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('title');
             $table->text('content');
             $table->string('image_post')->nullable();
+            $table->integer('likes_count')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

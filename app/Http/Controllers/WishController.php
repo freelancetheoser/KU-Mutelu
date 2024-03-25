@@ -81,6 +81,26 @@ class WishController extends Controller
         //
     }
 
+    public function updateOffering(Request $request)
+    {
+        $wishId = $request->input('wish_id');
+        $wish = Wish::find($wishId);
+    
+        
+        if (!$wish) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
+
+        $user = Auth::user();
+
+        if ($wish->offering_quantity >= 0) { // เช็คว่า like_count มากกว่า 0 หรือไม่
+            $wish->offering_wish()->create(['user_id' => $user->id]);
+            $wish->offering_quantity += $request->input('offering_quantity');
+            $wish->save();
+        }
+        return response()->json(['message' => 'Inventory updated successfully'], 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

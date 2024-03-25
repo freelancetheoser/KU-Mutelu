@@ -91,7 +91,7 @@ Route::match(['get', 'post'],'/socialfeed', [PostController::class, 'index'])->m
 
 // Like
 Route::post('/like', [LikeController::class, 'likePost'])->name('like.likePost');
-Route::delete('/unlike', [LikeController::class, 'unlikePost'])->name('unlike.unlikePost');
+Route::delete('/unlike', [LikeController::class, 'likePost'])->name('unlike.likePost');
 
 
 Route::get('/prayer', function() {
