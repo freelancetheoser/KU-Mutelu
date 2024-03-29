@@ -31,6 +31,7 @@ class PostController extends Controller
                     'post_id'=> $post->id,
                     'content' => $post->content,
                     'imagePost' => asset($post->image_post),
+                    'likes_count' => $post->likes_count,
                 ],
             ];
             $features[] = $feature;
