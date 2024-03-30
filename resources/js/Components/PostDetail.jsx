@@ -12,7 +12,7 @@ export default function PostDetail ({image, content, user, postId}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        post(route('socialfeed.store'), data);
+        post(route('comment.store'), data);
 
         console.log('Submitting content :', data);
     };

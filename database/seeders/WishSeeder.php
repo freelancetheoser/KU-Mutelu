@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Landmark;
 use App\Models\User;
 use App\Models\Wish;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,6 +15,15 @@ class WishSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Wish::factory(1)->create([
+            'user_id' => User::inRandomOrder()->first()->id,
+            'landmark_id' => Landmark::inRandomOrder()->first()->id,
+            'content' => fake()->realText(),
+            'offering_quantity' => 60,
+            'template' => 'Paper'
+        ]);
+
         Wish::factory(10)->create();
     }
 }

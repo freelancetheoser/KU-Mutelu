@@ -22,7 +22,6 @@ class WishFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id,
             'landmark_id' => Landmark::inRandomOrder()->first()->id,
             'content' => fake()->realText(),
-            'status' => "Waiting",
             'offering_quantity' => 0,
             'template' => 'Paper'
         ];

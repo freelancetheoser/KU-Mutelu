@@ -54,7 +54,7 @@ class PostController extends Controller
             $feature = [
                 'user' => [
                     'user_id' => $post->user_id,
-                    // 'imageProfile' => $post->user->image_profile,
+                    'imageProfile' => $post->user->image_profile,
                 ],
                 'properties' => [
                     'content' => $post->content,
