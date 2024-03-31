@@ -55,6 +55,10 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function wishes(){
+        return $this->hasMany(Wish::class);
+    }
+
     public function isAdmin(){
         return $this->role === "ADMIN";
     }

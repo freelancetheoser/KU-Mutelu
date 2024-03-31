@@ -6,8 +6,7 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";
 import MakeVowWish from "@/Layouts/MakeVowWish";
 
-export default function MakeVow({landmark, auth}){
-
+export default function MakeVow({wishId, landmark, auth}){
     const renderNames = () => {
         return (
             <p className="bg-[#005555] text-white text-center rounded-s-full px-12 py-2 font-extrabold truncate">
@@ -39,7 +38,7 @@ export default function MakeVow({landmark, auth}){
 
                 <div className="flex justify-center absolute z-10 bottom-10 w-full space-x-4 ">
                     <LandmarkInfo landmark={landmark}/>
-                    <MakeVowWish landmark={landmark}/>
+                    <MakeVowWish wishId={wishId}/>
                 </div>
 
                 <FloatingActionButton/>
