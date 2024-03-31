@@ -33,7 +33,7 @@ class CommentController extends Controller
         $commentjson = [
             'features' => $features
         ];
-        Log::info($comment);
+        Log::info($comments);
         return Inertia::render('SocialFeed', [
             'commentjson' => $commentjson
         ]);

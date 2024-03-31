@@ -160,7 +160,7 @@ Route::put('/posts/update/{id}', [PostController::class, 'update']);
 Route::delete('/posts/delete/{id}', [PostController::class, 'destroy']);
 
 Route::post('/socialfeed/comments', [CommentController::class, 'store'])->name('comment.store');
-Route::get('/posts/{postId}/comments', [CommentController::class, 'index'])->name('comment.index');
+Route::post('/comments', [CommentController::class, 'index'])->name('comment.index');
 
 // Wish
 

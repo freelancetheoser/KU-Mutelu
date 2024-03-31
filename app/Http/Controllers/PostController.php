@@ -22,24 +22,9 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $top10 = [];
-        $comments = [];
         $features = [];
         foreach ($posts as $post) {
-
-            foreach ($post->comments as $comment) {
-                $comments[] = [
-                    'user' => [
-                        'user_id' => $comment->user_id,
-                        'username' => $comment->username,
-                        'imageProfile' => asset($comment->image_profile),
-                    ],
-                    'properties' => [
-                        'post_id' => $comment->post_id,
-                        'comment_id' => $comment->id,
-                        'content' => $comment->content,
-                    ],
-                ];
-            }
+            $comments = $post->comments()->latest()->get();
 
             $feature = [
                 'user' => [
@@ -47,13 +32,27 @@ class PostController extends Controller
                     'imageProfile' => asset($post->image_profile),
                 ],
                 'properties' => [
-                    'post_id'=> $post->id,
+                    'post_id' => $post->id,
                     'title' => $post->title,
                     'content' => $post->content,
                     'imagePost' => asset($post->image_post),
                     'likes_count' => $post->likes_count,
+                    'comments' => [],
                 ],
             ];
+
+            // เพิ่มข้อมูลของแต่ละความคิดเห็น
+            foreach ($comments as $comment) {
+                $feature['properties']['comments'][] = [
+                    'comment_id' => $comment->id,
+                    'content' => $comment->content,
+                    'user' => [
+                        'user_id' => $comment->user_id,
+                        'username' => $comment->username,
+                        'imageProfile' => $comment->image_profile,
+                    ],
+                ];
+            }
 
             $features[] = $feature;
 
@@ -69,6 +68,7 @@ class PostController extends Controller
                         'content' => $post->content,
                         'imagePost' => asset($post->image_post),
                         'likes_count' => $post->likes_count,
+                        'comments' => $comments,
                     ],
                 ];
             }
@@ -86,7 +86,6 @@ class PostController extends Controller
         $feedjson = [
             'features' => $features,
             'top10' => $top10,
-            'comments' => $comments,
         ];
         Log::info($post);
         Log::info($top10);
