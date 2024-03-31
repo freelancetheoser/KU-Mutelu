@@ -10,9 +10,13 @@ export default function Social({auth , feedjson, Top10}){
     return (
         <>
             <Head title="KU-MUTELU"/>
-            <NavBar auth={auth}/>
             <div className="w-screen h-screen">
-                <DoughnutChartComponent/>
+                <NavBar auth={auth}/>
+                <div className="flex justify-center">
+                    <div className="w-2/4">
+                        <DoughnutChartComponent/>
+                    </div>
+                </div>
             </div>
             <FloatingActionButton/>
         </>

@@ -6,6 +6,7 @@ import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";
 import WishForm from "@/Layouts/WishForm";
 import MakeVowWish from "@/Layouts/MakeVowWish";
+import BambooWishPreview from "@/Components/Modal/BambooWishPreview";
 
 export default function Viewer({landmark, auth}){
 
@@ -43,6 +44,7 @@ export default function Viewer({landmark, auth}){
                     <LandmarkInfo landmark={landmark}/>
                     <WishForm landmark={landmark}/>
                     {/* <MakeVowWish landmark={landmark}/> */}
+                    {/* <BambooWishPreview /> */}
                 </div>
 
                 <FloatingActionButton/>

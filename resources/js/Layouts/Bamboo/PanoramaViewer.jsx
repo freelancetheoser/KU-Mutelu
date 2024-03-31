@@ -38,6 +38,15 @@ const PanoramaViewer = ({landmark}) => {
                     mesh.position.set(bamboo.position_x, bamboo.position_y, bamboo.position_z);
                     mesh.scaling.set(0.25, 0.25, 0.25);
 
+                    // เพิ่ม Action Manager ให้กับ Mesh
+                    mesh.actionManager = new BABYLON.ActionManager(scene);
+                    mesh.actionManager.registerAction(
+                        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, function() {
+                            // อัปเดท state เพื่อเปิด BambooWishPreview พร้อมข้อมูลของ bamboo ที่คลิก
+                            setWishModalData(bamboo.wishes);
+                            setOpenModal(true);
+                        })
+                    );
                     console.log(bamboo.wishes);
                 });
             });
@@ -68,9 +77,9 @@ const PanoramaViewer = ({landmark}) => {
     return (<div style={{width: '100%', height: '100vh', position: 'relative'}}>
         <canvas id="renderCanvas" style={{width: '100%', height: '100%', opacity: '1'}}/>
         <BambooWishPreview
-            openModal={true}
-            // setOpenModal={setOpenModal}
-            wishModalData={landmark.feature.properties.bamboos[0].wishes[0]}
+            wishModalData={wishModalData} // ตรวจสอบว่าข้อมูลนี้ถูกอัพเดทอย่างถูกต้องเมื่อมีการคลิกที่ bamboo
+            openModal={openModal}
+            setOpenModal={setOpenModal}
         />
     </div>);
 };

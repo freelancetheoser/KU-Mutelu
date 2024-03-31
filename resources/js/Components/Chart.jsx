@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
-
 const DoughnutChartComponent = () => {
     const chartRef = useRef(null);
 
@@ -11,10 +10,10 @@ const DoughnutChartComponent = () => {
         new Chart(chartContext, {
           type: 'doughnut',
           data: {
-            labels: ['Red', 'Blue', 'Yellow'],
+            labels: ['ทั้งหมด', 'สำเร็จแล้ว', 'ยังไม่สำเร็จ'],
             datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3],
+              label: 'จำนวน',
+              data: [300, 105, 295],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
