@@ -64,7 +64,7 @@ export default function MuProfile({wishes, auth}) {
                             </ul>
                         </div>
                     </div>
-                    <div className='grid grid-cols-1 gap-4 justify-center'>
+                    <div className='grid grid-cols-1 gap-4 mx-12 justify-center'>
                         {/* {activePostType === 'frame' && <FramePost feedjson={feedjson}/>} */}
                         {activePostType === 'text' &&
                             wishes.map((wish) => (

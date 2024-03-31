@@ -3,7 +3,7 @@ import {Link, router} from "@inertiajs/react";
 export default function TextPost({wish}) {
     console.log(wish)
     return(
-        <div className="flex justify-center  mx-auto mt-4 w-full">
+        <div className="flex justify-center mx-auto mt-4 w-full">
             <div className="flex justify-center space-x-4 w-full">
                 <div className="my-auto">
                     <img src={wish.image_wish} alt="" className="w-24 h-24 object-cover rounded"/>
