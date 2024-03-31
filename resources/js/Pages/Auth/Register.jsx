@@ -6,6 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import GuestButton from '@/Components/GuestButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import RadioGroupZodia from '@/Components/RadioGroupZodiac';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -91,10 +92,14 @@ export default function Register() {
                             <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
                         </svg>
                     </div>
-                    <div className="w-full">
+                    <div className="w-full overflow-x-auto">
                         <InputLabel htmlFor="zodiac"/>
 
-                        <TextInput
+                        <div className=''>
+                            <RadioGroupZodia value={data.zodiac} onChange={(e) => setData('zodiac', e.target.value)}/>
+                        </div>
+
+                        {/* <TextInput
                             id="zodiac"
                             type="text"
                             name="zodiac"
@@ -104,7 +109,7 @@ export default function Register() {
                             autoComplete="username"
                             onChange={(e) => setData('zodiac', e.target.value)}
                             required
-                        />
+                        /> */}
 
                         <InputError message={errors.zodiac} className="mt-2" />
                     </div>
@@ -166,7 +171,7 @@ export default function Register() {
                 <div className='mt-4 space-y-2'>
                     <div className='flex justify-center'>
                         <GuestButton className="space-x-2" disabled={processing}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#005555" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#005555" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                             </svg>
                             <span className='text-[#005555]'>สมัครสมาชิก</span>

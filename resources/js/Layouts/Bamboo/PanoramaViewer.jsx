@@ -3,6 +3,7 @@ import * as BABYLON from 'babylonjs';
 import { Engine, SceneLoader, ArcRotateCamera, Vector3, PhotoDome, HemisphericLight } from '@babylonjs/core';
 import '@babylonjs/loaders';
 import WishModal from "@/Components/Modal/WishModal.jsx";
+import BambooWishPreview from '@/Components/Modal/BambooWishPreview';
 
 const PanoramaViewer = ({landmark}) => {
     const panorama = landmark.feature.result.panoramaUrl + '.webp';
@@ -66,9 +67,9 @@ const PanoramaViewer = ({landmark}) => {
 
     return (<div style={{width: '100%', height: '100vh', position: 'relative'}}>
         <canvas id="renderCanvas" style={{width: '100%', height: '100%', opacity: '1'}}/>
-        <WishModal
-            openModal={false}
-            setOpenModal={setOpenModal}
+        <BambooWishPreview
+            openModal={true}
+            // setOpenModal={setOpenModal}
             wishModalData={landmark.feature.properties.bamboos[0].wishes[0]}
         />
     </div>);
