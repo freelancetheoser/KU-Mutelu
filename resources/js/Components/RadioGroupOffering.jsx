@@ -1,22 +1,23 @@
 import React from 'react';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
-export default function RadioGroupOffering({ onUpdateOffering }) {
+export default function RadioGroupOffering({ onUpdateOffering, setData }) {
     const [selectedValue, setSelectedValue] = React.useState('default');
 
     const offeringItems = [
-        { id: 'eggs', value: 'ไข่ต้ม', image: '../images/offerings/eggs.png' },
-        { id: 'fruit', value: 'ผลไม้', image: '../images/offerings/fruit.png' },
-        { id: 'incense', value: 'ธูป', image: '../images/offerings/incense.png' },
-        { id: 'lotus-flower', value: 'ตอกบัว', image: '../images/offerings/lotus-flower.png' },
-        { id: 'pig', value: 'หัวหมู', image: '../images/offerings/pig.png' },
-        { id: 'pray', value: 'ไหว้', image: '../images/offerings/pray.png' },
-        { id: 'RedFanta', value: 'น้ำแดง', image: '../images/offerings/RedFanta.png' },
-        { id: 'roast-chicken', value: 'ไก่ต้ม', image: '../images/offerings/roast-chicken.png' },
+        { id: 'eggs', value: 'ไข่ต้ม', image: '/images/offerings/eggs.png' },
+        { id: 'fruit', value: 'ผลไม้', image: '/images/offerings/fruit.png' },
+        { id: 'incense', value: 'ธูป', image: '/images/offerings/incense.png' },
+        { id: 'lotus-flower', value: 'ตอกบัว', image: '/images/offerings/lotus-flower.png' },
+        { id: 'pig', value: 'หัวหมู', image: '/images/offerings/pig.png' },
+        { id: 'pray', value: 'ไหว้', image: '/images/offerings/pray.png' },
+        { id: 'RedFanta', value: 'น้ำแดง', image: '/images/offerings/RedFanta.png' },
+        { id: 'roast-chicken', value: 'ไก่ต้ม', image: '/images/offerings/roast-chicken.png' },
     ];
 
     const handleValueChange = (value) => {
         setSelectedValue(value);
+        setData('offering', value); // อัพเดตข้อมูลในตัวแปร offering ให้เป็นค่าที่เลือก
         // ตรวจสอบค่าที่เลือกและเรียกใช้ onUpdateH1 ด้วยข้อความที่ต้องการ
         switch (value) {
             case 'standard':

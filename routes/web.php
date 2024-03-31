@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MakeVowController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\WishController;
@@ -75,9 +76,8 @@ Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])-
 // Route::post('/location/search', [LocationController::class, 'search'])->name('location.search');
 Route::get('/landmark/{name}', [LandmarkController::class, 'show'])->name('landmark.show');
 Route::post('/landmark', [WishController::class, 'store'])->name("landmark.store");
-Route::get('/makevow', function() {
-    return Inertia::render('MakeVow');
-});
+Route::get('/make-vow/{wishId}', [MakeVowController::class, 'index'])->name('make-vow.index');
+Route::post('/make-vow', [MakeVowController::class, 'makeVow'])->name('make-vow.makeVow');
 
 Route::get('/sendcompleted', function() {
     return Inertia::render('SendCompleted');

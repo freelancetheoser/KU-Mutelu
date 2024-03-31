@@ -5,19 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wish extends Model
-{
+class Wish extends Model {
     use HasFactory;
 
-    public function offerings(){
+    protected $fillable = [
+        'status',
+        'offering_quantity',
+    ];
+
+    public function offerings() {
         return $this->belongsToMany(Offering::class);
     }
 
-    public function landmark(){
+    public function landmark() {
         return $this->belongsTo(Landmark::class);
     }
 
-    public function user(){
+    public function user() {
         return $this->belongsTo(User::class);
     }
 }

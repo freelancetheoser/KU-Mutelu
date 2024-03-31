@@ -13,9 +13,19 @@ class OfferingSeeder extends Seeder
      */
     public function run(): void
     {
-        Offering::create( [
-            'name' => 'ไข่ไก่',
-            'image_url' => './images/offerings/'
-        ]);
+        $offerings = [
+            ['name' => 'eggs', 'image_url' => 'images/offerings/eggs.png'],
+            ['name' => 'fruit', 'image_url' => 'images/offerings/fruit.png'],
+            ['name' => 'incense', 'image_url' => 'images/offerings/incense.png'],
+            ['name' => 'lotus-flower', 'image_url' => 'images/offerings/lotus-flower.png'],
+            ['name' => 'pig', 'image_url' => 'images/offerings/pig.png'],
+            ['name' => 'pray', 'image_url' => 'images/offerings/pray.png'],
+            ['name' => 'RedFanta', 'image_url' => 'images/offerings/RedFanta.png'],
+            ['name' => 'roast-chicken', 'image_url' => 'images/offerings/roast-chicken.png'],
+        ];
+
+        foreach ($offerings as $offering) {
+            Offering::create($offering);
+        }
     }
 }

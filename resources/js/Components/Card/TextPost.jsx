@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import {Link, router} from "@inertiajs/react";
 
 export default function TextPost({wish}) {
     console.log(wish)
@@ -45,7 +45,7 @@ export default function TextPost({wish}) {
                         </svg>
                     </div>
                     <div className="flex justify-end">
-                        <Link href="/makevow">แก้บน</Link>
+                        <Link href={route('make-vow.index', {"wishId":wish.id})} method={"get"}>แก้บน</Link>
                     </div>
                 </div>
             </div>
