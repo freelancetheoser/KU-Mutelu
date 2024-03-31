@@ -25,6 +25,7 @@ class PostFactory extends Factory
             'title' => $title,
             'content' => $content,
             'image_post' => $this->faker->imageUrl(),
+            'likes_count' => $this->faker->randomNumber(2)
         ];
     }
 }

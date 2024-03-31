@@ -7,6 +7,8 @@ export default function FramePost({ feedjson }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState('');
 
+    console.log(features);
+
     return(
         <div className='w-full grid grid-cols-1 place-items-center'>
             {features.map((feature, index) => {
@@ -94,7 +96,7 @@ export default function FramePost({ feedjson }) {
                                     )}
                                 </div>
                                 <div className="flex w-full justify-center items-center">
-                                    <p>{feature.properties.content}</p>
+                                    <p>{feature.properties.title}</p>
                                 </div>
                                 <div className="w-2/4 py-auto flex justify-center">
                                     <PostDetail image={feature.properties.imagePost} content={feature.properties.content} user={feature.user.user_id} postId={feature.properties.post_id}/>

@@ -41,6 +41,7 @@ class WishController extends Controller
         $wish->user_id = Auth::user()->id;
         $wish->landmark_id = $request->landmark_id;
         $wish->content = $request->get('content');
+        $wish->template = $request->template;
         if($request->hasFile('image')){
             $fileName = self::generateFileName($request->file('image'));
             $request->file('image')->move('storage/imagesWish',$fileName);

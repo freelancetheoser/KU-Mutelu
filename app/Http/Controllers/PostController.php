@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use Intervention\Image\Facades\Image;
 use Inertia\Inertia;
@@ -20,27 +21,57 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $top10 = [];
         $features = [];
         foreach ($posts as $post) {
             $feature = [
                 'user' => [
                     'user_id' => $post->user_id,
-                    // 'imageProfile' => $post->user->image_profile,
+                    'imageProfile' => asset($post->image_profile),
                 ],
                 'properties' => [
                     'post_id'=> $post->id,
+                    'title' => $post->title,
                     'content' => $post->content,
                     'imagePost' => asset($post->image_post),
                     'likes_count' => $post->likes_count,
                 ],
             ];
+
             $features[] = $feature;
+
+            if ($post->likes_count > 0) {
+                $top10[] = [
+                    'user' => [
+                        'user_id' => $post->user_id,
+                        'imageProfile' => asset($post->image_profile),
+                    ],
+                    'properties' => [
+                        'post_id'=> $post->id,
+                        'title' => $post->title,
+                        'content' => $post->content,
+                        'imagePost' => asset($post->image_post),
+                        'likes_count' => $post->likes_count,
+                    ],
+                ];
+            }
         }
 
+         // จัดเรียง top10 โพสต์ตามจำนวนไลค์จากมากไปน้อย
+        usort($top10, function($a, $b) {
+            return $b['properties']['likes_count'] - $a['properties']['likes_count'];
+        });
+
+        // จำกัดให้ top10 เก็บเฉพาะ 10 อันดับแรก
+        $top10 = array_slice($top10, 0, 10);
+
+
         $feedjson = [
-            'features' => $features
+            'features' => $features,
+            'top10' => $top10
         ];
         Log::info($post);
+        Log::info($top10);
         return Inertia::render('SocialFeed', [
             'feedjson' => $feedjson
         ]);

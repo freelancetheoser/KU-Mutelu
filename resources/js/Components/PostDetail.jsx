@@ -37,6 +37,17 @@ export default function PostDetail ({image, content, user, postId}) {
                 <img src={image} alt="" className='rounded'/><br />
                 {content}
                 </Dialog.Description>
+                <div>
+                    <div className='flex justify-start space-x-2 my-2   '>
+                        <div className='flex justify-center items-center'>
+                            <img src='' className='rounded-full h-8 w-8' alt="userProfile" />
+                        </div>
+                        <div>
+                            <h1>username</h1>
+                            <p className='text-sm'>comment</p>
+                        </div>
+                    </div>
+                </div>
                 <fieldset className="mb-[15px] flex items-center gap-5">
                 <input
                     className="placeholder-teal-500  text-violet11 shadow-teal-500 focus:shadow-teal-500 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"

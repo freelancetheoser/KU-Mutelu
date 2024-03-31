@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('image_wish')->nullable();
             $table->string('status')->default('รอแก้บน');
             $table->integer('offering_quantity')->default(0);
-            $table->string('template')->nullable();
+            $table->string('template')->default('paper');
             $table->timestamps();
         });
 
