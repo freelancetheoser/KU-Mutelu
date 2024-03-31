@@ -14,6 +14,6 @@ class WishSeeder extends Seeder
      */
     public function run(): void
     {
-        Wish::factory(10)->create();
+        Wish::factory(300)->create();
     }
 }
