@@ -72,7 +72,6 @@ export default function MuProfile({wishes, auth}) {
                             ))
                         }
                     </div>
-
                 </div>
             </div>
         </AuthenticatedLayout>
