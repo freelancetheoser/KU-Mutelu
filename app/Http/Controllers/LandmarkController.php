@@ -22,7 +22,7 @@ class LandmarkController extends Controller
             return;
         }
 
-        $landmark = Landmark::where('name', $name)->first();
+        $landmark = Landmark::with('wishes')->where('name', $name)->first();
 
         $feature = [
             'location' => $landmark->location,
@@ -32,7 +32,7 @@ class LandmarkController extends Controller
                 'thainame' => $landmark->thai_name,
                 'detail' => $landmark->detail,
                 'description' => $landmark->description,
-                'bamboos' => $landmark->bamboos,
+                'bamboos' => self::createBamboosData($landmark),
             ],
             'result' => [
                 'imageUrl' => $landmark->image_url,
@@ -106,5 +106,40 @@ class LandmarkController extends Controller
             }
         }
         return $panoramaFileName;
+    }
+
+    private static function createBamboosData($landmark)
+    {
+        if ($landmark) {
+            $maxWishInBamboo = 10;
+            $maxBamboo = 5;
+
+            // Get the wishes and randomize the order
+            $wishes = $landmark->wishes->shuffle();
+            $wish_count = $wishes->count();
+            $bamboo_count = ceil($wish_count / $maxWishInBamboo);
+            $bamboos = $landmark->bamboos->take(min($bamboo_count, $maxBamboo))->shuffle();
+
+            if ($wish_count > 0 && $bamboos->isNotEmpty()) {
+                $wishesChunks = $wishes->chunk($maxWishInBamboo);
+
+                // map wishesChunks to bamboos
+                $bamboos->each(function ($bamboo, $index) use ($wishesChunks) {
+                    $wishesCollection = collect();
+                    $wishesChunks[$index]->each(function ($wish) use ($wishesCollection) {
+                        $wishesCollection->push($wish);
+                    });
+                    $bamboo->wishes = $wishesCollection;
+                });
+            } else {
+                $bamboos->each(function ($bamboo) {
+                    $bamboo->wishes = collect();
+                });
+            }
+        } else {
+            $bamboos = collect();
+        }
+
+        return $bamboos;
     }
 }

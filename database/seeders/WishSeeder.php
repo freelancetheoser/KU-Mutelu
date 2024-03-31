@@ -15,7 +15,6 @@ class WishSeeder extends Seeder
      */
     public function run(): void
     {
-
         Wish::factory(1)->create([
             'user_id' => User::inRandomOrder()->first()->id,
             'landmark_id' => Landmark::inRandomOrder()->first()->id,
@@ -23,7 +22,6 @@ class WishSeeder extends Seeder
             'offering_quantity' => 60,
             'template' => 'Paper'
         ]);
-
-        Wish::factory(10)->create();
+        Wish::factory(300)->create();
     }
 }

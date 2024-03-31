@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as BABYLON from 'babylonjs';
-import {Engine, SceneLoader, ArcRotateCamera, Vector3, PhotoDome, HemisphericLight} from '@babylonjs/core';
+import { Engine, SceneLoader, ArcRotateCamera, Vector3, PhotoDome, HemisphericLight } from '@babylonjs/core';
 import '@babylonjs/loaders';
-import {Button3D, GUI3DManager} from "@babylonjs/gui";
+import WishModal from "@/Components/Modal/WishModal.jsx";
 
 const PanoramaViewer = ({landmark}) => {
-
     const panorama = landmark.feature.result.panoramaUrl + '.webp';
+    const [openModal, setOpenModal] = useState(false);
+    const [wishModalData, setWishModalData] = useState("");
 
     useEffect(() => {
         const canvas = document.getElementById('renderCanvas');
@@ -31,11 +32,12 @@ const PanoramaViewer = ({landmark}) => {
             light.intensity = 0.7;
 
             landmark.feature.properties.bamboos.forEach(bamboo => {
-                const button = new Button3D('bamboo');
-                SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, newMeshes => {
-                    const _bamboo = newMeshes[0];
-                    _bamboo.position = new Vector3(bamboo.position_x, bamboo.position_y, bamboo.position_z);
-                    _bamboo.scaling = new Vector3(0.25, 0.25, 0.25);
+                SceneLoader.ImportMesh("", "/model3d/", "Bamboo.glb", scene, (newMeshes) => {
+                    const mesh = newMeshes[0];
+                    mesh.position.set(bamboo.position_x, bamboo.position_y, bamboo.position_z);
+                    mesh.scaling.set(0.25, 0.25, 0.25);
+
+                    console.log(bamboo.wishes);
                 });
             });
 
@@ -62,13 +64,13 @@ const PanoramaViewer = ({landmark}) => {
         };
     }, [panorama, landmark.feature.properties.bamboos]);
 
-    const showModal = (bamboo) => {
-        console.log(bamboo);
-    }
-
-    return (
-        <canvas id="renderCanvas" className='w-full h-full'/>
-    );
+    return (<div style={{width: '100%', height: '100vh', position: 'relative'}}>
+        <canvas id="renderCanvas" style={{width: '100%', height: '100%', opacity: '1'}}/>
+        <WishModal
+            openModal={false}
+            setOpenModal={setOpenModal}
+            wishModalData={landmark.feature.properties.bamboos[0].wishes[0]}
+        />
+    </div>);
 };
-
 export default PanoramaViewer;
