@@ -1,21 +1,22 @@
 import { Link } from "@inertiajs/react";
 
-export default function TextPost() {
+export default function TextPost({wish}) {
+    console.log(wish)
     return(
         <div className="flex justify-center  mx-auto mt-4 w-full">
             <div className="flex justify-center space-x-4 w-full">
                 <div className="my-auto">
-                    <img src="./FeedPost/Post-1.jpg" alt="" className="w-24 h-24 object-cover rounded"/>
+                    <img src={wish.image_wish} alt="" className="w-24 h-24 object-cover rounded"/>
                 </div>
                 <div className="my-auto">
                     <div>
-                        <p>ขอให้ไม่ติดเอฟ</p>
+                        <p>{wish.content}</p>
                     </div>
                     <div className="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                         </svg>
-                        <p>สามบูรพาจารย์</p>
+                        <p>{wish.landmark.thai_name}</p>
                     </div>
                     <div className="flex space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#393939" class="bi bi-moon-stars" viewBox="0 0 16 16">

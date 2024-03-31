@@ -1,6 +1,6 @@
 import { Link, Head } from "@inertiajs/react";
 import NavBar from "@/Layouts/NavBar";
-import PanoramaViewer from "@/Layouts/PanoramaViewer";
+import PanoramaViewer from "@/Layouts/Bamboo/PanoramaViewer.jsx";
 import BackButton from "@/Components/BackButton";
 import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";

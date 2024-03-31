@@ -39,12 +39,13 @@ class ProfileController extends Controller
         // ];
 
         $user = $request->user();
-
+        $wishes = $user->wishes()->with('landmark')->get()->toArray();
         // ส่งข้อมูลไปยัง view ผ่าน Inertia
         return Inertia::render('Profile/MuProfile', [
             // 'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             // 'status' => session('status'),
-            'user' => $user
+            'user' => $user,
+            'wishes' => $wishes,
         ]);
     }
 
