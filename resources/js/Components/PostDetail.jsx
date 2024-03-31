@@ -3,7 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { useForm } from '@inertiajs/react';
 
-export default function PostDetail ({image, content, user, postId}) {
+export default function PostDetail ({image, content, user, postId, feedjson}) {
+    const comments = feedjson.comments;
     const { data, post, setData} = useForm({
         post_id: postId,
         content: '',
@@ -38,15 +39,20 @@ export default function PostDetail ({image, content, user, postId}) {
                 {content}
                 </Dialog.Description>
                 <div>
-                    <div className='flex justify-start space-x-2 my-2   '>
-                        <div className='flex justify-center items-center'>
-                            <img src='' className='rounded-full h-8 w-8' alt="userProfile" />
+                    {comments.map((comments, index) => {
+                        <div className='flex justify-start space-x-2 my-2'>
+                            key={index}
+                            <div className='flex justify-center items-center'>
+                                <img src='' className='rounded-full h-8 w-8' alt="userProfile" />
+                            </div>
+                            <div>
+                                <h1>{comments.user.username}</h1>
+                                <p className='text-sm'>
+                                    {comments.properties.Content}
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <h1>username</h1>
-                            <p className='text-sm'>comment</p>
-                        </div>
-                    </div>
+                    })}
                 </div>
                 <fieldset className="mb-[15px] flex items-center gap-5">
                 <input

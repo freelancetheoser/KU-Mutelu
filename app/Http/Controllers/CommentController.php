@@ -19,7 +19,8 @@ class CommentController extends Controller
             $feature = [
                 'user' => [
                     'user_id' => $comment->user_id,
-                    // 'imageProfile' => $post->user->image_profile,
+                    'username' => $comment->username,
+                    'imageProfile' => asset($comment->image_profile),
                 ],
                 'properties' => [
                     'comment_id'=> $comment->id,

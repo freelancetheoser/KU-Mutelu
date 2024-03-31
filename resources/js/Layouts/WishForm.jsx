@@ -12,7 +12,9 @@ export default function WishForm({landmark}) {
     const { data, post, setData} = useForm({
         landmark_id: landmark.feature.properties.landmark_id,
         content: '',
+        template: 'paper',
         image: '',
+        
       });
 
     // const handleFileChange = (e) => {

@@ -22,8 +22,25 @@ class PostController extends Controller
     {
         $posts = Post::all();
         $top10 = [];
+        $comments = [];
         $features = [];
         foreach ($posts as $post) {
+
+            foreach ($post->comments as $comment) {
+                $comments[] = [
+                    'user' => [
+                        'user_id' => $comment->user_id,
+                        'username' => $comment->username,
+                        'imageProfile' => asset($comment->image_profile),
+                    ],
+                    'properties' => [
+                        'post_id' => $comment->post_id,
+                        'comment_id' => $comment->id,
+                        'content' => $comment->content,
+                    ],
+                ];
+            }
+
             $feature = [
                 'user' => [
                     'user_id' => $post->user_id,
@@ -68,7 +85,8 @@ class PostController extends Controller
 
         $feedjson = [
             'features' => $features,
-            'top10' => $top10
+            'top10' => $top10,
+            'comments' => $comments,
         ];
         Log::info($post);
         Log::info($top10);
