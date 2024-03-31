@@ -52,6 +52,19 @@ export default function WishForm({landmark}) {
         e.preventDefault();
 
         post(route('landmark.store'), data);
+
+        // Display the animated image
+        // setPreview("../images/webp/Daft-1.webp");
+
+
+        // Set a timer to hide the image after 5 seconds and then submit the form
+        setTimeout(() => {
+            // Assuming `setPreview(null)` will hide the image in your component
+            setPreview(null);
+
+            // Proceed with your form submission logic here
+            post(route('landmark.store'), data);
+        }, 10500); // 5000 milliseconds = 5 seconds
     };
 
     const handleCustom = (e) => {

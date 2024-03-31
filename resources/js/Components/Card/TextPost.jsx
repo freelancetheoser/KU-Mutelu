@@ -1,3 +1,5 @@
+import { Link } from "@inertiajs/react";
+
 export default function TextPost() {
     return(
         <div className="flex justify-center  mx-auto mt-4 w-full">
@@ -42,7 +44,7 @@ export default function TextPost() {
                         </svg>
                     </div>
                     <div className="flex justify-end">
-                        <p>แก้บน</p>
+                        <Link href="/makevow">แก้บน</Link>
                     </div>
                 </div>
             </div>

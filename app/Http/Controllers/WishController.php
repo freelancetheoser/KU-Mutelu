@@ -36,7 +36,7 @@ class WishController extends Controller
                 File::image()->max(1024 * 1024),
             ]
         ]);
-    
+
         $wish = new Wish();
         $wish->user_id = Auth::user()->id;
         $wish->landmark_id = $request->landmark_id;
@@ -47,7 +47,7 @@ class WishController extends Controller
             $wish->image_wish = 'storage/imagesWish' . '/' . $fileName;
         }
         if($wish->save()){
-         return redirect('/home');
+         return redirect('/sendcompleted');
         }
     }
 
@@ -57,7 +57,7 @@ class WishController extends Controller
     public function show($id)
     {
         $wish = Wish::find($id);
-    
+
         if (!$wish) {
             return response()->json(['message' => self::WISH_NOT_FOUND], 404);
         }

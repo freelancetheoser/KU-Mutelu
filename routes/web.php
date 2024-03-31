@@ -75,7 +75,13 @@ Route::match(['get', 'post'],'/location', [LocationController::class, 'index'])-
 // Route::post('/location/search', [LocationController::class, 'search'])->name('location.search');
 Route::get('/landmark/{name}', [LandmarkController::class, 'show'])->name('landmark.show');
 Route::post('/landmark', [WishController::class, 'store'])->name("landmark.store");
+Route::get('/makevow', function() {
+    return Inertia::render('MakeVow');
+});
 
+Route::get('/sendcompleted', function() {
+    return Inertia::render('SendCompleted');
+})->name('SendCompleted');
 
 Route::get('/viewer', function() {
     return Inertia::render('Viewer');

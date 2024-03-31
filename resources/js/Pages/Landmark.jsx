@@ -5,6 +5,7 @@ import BackButton from "@/Components/BackButton";
 import FloatingActionButton from "@/Components/FloatActionButton";
 import LandmarkInfo from "@/Components/Info";
 import WishForm from "@/Layouts/WishForm";
+import MakeVowWish from "@/Layouts/MakeVowWish";
 
 export default function Viewer({landmark, auth}){
 
@@ -16,6 +17,7 @@ export default function Viewer({landmark, auth}){
             )
         ;
     };
+    console.log(landmark);
 
     return (
         <>
@@ -40,6 +42,7 @@ export default function Viewer({landmark, auth}){
                 <div className="flex justify-center absolute z-10 bottom-10 w-full space-x-4 ">
                     <LandmarkInfo landmark={landmark}/>
                     <WishForm landmark={landmark}/>
+                    <MakeVowWish landmark={landmark}/>
                 </div>
 
                 <FloatingActionButton/>
