@@ -43,10 +43,8 @@ export default function Viewer({landmark, auth}){
                 <div className="flex justify-center absolute z-10 bottom-10 w-full space-x-4 ">
                     <LandmarkInfo landmark={landmark}/>
                     <WishForm landmark={landmark}/>
-                    {/* <MakeVowWish landmark={landmark}/> */}
-                    {/* <BambooWishPreview /> */}
+                    <BambooWishPreview wishModalData={landmark.feature.properties.bamboos[0].wishes[0]}/>
                 </div>
-
                 <FloatingActionButton/>
             </div>
         </>
