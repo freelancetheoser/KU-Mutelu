@@ -22,10 +22,16 @@ export default function PostDetail ({image, content, user, postId, comments, fee
         post(route('comment.index'), data);
     }
 
+    console.log(comments)
     const renderedComments = comments.map((comment, index) => (
-        <div key={index} className='flex justify-start space-x-2 my-2'>
-            <div className='flex justify-center items-center'>
-                <img src={comment.user.imageProfile} className='rounded-full h-8 w-8' alt="userProfile" />
+        <div key={index} className='flex justify-start space-x-2 my-4 overflow-y-auto'>
+            <div className='flex justify-center items-center text-gray-500'>
+                {/* <img src={comment.user.imageProfile} className='rounded-full h-8 w-8' alt="userProfile" />
+                 */}
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg>
             </div>
             <div>
                 <h1>{comment.user.username}</h1>

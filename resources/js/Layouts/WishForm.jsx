@@ -14,8 +14,9 @@ export default function WishForm({landmark}) {
         content: '',
         template: 'paper',
         image: '',
-        
+
       });
+
 
     // const handleFileChange = (e) => {
     //     const files = e.target.files;

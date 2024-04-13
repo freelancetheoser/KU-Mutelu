@@ -2,6 +2,7 @@ import {Link, router} from "@inertiajs/react";
 
 export default function TextPost({wish}) {
     console.log(wish)
+
     return(
         <div className="flex justify-center mx-auto mt-4 w-full">
             <div className="flex justify-center space-x-4 w-full">
@@ -45,7 +46,7 @@ export default function TextPost({wish}) {
                         </svg>
                     </div>
                     <div className="flex justify-end">
-                        <Link href={route('make-vow.index', {"wishId":wish.id})} method={"get"}>แก้บน</Link>
+                        <Link href={route('make-vow.index', {"wishId":wish.id})} method={"get"}>{wish.status}</Link>
                     </div>
                 </div>
             </div>
