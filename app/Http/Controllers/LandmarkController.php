@@ -24,6 +24,9 @@ class LandmarkController extends Controller
 
         $landmark = Landmark::with('wishes')->where('name', $name)->first();
 
+        // Latest 5 wishes
+        $wishes = Wish::where('landmark_id', $landmark->id)->latest()->take(5)->get();
+
         $feature = [
             'location' => $landmark->location,
             'properties' => [
@@ -33,6 +36,7 @@ class LandmarkController extends Controller
                 'detail' => $landmark->detail,
                 'description' => $landmark->description,
                 'bamboos' => self::createBamboosData($landmark),
+                'wishes' => $wishes,
             ],
             'result' => [
                 'imageUrl' => $landmark->image_url,
